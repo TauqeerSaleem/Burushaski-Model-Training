@@ -1,0 +1,1780 @@
+filename,reference,hypothesis,sample_wer_%,sample_cer_%
+41893803.wav,There are potatoes in this sac,There are potatoes in this shopper,16.67,20.0
+41894051.wav,I will not go to the party,I will not go to the party,0.0,0.0
+41894120.wav,It is good to sit in the sun during winters,Sitting in the sun in winter is so sweet,90.0,69.77
+41894162.wav,You will get tired,Are you tired?,100.0,66.67
+41894181.wav,Which way should i chose,I will buy anything,100.0,83.33
+41894271.wav,I miss you,You are my sweetheart,133.33,180.0
+41894410.wav,How much do you charge for a day,How much do you take per day?,50.0,28.12
+41894447.wav,sit down,Sit down,50.0,12.5
+41894481.wav,I brush my teeth twice everyday,I brush my teeth twice a day,33.33,16.13
+41895341.wav,you are a sweetheart,You are my sweet heart,100.0,20.0
+41895342.wav,for how much will you give me,How much will you do for me?,71.43,41.38
+41895351.wav,friend teaches us brushaski,Piyar is killing us with his arrows,150.0,103.7
+41895441.wav,"I can not understand what you are saying, speak louder",I don’t understand what you are saying.,50.0,35.19
+41895643.wav,I also enjoy listening to stories,I also enjoy listening to stories,0.0,0.0
+41895650.wav,My house is small,My house is small,0.0,0.0
+41895662.wav,Snowflakes are falling,The door is opened by the doorstep.,233.33,136.36
+41895668.wav,Its snowing,It is snowing.,150.0,27.27
+41895670.wav,The rice is on low flame,The rice is simmering,50.0,50.0
+41895675.wav,There is a comb,There is one girl,50.0,46.67
+41895679.wav,A man is killing a cow,A man is killing a cow,0.0,0.0
+41895684.wav,I finished my rice when the tailor called,I called the tailor because I didn’t have enough rice,112.5,97.56
+41895687.wav,I always buy food,I buy food everyday,50.0,94.12
+41895688.wav,Its peaceful,There is peace too,200.0,91.67
+41896167.wav,The horse disappeared from under her,That horse disappeared from before,50.0,25.0
+41896168.wav,Apricot juice is best during summers.,The apricot juice made in spring tastes very good,133.33,72.97
+41896173.wav,Where have you come from?,Where did you come from?,20.0,16.0
+41896181.wav,Dont panic,Don’t rush,100.0,60.0
+41896184.wav,The milk boiled over,The milk boiled over.,25.0,5.0
+41896185.wav,It flew onto the roof of a nearby house,It flew to the nearby house,44.44,30.77
+41896189.wav,I can’t go to the park,I can not go to the park,33.33,13.64
+41896198.wav,Is he your friend?,Is he your friend?,0.0,0.0
+41896209.wav,Close the door,Close the door,0.0,0.0
+41896224.wav,"Seeing him, the old woman was shocked",He left without informing anyone,100.0,75.68
+41896229.wav,I’ll be back after staying a few days,I will stay here for a few days,62.5,54.05
+41896233.wav,What is its price?/How much is it?,How much is this for?,85.71,76.47
+41896238.wav,There is a woman,There is a woman,0.0,0.0
+41896243.wav,She hopped on the horse,She carried it on her back,80.0,65.22
+41896262.wav,How are you cooking the flatbread(roti/chapati),How are you making chapati/ roti,50.0,46.81
+41896267.wav,Bring it,Bring it,0.0,0.0
+41896268.wav,Do you miss me?,Are you missing (him/her),75.0,86.67
+41896275.wav,I will not go,I will not go,0.0,0.0
+41896286.wav,I will eat rice,I will eat rice,0.0,0.0
+41896290.wav,Come now,Come now,0.0,0.0
+41896306.wav,I punched him,I hit him with a stick,133.33,123.08
+41896307.wav,This coat does not suit me,This coat does not suit me,0.0,0.0
+41896313.wav,I am a girl,I am a girl,0.0,0.0
+41901108.wav,A cow dies every day,One cow dies everyday,60.0,20.0
+41901125.wav,I drink alcohol everyday,I drink alcohol every day,50.0,4.17
+41901131.wav,The sun rose,The sun has risen,66.67,50.0
+41901134.wav,The sweater has shrunk,The sweater is small,50.0,31.82
+41901135.wav,The car hit the tree,The car hit the tree,0.0,0.0
+41901139.wav,It rained very heavily.,It rained a lot,50.0,47.83
+41901162.wav,what are these?,What are these?,33.33,6.67
+41901170.wav,She is asking a question from us,She is asking a question from us,0.0,0.0
+41901171.wav,I don’t enjoy it here,I am not going there,80.0,52.38
+41901173.wav,You owe me 100 rupees,I have a 100 rupees loan on you,120.0,95.24
+41901205.wav,Wind first went to the old woman’s house,The wind went to the old lady’s home.,50.0,40.0
+41901280.wav,I am giving you a letter,I am giving you a letter,0.0,0.0
+41901284.wav,This is a story,This is the story,25.0,20.0
+41901288.wav,A child was born,A baby was born,25.0,31.25
+41901296.wav,"During winter, they really enjoyed listening to stories on long nights","In the long winter nights, they enjoyed listening to stories",81.82,51.43
+41901299.wav,She shouted at me,She yelled at me,25.0,29.41
+41901310.wav,What did you see?,What did you see?,0.0,0.0
+41901313.wav,Sit down,Sit down,0.0,0.0
+41901332.wav,My father’s father was a spiritual mentor,My grandfather was a Khalipa,57.14,53.66
+41901333.wav,Throw the comb to the back,Wash your hands before eating,100.0,88.46
+41901339.wav,Where are you from?,Where are you from?,0.0,0.0
+41901350.wav,Wind complaint to the bird.,The wind complained to the bird.,60.0,25.93
+41901366.wav,He did not get her name.,He couldn’t figure out her name,66.67,58.33
+41901367.wav,It is too cold this year.,It is freezing cold this year.,16.67,32.0
+41901373.wav,There are so many stars in the sky,There are many stars in the sky,12.5,8.82
+41901374.wav,"Sweet fire, burn that thorn","Sweet fire, burn that thorn.",20.0,3.7
+41901376.wav,Une ka mila numan shuan gaichimi,Nice meeting you,100.0,84.38
+41901381.wav,Come out,Come out,0.0,0.0
+41901389.wav,I will leave after school,I will walk after school.,40.0,20.0
+41901391.wav,Who will be there?,Who will help you there?,50.0,38.89
+41901392.wav,"He’s a big, bulky guy",He is a tall boy,100.0,61.9
+41901400.wav,I hid them,I hid them,0.0,0.0
+41901401.wav,The milk got spilled,The milk boiled over.,50.0,50.0
+41901407.wav,I asked her to boil the water,I told her to boil the water.,28.57,17.24
+41906073.wav,The plane took off,The aeroplane flew,75.0,66.67
+41906096.wav,Grandfather used to tell me that he always saw grandmother in his dreams,Grandfather used to tell me that he always saw his wife in his dreams,15.38,13.89
+41906100.wav,The bird got really happy seeing the pearl and started singing its song,The bird was very happy to see the pearl and started singing,46.15,30.99
+41906109.wav,He did not die,I am tired,100.0,78.57
+41909216.wav,I’m taking care of the herd,I am giving milk to the sheep.,100.0,55.56
+41909217.wav,I am hungry,I am hungry,0.0,0.0
+41909256.wav,I am ill,I am ill,0.0,0.0
+41909268.wav,The sun has risen,The sun has risen,0.0,0.0
+41909278.wav,I am eating potatoes now,I am eating potatoes now,0.0,0.0
+41909306.wav,I became happy seeing you,I am happy to see you.,80.0,44.0
+41909314.wav,I hid her,I hid her,0.0,0.0
+41909325.wav,There is one man,There is a man,25.0,18.75
+41909800.wav,"Sit down,get settled","Sit down, please",66.67,45.0
+41909810.wav,"From here, at the next turn, there’s a shop with a green door; you’ll find it there",There is a shop with a green door in the back of the road. You can buy it there.,105.88,68.67
+41909818.wav,It’s been raining heavily since yesterday,It has been raining since yesterday.,66.67,29.27
+41909822.wav,He made us fly in the plane,He flew in a plane,57.14,48.15
+41909825.wav,Tell me the truth,Tell me the truth,0.0,0.0
+41909835.wav,Congratulations to you,Congratulations,66.67,31.82
+41909859.wav,hey say she is good at housework too,They say she is very good at home chores,50.0,44.44
+P-009_Adp_411.wav,We are behind the house.,We are behind the house.,0.0,0.0
+P-009_Adp_421.wav,She came from the mountain.,She came from the mountain.,0.0,0.0
+P-009_Adp_422.wav,He fell from the tree.,She fell from the tree.,20.0,9.09
+P-009_Adp_424.wav,She arrived from the city.,She arrived from the city.,0.0,0.0
+P-009_Adp_432.wav,The bus stopped near the bridge.,The bus stopped near the bridge.,0.0,0.0
+P-009_Adp_433.wav,The store is across the road.,The store is across the road.,0.0,0.0
+P-009_Case_40.wav,Father bought a toy for his son.,Father bought a toy for his son.,0.0,0.0
+P-009_Case_41.wav,He is working only for his family.,He is working only for his family.,0.0,0.0
+P-009_Case_47.wav,We are at home.,We are at home.,0.0,0.0
+P-009_Case_59.wav,I will play with my brother.,I will play with my brother.,0.0,0.0
+P-009_Case_62.wav,He cut the meat with a knife.,He cut the meat with a knife.,0.0,0.0
+P-009_Case_64.wav,She cooked food for her brother.,She cooked food for her brother.,0.0,0.0
+P-009_Cau_319.wav,I made the girl ask the maid to clean the room.,I made the girl ask the maid to clean the room.,0.0,0.0
+P-009_Cau_321.wav,Aqsa made him food.,Aqsa made him food.,0.0,0.0
+P-009_Cau_323.wav,The house was burnt by the thieves.,The house was burnt by the thieves.,0.0,0.0
+P-009_Cau_324.wav,"Because of bad weather, we could not go to the village.","Because of bad weather, we could not go to the village.",0.0,0.0
+P-009_Cau_332.wav,The teacher made the students write the answer.,The teacher made the students write the answer.,0.0,0.0
+P-009_Cau_333.wav,The rain made the road muddy.,The rain made the road muddy.,0.0,0.0
+P-009_Cau_335.wav,The loud noise made the birds fly away.,The loud noise made the birds fly away.,0.0,0.0
+P-009_Cau_341.wav,The heat made the ice melt.,The heat made the ice melt.,0.0,0.0
+P-009_Cau_344.wav,The teacher made them read the story again.,The teacher made them read the story again.,0.0,0.0
+P-009_Cls_190.wav,This log of wood is thick.,This is a very thick rope.,83.33,65.38
+P-009_Cls_192.wav,Give me a small banana.,Give me a small banana.,0.0,0.0
+P-009_Cls_197.wav,Tie them with a rope.,Tie them with a rope.,0.0,0.0
+P-009_Cls_199.wav,There are two books on the table.,There are two books on the table.,0.0,0.0
+P-009_Cls_203.wav,I have five cars.,I have five cars.,0.0,0.0
+P-009_Cls_204.wav,I need ten dresses.,I need ten dresses.,0.0,0.0
+P-009_Cls_205.wav,She ate four oranges.,She ate four oranges.,0.0,0.0
+P-009_Cls_207.wav,He bought three pieces of cloth.,He bought three pieces of cloth.,0.0,0.0
+P-009_Cls_211.wav,The shop has many kinds of flowers.,The shop has many kinds of flowers.,0.0,0.0
+P-009_ECV_154.wav,She has gone outside the house.,She has gone outside the house.,0.0,0.0
+P-009_ECV_159.wav,He fell down.,He fell down.,0.0,0.0
+P-009_ECV_172.wav,"He stood up, picked the bag, and left.","He stood up, picked the bag, and left.",0.0,0.0
+P-009_ECV_182.wav,I will go there and ask him.,I will go there and ask him.,0.0,0.0
+P-009_Imp_468.wav,Sit down.,Sit down.,0.0,0.0
+P-009_Imp_480.wav,Speak slowly.,Speak slowly.,0.0,0.0
+P-009_Imp_490.wav,Wash your hands before eating.,Wash your hands before eating.,0.0,0.0
+P-009_Imp_491.wav,Please wait a moment.,Please wait a moment.,0.0,0.0
+P-009_Imp_496.wav,Bring the children inside.,Bring the children inside.,0.0,0.0
+P-009_Int_220.wav,Which book do you want?,Which book do you want?,0.0,0.0
+P-009_Int_221.wav,Whose bag is this?,Whose bag is this?,0.0,0.0
+P-009_Int_222.wav,Did you eat?,Did you eat?,0.0,0.0
+P-009_Int_227.wav,What did she say?,What did she say?,0.0,0.0
+P-009_Int_229.wav,Why didn’t you come yesterday?,Why didn’t you come yesterday?,0.0,0.0
+P-009_Int_230.wav,Do you have money?,Do you have money?,0.0,0.0
+P-009_Int_232.wav,Where did they go last night?,Where did they go last night?,0.0,0.0
+P-009_Int_233.wav,How long will you stay here?,How long will you stay here?,0.0,0.0
+P-009_Int_239.wav,Why are they shouting?,Why are they shouting?,0.0,0.0
+P-009_Int_346.wav,Where did they go?,Where did you go?,25.0,22.22
+P-009_Int_354.wav,Are you feeling better now?,Are you feeling better now?,0.0,0.0
+P-009_Int_361.wav,What are they doing with the knife?,What are they doing with the knife?,0.0,0.0
+P-009_Int_374.wav,How many children came today?,How many children came today?,0.0,0.0
+P-009_Neg_102.wav,I have not eaten.,I have not eaten.,0.0,0.0
+P-009_Neg_103.wav,I had not eaten yet.,I had not eaten yet.,0.0,0.0
+P-009_Neg_113.wav,I never drink juice.,I never drink juice.,0.0,0.0
+P-009_Neg_118.wav,Ali is nowhere in the village.,Ali is nowhere in the village.,0.0,0.0
+P-009_Neg_119.wav,Not even my sister believed me.,Not even my sister believed me.,0.0,0.0
+P-009_Neg_120.wav,None of the children came.,None of the children came.,0.0,0.0
+P-009_Neg_123.wav,If you don’t study you will fail.,If you don’t study you will fail.,0.0,0.0
+P-009_Neg_95.wav,There is no water in the river.,There is no water in the river.,0.0,0.0
+P-009_Neg_96.wav,He cannot sing.,He cannot sing.,0.0,0.0
+P-009_Neg_97.wav,You may not go now.,You may not go now.,0.0,0.0
+P-009_Pas_438.wav,The food was cooked.,The food was cooked.,0.0,0.0
+P-009_Pas_442.wav,The letter was written.,The letter was written.,0.0,0.0
+P-009_Pas_451.wav,The tree was cut down by the men.,The man cut the tree with an axe.,87.5,69.7
+P-009_Pas_452.wav,The girl was taught by her mother.,The girl was taught by her mother.,0.0,0.0
+P-009_Pas_458.wav,The plan was changed at the last minute.,The thief was caught red-handed.,75.0,60.0
+P-009_Pas_463.wav,The vegetables are washed before cooking.,The vegetables are washed before cooking.,0.0,0.0
+P-009_Pos_376.wav,I have a book.,I have a book.,0.0,0.0
+P-009_Pos_387.wav,I have an illness.,I have an illness.,0.0,0.0
+P-009_Pos_393.wav,The house has a small garden.,The house has a small garden.,0.0,0.0
+P-009_Pos_398.wav,The river has clear water.,The river has clear water.,0.0,0.0
+P-009_Pos_404.wav,I have work to do today.,I have work to do today.,0.0,0.0
+P-009_Pro_244.wav,I am tired.,I am tired.,0.0,0.0
+P-009_Pro_245.wav,You are late.,You are late.,0.0,0.0
+P-009_Pro_251.wav,She gave it to me.,She gave it to me.,0.0,0.0
+P-009_Pro_258.wav,They washed themselves.,They washed themselves.,0.0,0.0
+P-009_Pro_266.wav,These are my clothes.,These are my clothes.,0.0,0.0
+P-009_Pro_274.wav,He came yesterday.,She had a baby.,133.33,72.22
+P-009_Ref_130.wav,They told me about themselves.,They told me about themselves.,0.0,0.0
+P-009_Ref_132.wav,Muhammad and Ahmad looked at each other.,Muhammad and Ahmad looked at each other.,0.0,0.0
+P-009_Ref_133.wav,We met each other.,We met each other.,0.0,0.0
+P-009_Ref_135.wav,She spoke to herself quietly.,She speaks alone.,80.0,62.07
+P-009_Ref_137.wav,They defended themselves in court.,They defended themselves in court.,0.0,0.0
+P-009_Ref_138.wav,We introduced ourselves to the teacher.,We introduced ourselves to the teacher.,0.0,0.0
+P-009_Ref_141.wav,He blamed himself for the mistake.,He blamed himself for the mistake.,0.0,0.0
+P-009_Ref_142.wav,They prepared themselves for the exam.,They prepared themselves for the exam.,0.0,0.0
+P-009_Ref_144.wav,He closed the door by himself.,He closed the door by himself.,0.0,0.0
+P-009_Ref_150.wav,The two teams competed against each other.,The two teams competed against each other.,0.0,0.0
+P-009_Ref_152.wav,The students shared their books with each other.,The students shared their books with each other.,0.0,0.0
+P-009_Simple_11.wav,We cooked rice in the morning.,We cooked rice in the morning.,0.0,0.0
+P-009_Simple_13a.wav,She (right here) said that the woman is sleeping on the floor.,She (right here) said that the woman is sleeping on the floor.,0.0,0.0
+P-009_Simple_14.wav,I want to go to the town tonight.,I want to go to the town tonight.,0.0,0.0
+P-009_Simple_16.wav,He (right here) tried to feed the elephant.,He (right here) tried to feed the elephant.,0.0,0.0
+P-009_Simple_18.wav,I will go when my mother comes.,I will go when my mother comes.,0.0,0.0
+P-009_Simple_5a.wav,Her (right here) name is Fatima.,Her (right here) name is Fatima.,0.0,0.0
+P-009_Simple_7b.wav,She (not here) saw a man.,She (not here) saw a man.,0.0,0.0
+P-009_TAM_68.wav,I walk to the field every day.,I walk to the field every day.,0.0,0.0
+P-009_TAM_69.wav,I will go to Karachi on Sunday.,I will go to Karachi on Sunday.,0.0,0.0
+P-009_TAM_72b.wav,We are headed to the market now.,We are headed to the market now.,0.0,0.0
+P-009_TAM_74.wav,We could walk anywhere.,We could walk anywhere.,0.0,0.0
+P-009_TAM_75.wav,You walk to school daily.,You walk to school daily.,0.0,0.0
+P-009_TAM_86.wav,We used to walk together every evening.,We used to walk together every evening.,0.0,0.0
+P-009_TAM_92.wav,Jemal is not walking tomorrow.,Jemal is not walking tomorrow.,0.0,0.0
+P-009_Val_281.wav,The door opened.,The door opened.,0.0,0.0
+P-009_Val_292.wav,The boy fell.,The boy fell.,0.0,0.0
+P-009_Val_294.wav,The girl danced.,The girl danced.,0.0,0.0
+P-009_Val_295.wav,The ice melted.,The ice melted.,0.0,0.0
+P-009_Val_299.wav,The baby cried.,The baby cried.,0.0,0.0
+P-009_Val_301.wav,The fire burned.,The fire burned.,0.0,0.0
+P-009_Val_310.wav,The teacher spoke to the class.,The teacher spoke to the class.,0.0,0.0
+P-009_Val_313.wav,The ball rolled.,The ball rolled.,0.0,0.0
+P-016_Adp_410.wav,The book is on the chair.,The book is on the chair.,0.0,0.0
+P-016_Adp_416.wav,He is standing outside the gate.,He is standing outside the gate.,0.0,0.0
+P-016_Adp_417.wav,They are sitting beside me.,They are sitting beside me.,0.0,0.0
+P-016_Adp_422.wav,He fell from the tree.,He fell from the tree.,0.0,0.0
+P-016_Adp_425.wav,I will go with my friend.,I will go with my friend.,0.0,0.0
+P-016_Adp_428.wav,They built the wall with stones.,They built the wall with stones.,0.0,0.0
+P-016_Adp_431.wav,We walked through the forest.,We walked through the forest.,0.0,0.0
+P-016_Adp_434.wav,The teacher stood in front of the class.,The teacher stood in front of the class.,0.0,0.0
+P-016_Case_31.wav,He (not here) kicked the ball.,He (not here) kicked the ball.,0.0,0.0
+P-016_Case_51.wav,My sister is in school.,My sister is in school.,0.0,0.0
+P-016_Case_58.wav,Ali went with Ahmed.,Ali went with Ahmed.,0.0,0.0
+P-016_Case_60.wav,He came with his friend.,He came with his friend.,0.0,0.0
+P-016_Cau_315.wav,The nurse fed the baby.,The nurse fed the baby.,0.0,0.0
+P-016_Cau_317.wav,I made the girl clean the room.,I made the girl clean the room.,0.0,0.0
+P-016_Cau_319.wav,I made the girl ask the maid to clean the room.,I will clean up after my girl friend.,90.91,72.34
+P-016_Cau_321.wav,Aqsa made him food.,Aqsa made him food.,0.0,0.0
+P-016_Cau_324.wav,"Because of bad weather, we could not go to the village.","Because of bad weather, we could not go to the village.",0.0,0.0
+P-016_Cau_326.wav,I am unable to walk.,I am unable to walk.,0.0,0.0
+P-016_Cau_330.wav,The parents made the boy study.,The parents made the boy study.,0.0,0.0
+P-016_Cau_334.wav,The cold weather made him sick.,The cold weather made him sick.,0.0,0.0
+P-016_Cau_336.wav,The wind made the trees fall.,The wind made the trees fall.,0.0,0.0
+P-016_Cau_342.wav,The smell made me feel sick.,The smell made me feel sick.,0.0,0.0
+P-016_Cau_343.wav,The joke made everyone laugh.,The joke made everyone laugh.,0.0,0.0
+P-016_Cls_189.wav,We need an electric wire.,We need an electric wire.,0.0,0.0
+P-016_Cls_196.wav,Do not beat the student with a stick.,Do not beat the student with a stick.,0.0,0.0
+P-016_Cls_198.wav,Go and buy some ripe fruits.,Go and buy some ripe fruits.,0.0,0.0
+P-016_Cls_199.wav,There are two books on the table.,There are two books on the table.,0.0,0.0
+P-016_Cls_201.wav,Give me three long objects.,Give me three long objects.,0.0,0.0
+P-016_Cls_205.wav,She ate four oranges.,She ate four oranges.,0.0,0.0
+P-016_Cls_208.wav,We need five sheets of paper.,We need five sheets of paper.,0.0,0.0
+P-016_Cls_209.wav,She picked six small stones.,She picked six small stones.,0.0,0.0
+P-016_ECV_156.wav,He died.,He died.,0.0,0.0
+P-016_ECV_160.wav,He cleaned up the room.,He cleaned up the room.,0.0,0.0
+P-016_ECV_161.wav,She called me.,She called me.,0.0,0.0
+P-016_ECV_164.wav,Emaan kicked me and ran away.,Emaan kicked me and ran away.,0.0,0.0
+P-016_ECV_168.wav,Hassan went to swim.,Hassan went to swim.,0.0,0.0
+P-016_ECV_169.wav,"He came, sat, ate and went away.","He came, sat, ate and went away.",0.0,0.0
+P-016_ECV_175.wav,Wash your hands before eating.,Wash your hands before eating.,0.0,0.0
+P-016_ECV_176.wav,"After studying, he played outside.","After studying, he played outside.",0.0,0.0
+P-016_Imp_466.wav,Come here.,Come here.,0.0,0.0
+P-016_Imp_467.wav,Go there.,Go there.,0.0,0.0
+P-016_Imp_471.wav,Look at me.,Look at me.,0.0,0.0
+P-016_Imp_473.wav,Write your name.,Write your name.,0.0,0.0
+P-016_Imp_475.wav,Close the window.,Close the window.,0.0,0.0
+P-016_Imp_478.wav,Help me.,Help me.,0.0,0.0
+P-016_Imp_490.wav,Wash your hands before eating.,Wash your hands before eating.,0.0,0.0
+P-016_Imp_493.wav,Let them come inside.,Let them come inside.,0.0,0.0
+P-016_Imp_494.wav,Let them speak.,Let them speak.,0.0,0.0
+P-016_Int_216.wav,Who is coming with you?,Who is coming with you?,0.0,0.0
+P-016_Int_217.wav,Why are you late?,Why are you late?,0.0,0.0
+P-016_Int_221.wav,Whose bag is this?,Whose bag is this?,0.0,0.0
+P-016_Int_223.wav,Can you help me?,Can you help me?,0.0,0.0
+P-016_Int_232.wav,Where did they go last night?,Yesterday they (not here) went to the field.,133.33,106.9
+P-016_Int_235.wav,Where should we meet?,Where should we meet?,0.0,0.0
+P-016_Int_236.wav,Can she speak English?,Can she speak English?,0.0,0.0
+P-016_Int_238.wav,Who will help us tomorrow?,Who will help us tomorrow?,0.0,0.0
+P-016_Int_240.wav,When did you see him?,When did you see him?,0.0,0.0
+P-016_Int_346.wav,Where did they go?,Where did they go?,0.0,0.0
+P-016_Int_354.wav,Are you feeling better now?,Are you feeling better now?,0.0,0.0
+P-016_Int_358.wav,What are they looking at?,What are they looking at?,0.0,0.0
+P-016_Int_361.wav,What are they doing with the knife?,What are they doing with the knife?,0.0,0.0
+P-016_Int_362.wav,Where did she come from?,Where did she come from?,0.0,0.0
+P-016_Int_363.wav,Who are you going with?,Who are you going with?,0.0,0.0
+P-016_Int_366.wav,Whose child is this?,Whose child is this?,0.0,0.0
+P-016_Int_369.wav,Should we go now?,Should we go now?,0.0,0.0
+P-016_Neg_103.wav,I had not eaten yet.,I had not eaten yet.,0.0,0.0
+P-016_Neg_108.wav,Do not enter.,Do not enter.,0.0,0.0
+P-016_Neg_113.wav,I never drink juice.,I never drink juice.,0.0,0.0
+P-016_Neg_116.wav,Nothing can be done about his illness.,Nothing can be done about his illness.,0.0,0.0
+P-016_Pas_440.wav,The house was built last year.,The house was built last year.,0.0,0.0
+P-016_Pas_442.wav,The letter was written.,The letter was written.,0.0,0.0
+P-016_Pas_446.wav,The glass was broken.,The glass was broken.,0.0,0.0
+P-016_Pas_458.wav,The plan was changed at the last minute.,The girl was caught red-handed.,75.0,57.5
+P-016_Pas_461.wav,The rules must be followed.,The rules must be followed.,0.0,0.0
+P-016_Pos_384.wav,They have no money.,They have no money.,0.0,0.0
+P-016_Pos_386.wav,She has a headache.,She has a headache.,0.0,0.0
+P-016_Pos_398.wav,The river has clear water.,The river has clear water.,0.0,0.0
+P-016_Pos_401.wav,My brother has a bicycle.,My brother has a bicycle.,0.0,0.0
+P-016_Pos_404.wav,I have work to do today.,I have work to do today.,0.0,0.0
+P-016_Pro_249.wav,We will go tomorrow.,We will go tomorrow.,0.0,0.0
+P-016_Pro_250.wav,I saw them.,I saw them.,0.0,0.0
+P-016_Pro_254.wav,This is my house.,This is my house.,0.0,0.0
+P-016_Pro_266.wav,These are my clothes.,These are my clothes.,0.0,0.0
+P-016_Pro_268.wav,Come here.,Come here.,0.0,0.0
+P-016_Pro_270.wav,Put it over there.,Put it over there.,0.0,0.0
+P-016_Pro_271.wav,Leave it over there.,Leave it over there.,0.0,0.0
+P-016_Pro_274.wav,He came yesterday.,He came yesterday.,0.0,0.0
+P-016_Pro_276.wav,I will start now.,I will start now.,0.0,0.0
+P-016_Ref_124.wav,I like myself.,I like myself.,0.0,0.0
+P-016_Ref_125.wav,We saw ourselves in the mirror.,We saw ourselves in the mirror.,0.0,0.0
+P-016_Ref_128.wav,Nobody loved her.,Nobody loved her.,0.0,0.0
+P-016_Ref_129.wav,Who praises himself?,Who praises himself?,0.0,0.0
+P-016_Ref_141.wav,He blamed himself for the mistake.,They prepared themselves for the exam.,66.67,55.88
+P-016_Simple_18.wav,I will go when my mother comes.,I will go when my mother comes.,0.0,0.0
+P-016_Simple_2.wav,The monkey is on the tree.,The monkey is on the tree.,0.0,0.0
+P-016_Simple_26.wav,I told him (not here) that she is my sister.,I told him (not here) that she is my sister.,0.0,0.0
+P-016_Simple_29.wav,"Although it was late, they (not here) kept working.","Although it was late, they (not here) kept working.",0.0,0.0
+P-016_TAM_75.wav,You walk to school daily.,You walk to school daily.,0.0,0.0
+P-016_TAM_82.wav,I might walk there later.,I might walk there later.,0.0,0.0
+P-016_TAM_87.wav,She has already walked to the village.,She has already walked to the village.,0.0,0.0
+P-016_TAM_91.wav,"If it rains, we will walk later.","If it rains, we will walk later.",0.0,0.0
+P-016_TAM_93.wav,They might have walked without us.,They might have walked without us.,0.0,0.0
+P-016_Val_285.wav,The pot broke.,The pot broke.,0.0,0.0
+P-016_Val_286.wav,He broke the pot.,He broke the pot.,0.0,0.0
+P-016_Val_295.wav,The ice melted.,The ice melted.,0.0,0.0
+P-016_Val_304.wav,The teacher made the boy sit and study.,The teacher made the boy sit and study.,0.0,0.0
+P-016_Val_307.wav,He swam.,He swam.,0.0,0.0
+P-016_Val_311.wav,The window opened by itself.,The window opened by itself.,0.0,0.0
+P-024_Case_48.wav,He wrote the letter with a pen.,He wrote the letter with a pen.,0.0,0.0
+P-024_Case_52.wav,Fatima lives in Pakistan.,Fatima lives in Pakistan.,0.0,0.0
+P-024_Cau_318.wav,I made the girl clean the room with a broom.,I made the girl clean the room with a broom.,0.0,0.0
+P-024_Cau_326.wav,I am unable to walk.,I am unable to walk.,0.0,0.0
+P-024_Cau_330.wav,The parents made the boy study.,The parents made the boy study.,0.0,0.0
+P-024_Cau_334.wav,The cold weather made him sick.,The cold weather made him sick.,0.0,0.0
+P-024_Cau_339.wav,We made him carry the bags.,We made him carry the bags.,0.0,0.0
+P-024_Cls_184.wav,My family has a goat and a chicken.,Our family has a goat and a chicken.,12.5,8.57
+P-024_Cls_191.wav,This is a door.,This is a door.,0.0,0.0
+P-024_Cls_197.wav,Tie them with a rope.,Tie them with a rope.,0.0,0.0
+P-024_Cls_200.wav,The labourer needs fifty stones to build a house.,The labourer needs fifty stones to build a house.,0.0,0.0
+P-024_Cls_207.wav,He bought three pieces of cloth.,He bought three pieces of cloth.,0.0,0.0
+P-024_ECV_160.wav,He cleaned up the room.,He cleaned up the room.,0.0,0.0
+P-024_ECV_162.wav,He blessed us.,He blessed us.,0.0,0.0
+P-024_ECV_167.wav,I came here to see you.,I came here to see you.,0.0,0.0
+P-024_ECV_172.wav,"He stood up, picked the bag, and left.","He stood up, picked the bag, and left.",0.0,0.0
+P-024_ECV_173.wav,She cooked food and served the children.,She cooked food and served the children.,0.0,0.0
+P-024_ECV_174.wav,They shouted and clapped.,They shouted and clapped.,0.0,0.0
+P-024_ECV_177.wav,She went to the market to buy vegetables.,She went to the market to buy vegetables.,0.0,0.0
+P-024_Int_220.wav,Which book do you want?,Which book do you want?,0.0,0.0
+P-024_Int_353.wav,Do you trust him?,Do you trust him?,0.0,0.0
+P-024_Int_354.wav,Are you feeling better now?,Are you feeling better now?,0.0,0.0
+P-024_Int_361.wav,What are they doing with the knife?,What are they doing with the knife?,0.0,0.0
+P-024_Int_366.wav,Whose child is this?,Whose child is this?,0.0,0.0
+P-024_Int_367.wav,Do they have enough food?,Don’t they know the truth?,80.0,72.0
+P-024_Int_370.wav,May I open the door?,May I open the door?,0.0,0.0
+P-024_Neg_101.wav,They have finished their job.,They have finished their job.,0.0,0.0
+P-024_Neg_109.wav,I have no money.,I have no money.,0.0,0.0
+P-024_Neg_110.wav,I did not play today.,I did not play today.,0.0,0.0
+P-024_Neg_113.wav,I never drink juice.,I never drink juice.,0.0,0.0
+P-024_Neg_117.wav,Nobody saw me.,Nobody saw me.,0.0,0.0
+P-024_Neg_119.wav,Not even my sister believed me.,Not even my sister believed me.,0.0,0.0
+P-024_Neg_94a.wav,He (right here) is not a teacher.,He (right here) is not a teacher.,0.0,0.0
+P-024_Neg_94d.wav,She (not here) is not a teacher.,She (not here) is not a teacher.,0.0,0.0
+P-024_Pos_381.wav,She has a daughter.,She has a daughter.,0.0,0.0
+P-024_Pos_385.wav,I have some time today.,I have some time today.,0.0,0.0
+P-024_Pos_387.wav,I have an illness.,I have an illness.,0.0,0.0
+P-024_Pos_397.wav,Their shop has fresh bread.,Their shop has fresh bread.,0.0,0.0
+P-024_Pos_404.wav,I have work to do today.,I have work today.,33.33,25.0
+P-024_Pos_405.wav,They have everything they need.,They have everything they need.,0.0,0.0
+P-024_Pro_244.wav,I am tired.,I am tired.,0.0,0.0
+P-024_Pro_253.wav,He helped us.,He helped us.,0.0,0.0
+P-024_Pro_256.wav,Their car is new.,Their car is new.,0.0,0.0
+P-024_Pro_261.wav,She cut it with a knife.,She cut it with a knife.,0.0,0.0
+P-024_Pro_266.wav,These are my clothes.,These are my clothes.,0.0,0.0
+P-024_Pro_269.wav,Go there.,Go there.,0.0,0.0
+P-024_Pro_270.wav,Put it over there.,Put it over there.,0.0,0.0
+P-024_Pro_277.wav,We will meet later.,We will meet later.,0.0,0.0
+P-024_Ref_124.wav,I like myself.,I like myself.,0.0,0.0
+P-024_Ref_135.wav,She spoke to herself quietly.,She spoke to herself quietly.,0.0,0.0
+P-024_Ref_141.wav,He blamed himself for the mistake.,They prepared themselves for the exam.,66.67,55.88
+P-024_Ref_143.wav,The machine stopped by itself.,The machine stopped by itself.,0.0,0.0
+P-024_Ref_146.wav,The children dressed themselves.,The children dressed themselves.,0.0,0.0
+P-024_Ref_147.wav,She protected herself from the cold.,She protected herself from the cold.,0.0,0.0
+P-024_Ref_148.wav,They helped each other during the storm.,They helped each other during the storm.,0.0,0.0
+P-024_Simple_12a.wav,He (right here) saw that they are playing with a stone.,He (right here) saw that they are playing with a stone.,0.0,0.0
+P-024_Simple_14.wav,I want to go to the town tonight.,I want to go to the town tonight.,0.0,0.0
+P-024_Simple_16.wav,He (right here) tried to feed the elephant.,He (right here) tried to feed the elephant.,0.0,0.0
+P-024_Simple_19.wav,"If it rains a lot, the plants will grow better.","If it rains a lot, the plants will grow better.",0.0,0.0
+P-024_Simple_20.wav,I will play with my brother.,I will play with my brother.,0.0,0.0
+P-024_Simple_24.wav,We stayed inside because it was cold.,We stayed inside because it was cold.,0.0,0.0
+P-024_Simple_30.wav,I will call you if I need help.,I will call you if I need help.,0.0,0.0
+P-024_Simple_6.wav,I have a headache.,I have a headache.,0.0,0.0
+P-024_Simple_7a.wav,She (right here) saw a man.,She (right here) saw a man.,0.0,0.0
+P-024_Simple_8a.wav,He (right here) met a new teacher at school.,He (right here) met a new teacher at school.,0.0,0.0
+P-024_TAM_70.wav,I will not walk to school.,I will not walk to school.,0.0,0.0
+P-024_TAM_80.wav,They are not walking today.,They are not walking today.,0.0,0.0
+P-024_TAM_81.wav,They walked to the river this morning.,They walked to the river this morning.,0.0,0.0
+P-024_TAM_86.wav,We used to walk together every evening.,We used to walk together every evening.,0.0,0.0
+P-024_TAM_89.wav,He (not here) will have walked by the time we start.,He (not here) will have walked by the time we start.,0.0,0.0
+P-024_Val_282.wav,He opened the door.,He opened the door.,0.0,0.0
+P-024_Val_289.wav,The light turned off.,The light turned off.,0.0,0.0
+P-024_Val_291.wav,The leaves fell.,The leaves fell.,0.0,0.0
+P-024_Val_293.wav,The water boiled.,The water boiled.,0.0,0.0
+P-024_Val_297.wav,He went.,He went.,0.0,0.0
+P-024_Val_305.wav,She ate rice.,She ate rice.,0.0,0.0
+P-024_Val_309.wav,The teacher spoke.,The teacher spoke.,0.0,0.0
+P-028_Adp_406.wav,I am at home.,I am at home.,0.0,0.0
+P-028_Adp_407.wav,She is in the room.,She is in the room.,0.0,0.0
+P-028_Adp_412.wav,Put the bag on the table.,Put the bag on the table.,0.0,0.0
+P-028_Adp_417.wav,They are sitting beside me.,They are sitting beside me.,0.0,0.0
+P-028_Adp_419.wav,He ran to the house.,He ran to the house.,0.0,0.0
+P-028_Adp_420.wav,They went to the market.,They went to the market.,0.0,0.0
+P-028_Adp_424.wav,She arrived from the city.,She arrived from the city.,0.0,0.0
+P-028_Case_60.wav,He came with his friend.,He came with his friend.,0.0,0.0
+P-028_Case_64.wav,She cooked food for her brother.,She cooked food for her brother.,0.0,0.0
+P-028_Cau_317.wav,I made the girl clean the room.,I made the girl clean the room.,0.0,0.0
+P-028_Cau_320.wav,I made him break the glass.,I made him break the glass.,0.0,0.0
+P-028_Cau_322.wav,The dog made the baby cry.,The dog made the baby cry.,0.0,0.0
+P-028_Cau_329.wav,She made him wash the dishes.,She made him wash the dishes.,0.0,0.0
+P-028_Cau_336.wav,The wind made the trees fall.,The wind made the trees fall.,0.0,0.0
+P-028_Cau_337.wav,The doctor made me take medicine.,The doctor made me take medicine.,0.0,0.0
+P-028_Cau_342.wav,The smell made me feel sick.,The smell made me feel sick.,0.0,0.0
+P-028_Cls_188.wav,This is a wooden door.,This is a wooden door.,0.0,0.0
+P-028_Cls_193.wav,I came by boat.,I came by boat.,0.0,0.0
+P-028_Cls_196.wav,Do not beat the student with a stick.,The students shared their studies with the teacher.,87.5,78.38
+P-028_Cls_199.wav,There are two books on the table.,There are two books on the table.,0.0,0.0
+P-028_Cls_201.wav,Give me three long objects.,Give me three long objects.,0.0,0.0
+P-028_Cls_204.wav,I need ten dresses.,I need ten dresses.,0.0,0.0
+P-028_Cls_211.wav,The shop has many kinds of flowers.,The shop has many kinds of flowers.,0.0,0.0
+P-028_Cls_213.wav,He broke two glass bottles.,He broke two glass bottles.,0.0,0.0
+P-028_Imp_473.wav,Write your name.,Write your name.,0.0,0.0
+P-028_Imp_474.wav,Open the door.,Open the door.,0.0,0.0
+P-028_Imp_477.wav,Give me that book.,Give me that book.,0.0,0.0
+P-028_Imp_496.wav,Bring the children inside.,Bring the children inside.,0.0,0.0
+P-028_Imp_497.wav,Stop talking and listen.,Look at the situation.,100.0,75.0
+P-028_Imp_500.wav,Bring me your notes tomorrow.,Give me your notes tomorrow.,20.0,13.79
+P-028_Int_214.wav,What is your name?,What is your name?,0.0,0.0
+P-028_Int_216.wav,Who is coming with you?,Who is coming with you?,0.0,0.0
+P-028_Int_219.wav,How did you fall?,How did you fall?,0.0,0.0
+P-028_Int_227.wav,What did she say?,What did she say?,0.0,0.0
+P-028_Int_230.wav,Do you have money?,Do you have money?,0.0,0.0
+P-028_Int_231.wav,Who are you waiting for?,Who are you waiting for?,0.0,0.0
+P-028_Int_233.wav,How long will you stay here?,How long will you stay here?,0.0,0.0
+P-028_Int_243.wav,What do you want to buy?,What do you want to buy?,0.0,0.0
+P-028_Int_351.wav,Did they finish the work?,Did they finish the work?,0.0,0.0
+P-028_Int_367.wav,Do they have enough food?,Do they have enough food?,0.0,0.0
+P-028_Int_373.wav,Don’t they know the truth?,Don’t they know the truth?,0.0,0.0
+P-028_Int_374.wav,How many children came today?,How many children came today?,0.0,0.0
+P-028_Neg_100.wav,I didn’t eat yesterday.,I didn’t eat yesterday.,0.0,0.0
+P-028_Neg_105.wav,They are not here.,They are not here.,0.0,0.0
+P-028_Neg_106.wav,I am not hungry.,I am not hungry.,0.0,0.0
+P-028_Neg_107.wav,I do not know.,I do not know.,0.0,0.0
+P-028_Neg_116.wav,Nothing can be done about his illness.,Nothing can be done about his illness.,0.0,0.0
+P-028_Neg_118.wav,Ali is nowhere in the village.,Ali is nowhere in the village.,0.0,0.0
+P-028_Neg_120.wav,None of the children came.,None of the children came.,0.0,0.0
+P-028_Neg_95.wav,There is no water in the river.,There is no water in the river.,0.0,0.0
+P-028_Neg_98.wav,We will not upset you.,We will not eat you.,20.0,18.18
+P-028_Pas_437.wav,The door was opened by the boy.,The door was opened by the boy.,0.0,0.0
+P-028_Pas_438.wav,The food was cooked.,The food was cooked.,0.0,0.0
+P-028_Pas_442.wav,The letter was written.,The letter was written.,0.0,0.0
+P-028_Pas_449.wav,The room will be cleaned soon.,The room will be cleaned soon.,0.0,0.0
+P-028_Pas_453.wav,Many people were helped.,Many people were helped.,0.0,0.0
+P-028_Pas_457.wav,The door will be painted tomorrow.,The door will be painted tomorrow.,0.0,0.0
+P-028_Pas_458.wav,The plan was changed at the last minute.,The game was lost at the last moment.,37.5,40.0
+P-028_Pas_462.wav,The thief was caught by the police.,The thief was caught by the police.,0.0,0.0
+P-028_Pos_377.wav,She has a new phone.,She has a new phone.,0.0,0.0
+P-028_Pos_397.wav,Their shop has fresh bread.,Their shop has fresh bread.,0.0,0.0
+P-028_Pos_398.wav,The river has clear water.,The river has clear water.,0.0,0.0
+P-028_Pos_401.wav,My brother has a bicycle.,My brother has a bicycle.,0.0,0.0
+P-028_Pro_259.wav,She talked about herself.,She talked about herself.,0.0,0.0
+P-028_Pro_263.wav,This belongs to her.,This belongs to her.,0.0,0.0
+P-028_Pro_270.wav,Put it over there.,Put it over there.,0.0,0.0
+P-028_Pro_273.wav,The school is far from here.,The school is far from here.,0.0,0.0
+P-028_Pro_275.wav,She will go tomorrow.,She will go tomorrow.,0.0,0.0
+P-028_Pro_278.wav,They already left.,They already left.,0.0,0.0
+P-028_Pro_279.wav,Tomorrow we will go.,Tomorrow we will go.,0.0,0.0
+P-028_Pro_280.wav,Here put it.,Here put it.,0.0,0.0
+P-028_Ref_126.wav,You cooked rice yourself.,You cooked rice yourself.,0.0,0.0
+P-028_Ref_133.wav,We met each other.,We met each other.,0.0,0.0
+P-028_Ref_147.wav,She protected herself from the cold.,She protected herself from the cold.,0.0,0.0
+P-028_Ref_152.wav,The students shared their books with each other.,The students shared their books with each other.,0.0,0.0
+P-028_Simple_18.wav,I will go when my mother comes.,I will go when my mother comes.,0.0,0.0
+P-028_Simple_26.wav,I told him (not here) that she is my sister.,I told him (not here) that she is my sister.,0.0,0.0
+P-028_Simple_27.wav,She (right here) thinks that he (not here) will come tomorrow.,She (right here) thinks that he (not here) will come tomorrow.,0.0,0.0
+P-028_Simple_29.wav,"Although it was late, they (not here) kept working.","Although it was late, they (not here) kept working.",0.0,0.0
+P-028_Simple_3.wav,That house is big.,That house is big.,0.0,0.0
+P-028_Simple_6.wav,I have a headache.,I have a headache.,0.0,0.0
+P-028_Simple_8a.wav,He (right here) met a new teacher at school.,He (right here) met a new teacher at school.,0.0,0.0
+P-028_TAM_77.wav,She goes to the market daily.,She goes to the market daily.,0.0,0.0
+P-028_TAM_79.wav,She will walk home after sunset.,She will walk home after sunset.,0.0,0.0
+P-028_TAM_80.wav,They are not walking today.,They are not walking today.,0.0,0.0
+P-028_TAM_85.wav,I was not walking when you called me.,I was not walking when you called me.,0.0,0.0
+P-028_TAM_88.wav,They had walked far before it started raining.,They had walked far before it started raining.,0.0,0.0
+P-028_Val_291.wav,The leaves fell.,The leaves fell.,0.0,0.0
+P-028_Val_292.wav,The boy fell.,The boy fell.,0.0,0.0
+P-028_Val_293.wav,The water boiled.,The water boiled.,0.0,0.0
+P-028_Val_296.wav,The man ran.,The man ran.,0.0,0.0
+P-028_Val_297.wav,He went.,He went.,0.0,0.0
+P-028_Val_302.wav,They burned the firewood.,They burned the firewood.,0.0,0.0
+P-028_Val_307.wav,He swam.,He swam.,0.0,0.0
+P-028_Val_313.wav,The ball rolled.,The ball rolled.,0.0,0.0
+P-029_Case_31.wav,He (not here) kicked the ball.,He (not here) kicked the ball.,0.0,0.0
+P-029_Simple_1.wav,I like mangoes.,I like mangoes.,0.0,0.0
+P-029_Simple_6.wav,I have a headache.,I have a headache.,0.0,0.0
+P-029_Simple_7a.wav,She (right here) saw a man.,She (right here) saw a man.,0.0,0.0
+P-029_TAM_65.wav,I am walking to field now.,I will not drink alcohol.,83.33,73.08
+P-032_Adp_418.wav,She walked to the river.,She walked to the river.,0.0,0.0
+P-032_Adp_425.wav,I will go with my friend.,I will go with my friend.,0.0,0.0
+P-032_Adp_429.wav,The school is far from here.,The school is far from here.,0.0,0.0
+P-032_Adp_430.wav,She stood between the two boys.,She stood between the two boys.,0.0,0.0
+P-032_Adp_431.wav,We walked through the forest.,We walked through the forest.,0.0,0.0
+P-032_Adp_435.wav,He put the cup on top of the shelf.,He put the cup on top of the shelf.,0.0,0.0
+P-032_Case_35.wav,Ayesha loves her.,Ayesha loves her.,0.0,0.0
+P-032_Case_36.wav,They (not here) love us.,They (not here) love us.,0.0,0.0
+P-032_Case_39.wav,Ahmed gave a flower to his wife.,Ahmed gave a flower to his wife.,0.0,0.0
+P-032_Case_40.wav,Father bought a toy for his son.,Father bought a toy for his son.,0.0,0.0
+P-032_Case_41.wav,He is working only for his family.,He is working only for his family.,0.0,0.0
+P-032_Case_46.wav,My sister is in school.,My sister is in school.,0.0,0.0
+P-032_Case_53.wav,Leaves are falling down from the tree.,Leaves are falling down from the tree.,0.0,0.0
+P-032_Case_54.wav,He will go to Hunza tomorrow.,He will go to Hunza tomorrow.,0.0,0.0
+P-032_Case_58.wav,Ali went with Ahmed.,Ali went with Ahmed.,0.0,0.0
+P-032_Cau_320.wav,I made him break the glass.,I made him break the glass.,0.0,0.0
+P-032_Cau_323.wav,The house was burnt by the thieves.,The house was burnt by the thieves.,0.0,0.0
+P-032_Cau_328.wav,They made me wait outside.,They made me wait outside.,0.0,0.0
+P-032_Cau_333.wav,The rain made the road muddy.,The rain made the road muddy.,0.0,0.0
+P-032_Cau_335.wav,The loud noise made the birds fly away.,The loud noise made the birds fly away.,0.0,0.0
+P-032_Cau_338.wav,She made them tell the truth.,She made them tell the truth.,0.0,0.0
+P-032_Cls_189.wav,We need an electric wire.,We need an electric wire.,0.0,0.0
+P-032_Cls_190.wav,This log of wood is thick.,This log of wood is thick.,0.0,0.0
+P-032_Cls_191.wav,This is a door.,This is a door.,0.0,0.0
+P-032_Cls_198.wav,Go and buy some ripe fruits.,Go and buy some ripe fruits.,0.0,0.0
+P-032_Cls_204.wav,I need ten dresses.,I need ten dresses.,0.0,0.0
+P-032_Cls_213.wav,He broke two glass bottles.,He broke two glass bottles.,0.0,0.0
+P-032_ECV_159.wav,He fell down.,He fell down.,0.0,0.0
+P-032_ECV_161.wav,She called me.,She called me.,0.0,0.0
+P-032_ECV_163.wav,Go and see.,Go and see.,0.0,0.0
+P-032_ECV_169.wav,"He came, sat, ate and went away.","He came, sat, ate and went away.",0.0,0.0
+P-032_ECV_170.wav,"Simra sang, danced, and entertained the guests.","Simra sang, danced, and entertained the guests.",0.0,0.0
+P-032_ECV_171.wav,Finish your work and come home.,Finish your work and come home.,0.0,0.0
+P-032_ECV_175.wav,Wash your hands before eating.,The food will be cooked by the cooks.,160.0,93.33
+P-032_ECV_180.wav,He looked at me and smiled.,He looked at me and smiled.,0.0,0.0
+P-032_Imp_466.wav,Come here.,Come here.,0.0,0.0
+P-032_Imp_468.wav,Sit down.,Sit down.,0.0,0.0
+P-032_Imp_469.wav,Stand up.,Stand up.,0.0,0.0
+P-032_Imp_470.wav,Listen to me.,Listen to me.,0.0,0.0
+P-032_Imp_482.wav,Do not touch that.,Do not touch that.,0.0,0.0
+P-032_Imp_483.wav,Do not speak loudly.,Do not speak loudly.,0.0,0.0
+P-032_Imp_489.wav,Eat and sleep.,Eat and sleep.,0.0,0.0
+P-032_Imp_493.wav,Let them come inside.,Let them come inside.,0.0,0.0
+P-032_Imp_497.wav,Stop talking and listen.,Close the door when leaving.,125.0,83.33
+P-032_Int_216.wav,Who is coming with you?,Who is coming with you?,0.0,0.0
+P-032_Int_219.wav,How did you fall?,How did you fall?,0.0,0.0
+P-032_Int_220.wav,Which book do you want?,Which book do you want?,0.0,0.0
+P-032_Int_223.wav,Can you help me?,Can you help me?,0.0,0.0
+P-032_Int_224.wav,Will he come tomorrow?,Will he come tomorrow?,0.0,0.0
+P-032_Int_238.wav,Who will help us tomorrow?,Who will help us tomorrow?,0.0,0.0
+P-032_Int_242.wav,Will you walk with me?,Will you walk with me?,0.0,0.0
+P-032_Int_243.wav,What do you want to buy?,What do you want to buy?,0.0,0.0
+P-032_Int_348.wav,When will she arrive?,When will she arrive?,0.0,0.0
+P-032_Int_350.wav,How did he fix it?,How did he fix it?,0.0,0.0
+P-032_Int_352.wav,Will she stay here?,Will he stay here?,25.0,5.26
+P-032_Int_369.wav,Should we go now?,Should we go now?,0.0,0.0
+P-032_Neg_117.wav,Nobody saw me.,Nobody saw me.,0.0,0.0
+P-032_Neg_118.wav,Ali is nowhere in the village.,Ali is nowhere in the village.,0.0,0.0
+P-032_Neg_120.wav,None of the children came.,None of the children came.,0.0,0.0
+P-032_Neg_94a.wav,He (right here) is not a teacher.,He (right here) is not a teacher.,0.0,0.0
+P-032_Neg_94b.wav,He (not here) is not a teacher.,He (not here) is not a teacher.,0.0,0.0
+P-032_Neg_94d.wav,She (not here) is not a teacher.,She (not here) is not a teacher.,0.0,0.0
+P-032_Neg_95.wav,There is no water in the river.,The river has no water.,100.0,61.29
+P-032_Pas_439.wav,The food was cooked by her.,The food was cooked by her.,0.0,0.0
+P-032_Pas_450.wav,The work will be finished by tomorrow.,The work will be finished by tomorrow.,0.0,0.0
+P-032_Pos_384.wav,They have no money.,They have no money.,0.0,0.0
+P-032_Pos_387.wav,I have an illness.,I have an illness.,0.0,0.0
+P-032_Pro_245.wav,You are late.,You are late.,0.0,0.0
+P-032_Pro_246.wav,She is sleeping.,She is sleeping.,0.0,0.0
+P-032_Pro_257.wav,I hurt myself.,I hurt myself.,0.0,0.0
+P-032_Pro_263.wav,This belongs to her.,This belongs to her.,0.0,0.0
+P-032_Pro_270.wav,Put it over there.,Put it over there.,0.0,0.0
+P-032_Pro_271.wav,Leave it over there.,Leave it over there.,0.0,0.0
+P-032_Pro_275.wav,She will go tomorrow.,She will go tomorrow.,0.0,0.0
+P-032_Pro_276.wav,I will start now.,I will start now.,0.0,0.0
+P-032_Pro_278.wav,They already left.,They already left.,0.0,0.0
+P-032_Pro_280.wav,Here put it.,Here put it.,0.0,0.0
+P-032_Ref_124.wav,I like myself.,I made myself at home.,133.33,78.57
+P-032_Ref_135.wav,She spoke to herself quietly.,She spoke to herself quietly.,0.0,0.0
+P-032_Ref_139.wav,The cat cleaned itself.,The cat cleaned itself.,0.0,0.0
+P-032_Ref_140.wav,She taught herself to read.,She taught herself to read.,0.0,0.0
+P-032_Simple_17.wav,It was raining so I could not go to the field.,It was raining so I could not go to the field.,0.0,0.0
+P-032_Simple_19.wav,"If it rains a lot, the plants will grow better.","If it rains a lot, the plants will grow better.",0.0,0.0
+P-032_Simple_23b.wav,They (not here) are eating because they are hungry.,They (not here) are eating because they are hungry.,0.0,0.0
+P-032_Simple_25.wav,He (right here) will study after he reaches home.,He (right here) will study after he reaches home.,0.0,0.0
+P-032_Simple_27.wav,She (right here) thinks that he (not here) will come tomorrow.,She (right here) thinks that he (not here) will come tomorrow.,0.0,0.0
+P-032_Simple_28.wav,We waited until the bus arrived.,We waited until the bus arrived.,0.0,0.0
+P-032_Simple_29.wav,"Although it was late, they (not here) kept working.","Although it was late, they (not here) kept working.",0.0,0.0
+P-032_TAM_75.wav,You walk to school daily.,You walk to school daily.,0.0,0.0
+P-032_TAM_76.wav,You walked to town yesterday.,You walked to town yesterday.,0.0,0.0
+P-032_TAM_77.wav,She goes to the market daily.,She goes to the market daily.,0.0,0.0
+P-032_TAM_83.wav,You should not walk at night.,You should not walk at night.,0.0,0.0
+P-032_TAM_89.wav,He (not here) will have walked by the time we start.,He (not here) will have walked by the time we start.,0.0,0.0
+P-032_TAM_91.wav,"If it rains, we will walk later.","If it rains, we will walk later.",0.0,0.0
+P-032_Val_287.wav,The food cooked.,The food cooked.,0.0,0.0
+P-032_Val_295.wav,The ice melted.,The ice melted.,0.0,0.0
+P-032_Val_296.wav,The man ran.,The man ran.,0.0,0.0
+P-032_Val_305.wav,She ate rice.,She ate rice.,0.0,0.0
+P-032_Val_308.wav,He swam in the lake.,He swam in the lake.,0.0,0.0
+P-032_Val_310.wav,The teacher spoke to the class.,The teacher spoke to the class.,0.0,0.0
+P-033_Adp_409.wav,The dog is under the table.,The dog is under the table.,0.0,0.0
+P-033_Adp_410.wav,The book is on the chair.,The book is on the table.,16.67,20.0
+P-033_Adp_421.wav,She came from the mountain.,He came yesterday.,80.0,59.26
+P-033_Adp_423.wav,The water flows from the pipe.,The water flows from the pipe.,0.0,0.0
+P-033_Adp_425.wav,I will go with my friend.,I will go with my friend.,0.0,0.0
+P-033_Adp_429.wav,The school is far from here.,The school is far from here.,0.0,0.0
+P-033_Adp_433.wav,The store is across the road.,The shop is across the road.,16.67,10.34
+P-033_Adp_434.wav,The teacher stood in front of the class.,The teacher stood in front of the class.,0.0,0.0
+P-033_Case_37.wav,Yesterday they (not here) caught the thief.,Yesterday they (not here) caught the thief.,0.0,0.0
+P-033_Case_51.wav,My sister is in school.,My sister is in school.,0.0,0.0
+P-033_Case_55.wav,He is in the house.,He is in the house.,0.0,0.0
+P-033_Cau_321.wav,Aqsa made him food.,Aqsa made him food.,0.0,0.0
+P-033_Cau_330.wav,The parents made the boy study.,The parents made the boy study.,0.0,0.0
+P-033_Cls_193.wav,I came by boat.,I came by boat.,0.0,0.0
+P-033_Cls_195.wav,We built the house with stones.,We built the house with stones.,0.0,0.0
+P-033_Cls_197.wav,Tie them with a rope.,Tie them with a rope.,0.0,0.0
+P-033_Cls_199.wav,There are two books on the table.,There are two books on the table.,0.0,0.0
+P-033_Cls_202.wav,Give me one apple.,Give me one apple.,0.0,0.0
+P-033_Cls_203.wav,I have five cars.,I have five cars.,0.0,0.0
+P-033_Cls_204.wav,I need ten dresses.,I need ten dresses.,0.0,0.0
+P-033_Cls_206.wav,Bring two cups of water.,Bring two cups of water.,0.0,0.0
+P-033_Cls_207.wav,He bought three pieces of cloth.,He bought three pieces of cloth.,0.0,0.0
+P-033_Cls_213.wav,He broke two glass bottles.,He broke two glass bottles.,0.0,0.0
+P-033_ECV_156.wav,He died.,He died.,0.0,0.0
+P-033_ECV_160.wav,He cleaned up the room.,He cleaned up the room.,0.0,0.0
+P-033_ECV_161.wav,She called me.,He called me.,33.33,14.29
+P-033_ECV_162.wav,He blessed us.,He blessed us.,0.0,0.0
+P-033_ECV_165.wav,Sleep after eating.,Sleep after eating.,0.0,0.0
+P-033_ECV_166.wav,"Having eaten this food, he went to sleep.","Having eaten this food, he went to sleep.",0.0,0.0
+P-033_ECV_172.wav,"He stood up, picked the bag, and left.","He stood up, picked the bag, and left.",0.0,0.0
+P-033_ECV_173.wav,She cooked food and served the children.,She cooked food and served the children.,0.0,0.0
+P-033_ECV_174.wav,They shouted and clapped.,They shouted and clapped.,0.0,0.0
+P-033_ECV_178.wav,We came to help you.,We came to help you.,0.0,0.0
+P-033_Imp_467.wav,Go there.,Go there.,0.0,0.0
+P-033_Imp_469.wav,Stand up.,Stand up.,0.0,0.0
+P-033_Imp_485.wav,Do not open the door.,Do not open the door.,0.0,0.0
+P-033_Imp_488.wav,Come and help me.,Come and help me.,0.0,0.0
+P-033_Imp_492.wav,Please help the children.,Please help the children.,0.0,0.0
+P-033_Int_349.wav,Why are you crying?,Why are you crying?,0.0,0.0
+P-033_Int_353.wav,Do you trust him?,Do you trust him?,0.0,0.0
+P-033_Int_359.wav,Whom did she meet there?,Whom did she meet there?,0.0,0.0
+P-033_Int_364.wav,Where did he put the books?,Where did he put the books?,0.0,0.0
+P-033_Int_371.wav,Why didn’t you tell me?,Why didn’t you tell me?,0.0,0.0
+P-033_Int_374.wav,How many children came today?,How many children came today?,0.0,0.0
+P-033_Neg_101.wav,They have finished their job.,They have finished their job.,0.0,0.0
+P-033_Neg_102.wav,I have not eaten.,I have not eaten.,0.0,0.0
+P-033_Neg_103.wav,I had not eaten yet.,I had not eaten yet.,0.0,0.0
+P-033_Neg_104.wav,He left without informing anyone.,He left without informing anyone.,0.0,0.0
+P-033_Neg_107.wav,I do not know.,I do not know.,0.0,0.0
+P-033_Neg_108.wav,Do not enter.,Do not enter.,0.0,0.0
+P-033_Neg_112.wav,I don’t think he will come.,I think he will not come.,33.33,37.04
+P-033_Neg_115.wav,I don’t see her anymore.,I don’t see her anymore.,0.0,0.0
+P-033_Neg_94c.wav,She (right here) is not a teacher.,She (right here) is not a teacher.,0.0,0.0
+P-033_Neg_96.wav,He cannot sing.,He cannot sing.,0.0,0.0
+P-033_Pas_439.wav,The food was cooked by her.,The food was cooked by her.,0.0,0.0
+P-033_Pas_444.wav,The car was repaired yesterday.,The car was repaired yesterday.,0.0,0.0
+P-033_Pas_446.wav,The glass was broken.,The glass was broken.,0.0,0.0
+P-033_Pas_460.wav,The meeting was canceled.,The meeting was canceled.,0.0,0.0
+P-033_Pas_462.wav,The thief was caught by the police.,The thief was caught by the police.,0.0,0.0
+P-033_Pos_377.wav,She has a new phone.,She has a new phone.,0.0,0.0
+P-033_Pos_394.wav,The bag has five pockets.,The bag has five pockets.,0.0,0.0
+P-033_Pos_401.wav,My brother has a bicycle.,My brother has a bicycle.,0.0,0.0
+P-033_Pos_402.wav,Her child has a toy.,Her child has a toy.,0.0,0.0
+P-033_Pos_403.wav,The farmer has two cows.,The farmer has two cows.,0.0,0.0
+P-033_Pos_404.wav,I have work to do today.,I have work to do today.,0.0,0.0
+P-033_Pos_405.wav,They have everything they need.,They have everything they need.,0.0,0.0
+P-033_Pro_255.wav,That is your book.,That is your book.,0.0,0.0
+P-033_Pro_262.wav,They came from him.,They came from his house.,50.0,36.84
+P-033_Pro_269.wav,Go there.,Go there.,0.0,0.0
+P-033_Pro_272.wav,They live near here.,They live near here.,0.0,0.0
+P-033_Ref_125.wav,We saw ourselves in the mirror.,We saw ourselves in the mirror.,0.0,0.0
+P-033_Ref_130.wav,They told me about themselves.,They told me about themselves.,0.0,0.0
+P-033_Ref_131.wav,The door opened by itself.,The door opened by itself.,0.0,0.0
+P-033_Ref_134.wav,They follow each other.,They follow each other.,0.0,0.0
+P-033_Ref_140.wav,She taught herself to read.,She taught herself to read.,0.0,0.0
+P-033_Ref_141.wav,He blamed himself for the mistake.,They prepared themselves for the exam.,66.67,55.88
+P-033_Ref_145.wav,We cooked dinner by ourselves.,We cooked dinner by ourselves.,0.0,0.0
+P-033_Ref_146.wav,The children dressed themselves.,The children dressed themselves.,0.0,0.0
+P-033_Ref_149.wav,We listened to each other carefully.,We listened to each other carefully.,0.0,0.0
+P-033_Simple_17.wav,It was raining so I could not go to the field.,It was raining so I could not go to the field.,0.0,0.0
+P-033_Simple_25.wav,He (right here) will study after he reaches home.,He (right here) will study after he reaches home.,0.0,0.0
+P-033_Simple_26.wav,I told him (not here) that she is my sister.,I told him (not here) that she is my sister.,0.0,0.0
+P-033_Simple_4.wav,I am Ali.,I am Ali.,0.0,0.0
+P-033_Simple_5b.wav,Her (not here) name is Fatima.,Her (not here) name is Fatima.,0.0,0.0
+P-033_Simple_7a.wav,She (right here) saw a man.,She (right here) saw a man.,0.0,0.0
+P-033_TAM_65.wav,I am walking to field now.,I am walking to field now.,0.0,0.0
+P-033_TAM_67.wav,I fell down when she pushed me.,I fell down when she pushed me.,0.0,0.0
+P-033_TAM_72b.wav,We are headed to the market now.,We are headed to the market now.,0.0,0.0
+P-033_TAM_73.wav,We walk to school daily.,We walk to school daily.,0.0,0.0
+P-033_TAM_80.wav,They are not walking today.,They are not walking today.,0.0,0.0
+P-033_TAM_83.wav,You should not walk at night.,You should not walk at night.,0.0,0.0
+P-033_TAM_86.wav,We used to walk together every evening.,We used to walk together every day.,14.29,17.95
+P-033_TAM_89.wav,He (not here) will have walked by the time we start.,He (not here) will have walked by the time we start.,0.0,0.0
+P-033_TAM_91.wav,"If it rains, we will walk later.","If it rains, we will walk later.",0.0,0.0
+P-033_Val_285.wav,The pot broke.,The knife broke.,33.33,35.71
+P-033_Val_286.wav,He broke the pot.,He broke the pot.,0.0,0.0
+P-033_Val_295.wav,The ice melted.,The ice melted.,0.0,0.0
+P-033_Val_299.wav,The baby cried.,The baby cried.,0.0,0.0
+P-033_Val_304.wav,The teacher made the boy sit and study.,The teacher made the boy sit and study.,0.0,0.0
+P-033_Val_305.wav,She ate rice.,She ate rice.,0.0,0.0
+P-033_Val_308.wav,He swam in the lake.,He swam in the lake.,0.0,0.0
+P-033_Val_313.wav,The ball rolled.,The ball rolled.,0.0,0.0
+P-038_Simple_3.wav,That house is big.,That house is big.,0.0,0.0
+P-038_Simple_4.wav,I am Ali.,I am Ali.,0.0,0.0
+P-038_Simple_7b.wav,She (not here) saw a man.,She (not here) saw a man.,0.0,0.0
+P-038_Simple_8b.wav,He (not here) met a new teacher at school.,He (not here) met a new teacher at school.,0.0,0.0
+P-038_Simple_9.wav,It is raining.,I have a fever.,133.33,85.71
+P-047_Simple_29.wav,"Although it was late, they (not here) kept working.","Although it was late, they (not here) kept working.",0.0,0.0
+P-047_Simple_3.wav,That house is big.,That house is big.,0.0,0.0
+P-051_Adp_406.wav,I am at home.,I am at home.,0.0,0.0
+P-051_Adp_408.wav,They are on the roof.,They are on the roof.,0.0,0.0
+P-051_Adp_414.wav,The children are inside the school.,The children are inside.,50.0,31.43
+P-051_Adp_424.wav,She arrived from the city.,She arrived from the city.,0.0,0.0
+P-051_Adp_435.wav,He put the cup on top of the shelf.,He put the cup on top of the shelf.,0.0,0.0
+P-051_Case_33.wav,The boy broke the pot.,The boy broke the pot.,0.0,0.0
+P-051_Case_34.wav,She loves me.,She loves me.,0.0,0.0
+P-051_Case_35.wav,Ayesha loves her.,Ayesha loves her.,0.0,0.0
+P-051_Case_37.wav,Yesterday they (not here) caught the thief.,Yesterday they (not here) caught the thief.,0.0,0.0
+P-051_Case_41.wav,He is working only for his family.,He is working only for his family.,0.0,0.0
+P-051_Case_46.wav,My sister is in school.,My sister is in school.,0.0,0.0
+P-051_Case_49.wav,She broke the nut with a stone.,She broke the nut with a stone.,0.0,0.0
+P-051_Case_50.wav,We washed the clothes with soap.,We washed the clothes with soap.,0.0,0.0
+P-051_Case_53.wav,Leaves are falling down from the tree.,Leaves are falling down from the tree.,0.0,0.0
+P-051_Case_57.wav,Last year it had rained in October.,Last year it had rained in October.,0.0,0.0
+P-051_Case_59.wav,I will play with my brother.,I will play with my brother.,0.0,0.0
+P-051_Case_61.wav,My friend’s sister was ill.,My friend’s sister was ill.,0.0,0.0
+P-051_Case_62.wav,He cut the meat with a knife.,He cut the meat with a knife.,0.0,0.0
+P-051_Cau_316.wav,Mother made me go outside.,Mother made me go outside.,0.0,0.0
+P-051_Cau_320.wav,I made him break the glass.,I made him break the glass.,0.0,0.0
+P-051_Cau_322.wav,The dog made the baby cry.,The dog made the baby cry.,0.0,0.0
+P-051_Cau_325.wav,The chair was broken by the children.,The chair was broken by the children.,0.0,0.0
+P-051_Cau_327.wav,He made the child sit quietly.,He made the child sit quietly.,0.0,0.0
+P-051_Cau_332.wav,The teacher made the students write the answer.,The teacher made the students write the answer.,0.0,0.0
+P-051_Cau_335.wav,The loud noise made the birds fly away.,The loud noise made the birds fly away.,0.0,0.0
+P-051_Cau_336.wav,The wind made the trees fall.,The wind made the trees fall.,0.0,0.0
+P-051_Cau_343.wav,The joke made everyone laugh.,The joke made everyone laugh.,0.0,0.0
+P-051_Cau_344.wav,The teacher made them read the story again.,The teacher made them read the story again.,0.0,0.0
+P-051_Cls_185.wav,People have gathered here.,People have gathered here.,0.0,0.0
+P-051_Cls_186.wav,Dogs are barking.,Dogs are barking.,0.0,0.0
+P-051_Cls_187.wav,This is a tall tree.,This is a tall tree.,0.0,0.0
+P-051_Cls_195.wav,We built the house with stones.,We built the house with stones.,0.0,0.0
+P-051_Cls_197.wav,Tie them with a rope.,Tie them with a rope.,0.0,0.0
+P-051_Cls_205.wav,She ate four oranges.,She ate four oranges.,0.0,0.0
+P-051_Cls_210.wav,They carried ten bags of rice.,They carried ten bags of rice.,0.0,0.0
+P-051_Cls_211.wav,The shop has many kinds of flowers.,The shop has many kinds of flowers.,0.0,0.0
+P-051_ECV_165.wav,Sleep after eating.,Sleep after eating.,0.0,0.0
+P-051_ECV_166.wav,"Having eaten this food, he went to sleep.","Having eaten this food, he went to sleep.",0.0,0.0
+P-051_ECV_170.wav,"Simra sang, danced, and entertained the guests.","Simra sang, danced, and entertained the guests.",0.0,0.0
+P-051_ECV_173.wav,She cooked food and served the children.,She cooked food and served the children.,0.0,0.0
+P-051_ECV_174.wav,They shouted and clapped.,They shouted and clapped.,0.0,0.0
+P-051_ECV_177.wav,She went to the market to buy vegetables.,She went to the market with some vegetables.,25.0,17.07
+P-051_ECV_183.wav,"After finishing the meeting, we went home.","After finishing the meeting, we went home.",0.0,0.0
+P-051_Imp_472.wav,Read this.,Read this.,0.0,0.0
+P-051_Imp_474.wav,Open the door.,Open the door.,0.0,0.0
+P-051_Imp_477.wav,Give me that book.,Give me that book.,0.0,0.0
+P-051_Imp_490.wav,Wash your hands before eating.,Wash your hands before eating.,0.0,0.0
+P-051_Imp_491.wav,Please wait a moment.,Please wait a moment.,0.0,0.0
+P-051_Imp_494.wav,Let them speak.,Let them speak.,0.0,0.0
+P-051_Imp_500.wav,Bring me your notes tomorrow.,Bring me your notes.,40.0,31.03
+P-051_Int_215.wav,Where are you going?,Where are you going?,0.0,0.0
+P-051_Int_216.wav,Who is coming with you?,Who is coming with you?,0.0,0.0
+P-051_Int_218.wav,When will you return?,Why didn’t you come back?,100.0,71.43
+P-051_Int_221.wav,Whose bag is this?,Whose bag is this?,0.0,0.0
+P-051_Int_229.wav,Why didn’t you come yesterday?,Why didn’t you come yesterday?,0.0,0.0
+P-051_Int_230.wav,Do you have money?,Do you have money?,0.0,0.0
+P-051_Int_231.wav,Who are you waiting for?,Who are you waiting for?,0.0,0.0
+P-051_Int_238.wav,Who will help us tomorrow?,Who will help us tomorrow?,0.0,0.0
+P-051_Int_240.wav,When did you see him?,When did you see him?,0.0,0.0
+P-051_Int_353.wav,Do you trust him?,Do you trust him?,0.0,0.0
+P-051_Int_355.wav,Did it rain last night?,Yesterday it was raining.,80.0,82.61
+P-051_Int_358.wav,What are they looking at?,What are they looking at?,0.0,0.0
+P-051_Int_359.wav,Whom did she meet there?,Whom did she meet there?,0.0,0.0
+P-051_Int_366.wav,Whose child is this?,Whose child is this?,0.0,0.0
+P-051_Int_369.wav,Should we go now?,Should we go now?,0.0,0.0
+P-051_Int_371.wav,Why didn’t you tell me?,Why didn’t you tell me?,0.0,0.0
+P-051_Int_373.wav,Don’t they know the truth?,Don’t they know the truth?,0.0,0.0
+P-051_Neg_101.wav,They have finished their job.,They have finished their job.,0.0,0.0
+P-051_Neg_103.wav,I had not eaten yet.,I had not eaten yet.,0.0,0.0
+P-051_Neg_113.wav,I never drink juice.,I never drink juice.,0.0,0.0
+P-051_Neg_116.wav,Nothing can be done about his illness.,Nothing can be done about his illness.,0.0,0.0
+P-051_Neg_94a.wav,He (right here) is not a teacher.,He (right here) is not a teacher.,0.0,0.0
+P-051_Neg_94d.wav,She (not here) is not a teacher.,She (not here) is not a teacher.,0.0,0.0
+P-051_Pas_452.wav,The girl was taught by her mother.,The girl was taught by her mother.,0.0,0.0
+P-051_Pas_455.wav,The baby was carried.,The baby was carried.,0.0,0.0
+P-051_Pas_457.wav,The door will be painted tomorrow.,The door will be painted tomorrow.,0.0,0.0
+P-051_Pas_462.wav,The thief was caught by the police.,The thief was caught by the police.,0.0,0.0
+P-051_Pas_464.wav,The bridge was destroyed by the flood.,The bridge was destroyed by the flood.,0.0,0.0
+P-051_Pas_465.wav,The story was told by the teacher.,The story was told by the teacher.,0.0,0.0
+P-051_Pos_376.wav,I have a book.,I have a book.,0.0,0.0
+P-051_Pos_379.wav,He has a house in the village.,He has a house in the village.,0.0,0.0
+P-051_Pos_380.wav,We have three goats.,We have three goats.,0.0,0.0
+P-051_Pos_388.wav,He has fever.,He has fever.,0.0,0.0
+P-051_Pos_394.wav,The bag has five pockets.,The bag has five pockets.,0.0,0.0
+P-051_Pos_398.wav,The river has clear water.,The river has clear water.,0.0,0.0
+P-051_Pos_400.wav,The city has many parks.,The city has many parks.,0.0,0.0
+P-051_Pos_404.wav,I have work to do today.,I have work to do today.,0.0,0.0
+P-051_Pro_249.wav,We will go tomorrow.,We will go tomorrow.,0.0,0.0
+P-051_Pro_263.wav,This belongs to her.,She is beautiful.,100.0,70.0
+P-051_Pro_265.wav,That is a big tree.,That is a big tree.,0.0,0.0
+P-051_Pro_272.wav,They live near here.,They live near here.,0.0,0.0
+P-051_Pro_274.wav,He came yesterday.,He came yesterday.,0.0,0.0
+P-051_Ref_126.wav,You cooked rice yourself.,You cooked rice yourself.,0.0,0.0
+P-051_Ref_130.wav,They told me about themselves.,They told me about themselves.,0.0,0.0
+P-051_Ref_144.wav,He closed the door by himself.,He closed the door by himself.,0.0,0.0
+P-051_Ref_153.wav,They hugged each other and cried.,They hugged each other and cried.,0.0,0.0
+P-051_Simple_1.wav,I like mangoes.,I like mangoes.,0.0,0.0
+P-051_Simple_12a.wav,He (right here) saw that they are playing with a stone.,He (right here) saw that they are playing with a stone.,0.0,0.0
+P-051_Simple_13a.wav,She (right here) said that the woman is sleeping on the floor.,She (right here) thinks that the woman is on the tree.,25.0,30.65
+P-051_Simple_14.wav,I want to go to the town tonight.,I want to go to the town tonight.,0.0,0.0
+P-051_Simple_18.wav,I will go when my mother comes.,I will go when my mother comes.,0.0,0.0
+P-051_Simple_24.wav,We stayed inside because it was cold.,We stayed inside because it was cold.,0.0,0.0
+P-051_Simple_27.wav,She (right here) thinks that he (not here) will come tomorrow.,She (right here) thinks that he (not here) will come tomorrow.,0.0,0.0
+P-051_Simple_6.wav,I have a headache.,I have a headache.,0.0,0.0
+P-051_Simple_8a.wav,He (right here) met a new teacher at school.,He (right here) met a new teacher at school.,0.0,0.0
+P-051_TAM_67.wav,I fell down when she pushed me.,I fell down when she pushed me.,0.0,0.0
+P-051_TAM_75.wav,You walk to school daily.,You walk to school daily.,0.0,0.0
+P-051_TAM_77.wav,She goes to the market daily.,She goes to the market daily.,0.0,0.0
+P-051_TAM_82.wav,I might walk there later.,I might walk there later.,0.0,0.0
+P-051_TAM_88.wav,They had walked far before it started raining.,They had walked far before it started raining.,0.0,0.0
+P-051_TAM_90.wav,"I want to walk, but I am tired.","I want to walk, but I am tired.",0.0,0.0
+P-051_TAM_91.wav,"If it rains, we will walk later.","If it rains, we will walk later.",0.0,0.0
+P-051_TAM_92.wav,Jemal is not walking tomorrow.,Jemal is not walking tomorrow.,0.0,0.0
+P-051_Val_283.wav,The child woke up.,The child woke up.,0.0,0.0
+P-051_Val_289.wav,The light turned off.,The light turned off.,0.0,0.0
+P-051_Val_295.wav,The ice melted.,The ice melted.,0.0,0.0
+P-051_Val_300.wav,The noise made the baby cry.,The noise made the baby cry.,0.0,0.0
+P-051_Val_302.wav,They burned the firewood.,They burned the firewood.,0.0,0.0
+P-051_Val_307.wav,He swam.,He swam.,0.0,0.0
+P-051_Val_312.wav,He opened the window with a stick.,He opened the window with a stick.,0.0,0.0
+P-051_Val_314.wav,She rolled the ball toward him.,She rolled the ball toward him.,0.0,0.0
+P-062_Case_32.wav,She (right here) hit the bear.,She (right here) hit the bear.,0.0,0.0
+P-062_Case_33.wav,The boy broke the pot.,The boy broke the pot.,0.0,0.0
+P-062_Case_39.wav,Ahmed gave a flower to his wife.,Ahmed gave a flower to his wife.,0.0,0.0
+P-062_Case_40.wav,Father bought a toy for his son.,Father bought a toy for his son.,0.0,0.0
+P-062_Case_43.wav,She gave bread to the child.,She gave bread to the child.,0.0,0.0
+P-062_Case_47.wav,We are at home.,We are at home.,0.0,0.0
+P-062_Case_48.wav,He wrote the letter with a pen.,He wrote the letter with a pen.,0.0,0.0
+P-062_Case_51.wav,My sister is in school.,My sister is in school.,0.0,0.0
+P-062_Case_55.wav,He is in the house.,He is in the house.,0.0,0.0
+P-062_Case_56.wav,I shall go to the north tomorrow.,I shall go to the north tomorrow.,0.0,0.0
+P-062_Case_58.wav,Ali went with Ahmed.,Ali went with Ahmed.,0.0,0.0
+P-062_Case_64.wav,She cooked food for her brother.,She cooked food for her brother.,0.0,0.0
+P-062_Cau_315.wav,The nurse fed the baby.,The nurse fed the baby.,0.0,0.0
+P-062_Cau_321.wav,Aqsa made him food.,Aqsa made him food.,0.0,0.0
+P-062_Cau_325.wav,The chair was broken by the children.,The chair was broken by the children.,0.0,0.0
+P-062_Cau_331.wav,He made her open the door.,He made her open the door.,0.0,0.0
+P-062_Cau_332.wav,The teacher made the students write the answer.,The teacher made the students write the answer.,0.0,0.0
+P-062_Cau_343.wav,The joke made everyone laugh.,The joke made everyone laugh.,0.0,0.0
+P-062_Cls_186.wav,Dogs are barking.,Dogs are barking.,0.0,0.0
+P-062_Cls_190.wav,This log of wood is thick.,This log of wood is thick.,0.0,0.0
+P-062_Cls_191.wav,This is a door.,This is a door.,0.0,0.0
+P-062_Cls_200.wav,The labourer needs fifty stones to build a house.,The labourer needs fifty stones to build a house.,0.0,0.0
+P-062_Cls_206.wav,Bring two cups of water.,Bring two cups of water.,0.0,0.0
+P-062_Cls_209.wav,She picked six small stones.,She picked six small stones.,0.0,0.0
+P-062_ECV_154.wav,She has gone outside the house.,She has gone outside the house.,0.0,0.0
+P-062_ECV_167.wav,I came here to see you.,I came here to see you.,0.0,0.0
+P-062_ECV_170.wav,"Simra sang, danced, and entertained the guests.","Simra sang, danced, and entertained the guests.",0.0,0.0
+P-062_ECV_173.wav,She cooked food and served the children.,She cooked food and served the children.,0.0,0.0
+P-062_ECV_177.wav,She went to the market to buy vegetables.,She went to the market to buy vegetables.,0.0,0.0
+P-062_ECV_182.wav,I will go there and ask him.,I will go there and ask him.,0.0,0.0
+P-062_Int_217.wav,Why are you late?,Why are you late?,0.0,0.0
+P-062_Int_221.wav,Whose bag is this?,Whose bag is this?,0.0,0.0
+P-062_Int_225.wav,Are they at home?,Are they at home?,0.0,0.0
+P-062_Int_241.wav,How can I solve this problem?,How can I solve this problem?,0.0,0.0
+P-062_Int_242.wav,Will you walk with me?,Will you walk with me?,0.0,0.0
+P-062_Int_349.wav,Why are you crying?,Why are you crying?,0.0,0.0
+P-062_Int_360.wav,Who gave you money?,Who gave you money?,0.0,0.0
+P-062_Neg_101.wav,They have finished their job.,They have finished their job.,0.0,0.0
+P-062_Neg_115.wav,I don’t see her anymore.,I don’t see her anymore.,0.0,0.0
+P-062_Neg_116.wav,Nothing can be done about his illness.,Nothing can be done about his illness.,0.0,0.0
+P-062_Neg_120.wav,None of the children came.,None of the children came.,0.0,0.0
+P-062_Neg_98.wav,We will not upset you.,We will not upset you.,0.0,0.0
+P-062_Pos_383.wav,My family has land near the river.,My family has land near the river.,0.0,0.0
+P-062_Pos_384.wav,They have no money.,They have no money.,0.0,0.0
+P-062_Pos_391.wav,She has good ideas.,She has good ideas.,0.0,0.0
+P-062_Pos_404.wav,I have work to do today.,I have work to do today.,0.0,0.0
+P-062_Pos_405.wav,They have everything they need.,They have everything they need.,0.0,0.0
+P-062_Pro_255.wav,That is your book.,That is your book.,0.0,0.0
+P-062_Pro_259.wav,She talked about herself.,She talked about herself.,0.0,0.0
+P-062_Pro_260.wav,He brought food for them.,He brought food for them.,0.0,0.0
+P-062_Pro_266.wav,These are my clothes.,These are my clothes.,0.0,0.0
+P-062_Pro_267.wav,Those are his shoes.,Those are his shoes.,0.0,0.0
+P-062_Pro_276.wav,I will start now.,I will start now.,0.0,0.0
+P-062_Ref_127.wav,Maryam bought a dress for herself.,Maryam bought a dress for herself.,0.0,0.0
+P-062_Ref_129.wav,Who praises himself?,Who praises himself?,0.0,0.0
+P-062_Ref_133.wav,We met each other.,We met each other.,0.0,0.0
+P-062_Ref_136.wav,He hurt himself while running.,He hurt himself while running.,0.0,0.0
+P-062_Ref_140.wav,She taught herself to read.,She taught herself to read.,0.0,0.0
+P-062_Ref_141.wav,He blamed himself for the mistake.,He blamed himself for the mistake.,0.0,0.0
+P-062_Ref_143.wav,The machine stopped by itself.,The machine stopped by itself.,0.0,0.0
+P-062_Ref_144.wav,He closed the door by himself.,He closed the door by himself.,0.0,0.0
+P-062_Ref_146.wav,The children dressed themselves.,The children dressed themselves.,0.0,0.0
+P-062_Simple_12a.wav,He (right here) saw that they are playing with a stone.,He (right here) saw that they are playing with a stone.,0.0,0.0
+P-062_Simple_20.wav,I will play with my brother.,I will play with my brother.,0.0,0.0
+P-062_Simple_22.wav,He (right here) came to help me.,He (right here) came to help me.,0.0,0.0
+P-062_Simple_5a.wav,Her (right here) name is Fatima.,Her (right here) name is Fatima.,0.0,0.0
+P-062_TAM_66.wav,I was walking.,I was walking.,0.0,0.0
+P-062_TAM_68.wav,I walk to the field every day.,I walk to the field every day.,0.0,0.0
+P-062_TAM_73.wav,We walk to school daily.,We walk to school daily.,0.0,0.0
+P-062_TAM_82.wav,I might walk there later.,I might walk there later.,0.0,0.0
+P-062_TAM_88.wav,They had walked far before it started raining.,They had walked far before it started raining.,0.0,0.0
+P-062_TAM_92.wav,Jemal is not walking tomorrow.,Jemal is not walking tomorrow.,0.0,0.0
+P-062_TAM_93.wav,They might have walked without us.,They might have walked without us.,0.0,0.0
+P-062_Val_282.wav,He opened the door.,He opened the door.,0.0,0.0
+P-062_Val_289.wav,The light turned off.,The light turned off.,0.0,0.0
+P-062_Val_295.wav,The ice melted.,The ice melted.,0.0,0.0
+P-062_Val_301.wav,The fire burned.,The fire burned.,0.0,0.0
+P-062_Val_308.wav,He swam in the lake.,He swam in the lake.,0.0,0.0
+P-063_Case_32.wav,She (right here) hit the bear.,She (right here) hit the bear.,0.0,0.0
+P-063_Case_33.wav,The boy broke the pot.,The boy broke the pot.,0.0,0.0
+P-063_Case_34.wav,She loves me.,She loves me.,0.0,0.0
+P-063_Case_43.wav,She gave bread to the child.,She gave bread to the child.,0.0,0.0
+P-063_Case_49.wav,She broke the nut with a stone.,She broke the nut with a stone.,0.0,0.0
+P-063_Case_64.wav,She cooked food for her brother.,She cooked food for her brother.,0.0,0.0
+P-063_Cau_316.wav,Mother made me go outside.,Mother made me go outside.,0.0,0.0
+P-063_Cau_322.wav,The dog made the baby cry.,The dog made the baby cry.,0.0,0.0
+P-063_Cau_330.wav,The parents made the boy study.,The parents made the boy study.,0.0,0.0
+P-063_Cau_336.wav,The wind made the trees fall.,The wind made the trees fall.,0.0,0.0
+P-063_Cau_340.wav,They made her clean the house.,They made her clean the house.,0.0,0.0
+P-063_Cau_341.wav,The heat made the ice melt.,The heat made the ice melt.,0.0,0.0
+P-063_Cls_187.wav,This is a tall tree.,This is a tall tree.,0.0,0.0
+P-063_Cls_190.wav,This log of wood is thick.,This log of wood is thick.,0.0,0.0
+P-063_Cls_192.wav,Give me a small banana.,Give me a small banana.,0.0,0.0
+P-063_Cls_197.wav,Tie them with a rope.,Tie them with a rope.,0.0,0.0
+P-063_Cls_201.wav,Give me three long objects.,Give me three long objects.,0.0,0.0
+P-063_Cls_208.wav,We need five sheets of paper.,We need five sheets of paper.,0.0,0.0
+P-063_Cls_211.wav,The shop has many kinds of flowers.,The shop has many kinds of flowers.,0.0,0.0
+P-063_ECV_161.wav,She called me.,She called me.,0.0,0.0
+P-063_ECV_163.wav,Go and see.,Go and see.,0.0,0.0
+P-063_ECV_165.wav,Sleep after eating.,Sleep after eating.,0.0,0.0
+P-063_ECV_166.wav,"Having eaten this food, he went to sleep.","Having eaten this food, he went to sleep.",0.0,0.0
+P-063_ECV_167.wav,I came here to see you.,I came here to see you.,0.0,0.0
+P-063_ECV_169.wav,"He came, sat, ate and went away.","He came, sat, ate and went away.",0.0,0.0
+P-063_ECV_171.wav,Finish your work and come home.,Finish your work and come home.,0.0,0.0
+P-063_ECV_172.wav,"He stood up, picked the bag, and left.","He stood up, picked the bag, and left.",0.0,0.0
+P-063_ECV_173.wav,She cooked food and served the children.,She cooked food and served the children.,0.0,0.0
+P-063_ECV_174.wav,They shouted and clapped.,They shouted and clapped.,0.0,0.0
+P-063_ECV_178.wav,We came to help you.,We came to help you.,0.0,0.0
+P-063_ECV_182.wav,I will go there and ask him.,I will go there and ask him.,0.0,0.0
+P-063_Imp_468.wav,Sit down.,Sit down.,0.0,0.0
+P-063_Imp_476.wav,Bring water.,Bring water.,0.0,0.0
+P-063_Int_226.wav,Do you know her?,Do you know her?,0.0,0.0
+P-063_Int_230.wav,Do you have money?,Do you have money?,0.0,0.0
+P-063_Int_231.wav,Who are you waiting for?,Who are you waiting for?,0.0,0.0
+P-063_Int_232.wav,Where did they go last night?,Where did they go last night?,0.0,0.0
+P-063_Int_349.wav,Why are you crying?,Why are you crying?,0.0,0.0
+P-063_Int_351.wav,Did they finish the work?,Did they finish the work?,0.0,0.0
+P-063_Int_357.wav,Who did you call?,Who did you call?,0.0,0.0
+P-063_Int_358.wav,What are they looking at?,What are they looking at?,0.0,0.0
+P-063_Int_370.wav,May I open the door?,May I open the door?,0.0,0.0
+P-063_Int_373.wav,Don’t they know the truth?,Don’t they know the truth?,0.0,0.0
+P-063_Neg_107.wav,I do not know.,I do not know.,0.0,0.0
+P-063_Neg_117.wav,Nobody saw me.,Nobody saw me.,0.0,0.0
+P-063_Neg_121.wav,Not everyone passed.,Not everyone passed.,0.0,0.0
+P-063_Neg_95.wav,There is no water in the river.,There is no water in the river.,0.0,0.0
+P-063_Neg_99.wav,You must not move now.,You must not move now.,0.0,0.0
+P-063_Pos_383.wav,My family has land near the river.,My family has land near the river.,0.0,0.0
+P-063_Pos_386.wav,She has a headache.,She has a headache.,0.0,0.0
+P-063_Pos_387.wav,I have an illness.,I have an illness.,0.0,0.0
+P-063_Pos_399.wav,The classroom has big windows.,The classroom has big windows.,0.0,0.0
+P-063_Pro_244.wav,I am tired.,I am tired.,0.0,0.0
+P-063_Pro_247.wav,He is standing outside.,He is standing outside.,0.0,0.0
+P-063_Pro_252.wav,They called you yesterday.,They called you yesterday.,0.0,0.0
+P-063_Pro_256.wav,Their car is new.,Their car is new.,0.0,0.0
+P-063_Pro_260.wav,He brought food for them.,He brought food for them.,0.0,0.0
+P-063_Pro_264.wav,This is my bag.,This is my bag.,0.0,0.0
+P-063_Pro_279.wav,Tomorrow we will go.,Tomorrow we will go.,0.0,0.0
+P-063_Ref_129.wav,Who praises himself?,Who praises himself?,0.0,0.0
+P-063_Ref_136.wav,He hurt himself while running.,He hurt himself while running.,0.0,0.0
+P-063_Ref_140.wav,She taught herself to read.,She taught herself to read.,0.0,0.0
+P-063_Ref_145.wav,We cooked dinner by ourselves.,We cooked dinner by ourselves.,0.0,0.0
+P-063_Simple_22.wav,He (right here) came to help me.,He (right here) came to help me.,0.0,0.0
+P-063_Simple_3.wav,That house is big.,That house is big.,0.0,0.0
+P-063_Simple_4.wav,I am Ali.,I am Ali.,0.0,0.0
+P-063_Simple_8b.wav,He (not here) met a new teacher at school.,He (not here) met a new teacher at school.,0.0,0.0
+P-063_TAM_71.wav,I could have taken the bus if I had money.,I could have taken the bus if I had money.,0.0,0.0
+P-063_TAM_72a.wav,We are walking to the market now.,We are walking to the market now.,0.0,0.0
+P-063_TAM_75.wav,You walk to school daily.,You walk to school daily.,0.0,0.0
+P-063_TAM_76.wav,You walked to town yesterday.,You walked to town yesterday.,0.0,0.0
+P-063_TAM_78.wav,She is walking very slowly now.,She is walking very slowly now.,0.0,0.0
+P-063_TAM_80.wav,They are not walking today.,They are not walking today.,0.0,0.0
+P-063_TAM_88.wav,They had walked far before it started raining.,They had walked far before it started raining.,0.0,0.0
+P-063_TAM_91.wav,"If it rains, we will walk later.","If it rains, we will walk later.",0.0,0.0
+P-063_TAM_93.wav,They might have walked without us.,They might have walked without us.,0.0,0.0
+P-063_Val_289.wav,The light turned off.,The light turned off.,0.0,0.0
+P-063_Val_292.wav,The boy fell.,The boy fell.,0.0,0.0
+P-063_Val_303.wav,The boy slept.,The boy slept.,0.0,0.0
+P-063_Val_312.wav,He opened the window with a stick.,He opened the window with a stick.,0.0,0.0
+P-066_Case_35.wav,Ayesha loves her.,Ayesha loves her.,0.0,0.0
+P-066_Case_38.wav,He (right here) opened the box two days back.,He (right here) opened the box two days back.,0.0,0.0
+P-066_Case_40.wav,Father bought a toy for his son.,Father bought a toy for his son.,0.0,0.0
+P-066_Case_41.wav,He is working only for his family.,He is working only for his family.,0.0,0.0
+P-066_Case_43.wav,She gave bread to the child.,Give bread to the child.,33.33,21.43
+P-066_Case_48.wav,He wrote the letter with a pen.,He wrote the letter with a pen.,0.0,0.0
+P-066_Case_51.wav,My sister is in school.,My sister is in school.,0.0,0.0
+P-066_Case_59.wav,I will play with my brother.,I will play with my brother.,0.0,0.0
+P-066_Case_61.wav,My friend’s sister was ill.,My friend’s sister was ill.,0.0,0.0
+P-066_Cau_316.wav,Mother made me go outside.,Mother made me go outside.,0.0,0.0
+P-066_Cau_318.wav,I made the girl clean the room with a broom.,I made the girl clean the room with a broom.,0.0,0.0
+P-066_Cau_319.wav,I made the girl ask the maid to clean the room.,The vegetables are washed before cooking.,100.0,74.47
+P-066_Cau_320.wav,I made him break the glass.,I made him break the glass.,0.0,0.0
+P-066_Cau_326.wav,I am unable to walk.,I could walk.,60.0,50.0
+P-066_Cau_332.wav,The teacher made the students write the answer.,The teacher made the students write the answer.,0.0,0.0
+P-066_Cau_336.wav,The wind made the trees fall.,The wind made the trees fall.,0.0,0.0
+P-066_Cau_337.wav,The doctor made me take medicine.,The vegetables are washed before cooking.,83.33,81.82
+P-066_Cau_342.wav,The smell made me feel sick.,The smell made me feel sick.,0.0,0.0
+P-066_Cls_184.wav,My family has a goat and a chicken.,My family has a goat and a chicken.,0.0,0.0
+P-066_Cls_186.wav,Dogs are barking.,Dogs are barking.,0.0,0.0
+P-066_Cls_196.wav,Do not beat the student with a stick.,Do not beat the student with a stick.,0.0,0.0
+P-066_Cls_200.wav,The labourer needs fifty stones to build a house.,The labourer needs fifty stones to build a house.,0.0,0.0
+P-066_Cls_207.wav,He bought three pieces of cloth.,He bought three pieces of cloth.,0.0,0.0
+P-066_Cls_211.wav,The shop has many kinds of flowers.,The shop has many kinds of flowers.,0.0,0.0
+P-066_ECV_158.wav,She ran to the terrace.,She ran to the terrace.,0.0,0.0
+P-066_ECV_162.wav,He blessed us.,He blessed us.,0.0,0.0
+P-066_ECV_165.wav,Sleep after eating.,Sleep after eating.,0.0,0.0
+P-066_ECV_173.wav,She cooked food and served the children.,She cooked food and served the children.,0.0,0.0
+P-066_ECV_179.wav,They sat together and talked for a long time.,They sat together and talked for a long time.,0.0,0.0
+P-066_Int_214.wav,What is your name?,What is your name?,0.0,0.0
+P-066_Int_219.wav,How did you fall?,How did you fall?,0.0,0.0
+P-066_Int_223.wav,Can you help me?,Can you help me?,0.0,0.0
+P-066_Int_224.wav,Will he come tomorrow?,Will he come tomorrow?,0.0,0.0
+P-066_Int_228.wav,How many people are here?,How many people are here?,0.0,0.0
+P-066_Int_233.wav,How long will you stay here?,How long will you stay here?,0.0,0.0
+P-066_Int_236.wav,Can she speak English?,Can she speak English?,0.0,0.0
+P-066_Int_239.wav,Why are they shouting?,Why are they shouting?,0.0,0.0
+P-066_Int_353.wav,Do you trust him?,Do you trust him?,0.0,0.0
+P-066_Int_360.wav,Who gave you money?,Who gave you money?,0.0,0.0
+P-066_Int_363.wav,Who are you going with?,Who are you going with?,0.0,0.0
+P-066_Int_375.wav,Where did he go?,He went inside.,100.0,93.75
+P-066_Neg_104.wav,He left without informing anyone.,He (not here) will have gone by any time.,160.0,81.82
+P-066_Neg_111.wav,I think he will not come.,I think he will not come.,0.0,0.0
+P-066_Neg_119.wav,Not even my sister believed me.,Not even my sister believed me.,0.0,0.0
+P-066_Neg_122.wav,The bird is no longer on the tree.,The bird is no longer on the tree.,0.0,0.0
+P-066_Neg_94a.wav,He (right here) is not a teacher.,He (right here) is not a teacher.,0.0,0.0
+P-066_Neg_95.wav,There is no water in the river.,There is no water in the river.,0.0,0.0
+P-066_Pro_247.wav,He is standing outside.,He is standing outside.,0.0,0.0
+P-066_Pro_248.wav,They are playing.,They are playing.,0.0,0.0
+P-066_Pro_257.wav,I hurt myself.,I hurt myself.,0.0,0.0
+P-066_Pro_258.wav,They washed themselves.,They washed themselves.,0.0,0.0
+P-066_Pro_265.wav,That is a big tree.,That is a big tree.,0.0,0.0
+P-066_Pro_268.wav,Come here.,Come here.,0.0,0.0
+P-066_Pro_272.wav,They live near here.,They live near here.,0.0,0.0
+P-066_Pro_277.wav,We will meet later.,We will meet later.,0.0,0.0
+P-066_Pro_279.wav,Tomorrow we will go.,Tomorrow we will go.,0.0,0.0
+P-066_Ref_126.wav,You cooked rice yourself.,You cooked rice yourself.,0.0,0.0
+P-066_Ref_129.wav,Who praises himself?,Who praises himself?,0.0,0.0
+P-066_Ref_131.wav,The door opened by itself.,The door opened by itself.,0.0,0.0
+P-066_Ref_135.wav,She spoke to herself quietly.,She spoke to herself quietly.,0.0,0.0
+P-066_Ref_138.wav,We introduced ourselves to the teacher.,We introduced ourselves to the teacher.,0.0,0.0
+P-066_Ref_149.wav,We listened to each other carefully.,We listened to each other carefully.,0.0,0.0
+P-066_Ref_153.wav,They hugged each other and cried.,They hugged each other and cried.,0.0,0.0
+P-066_Simple_1.wav,I like mangoes.,I like mangoes.,0.0,0.0
+P-066_Simple_10.wav,Today is Monday.,Today is Monday.,0.0,0.0
+P-066_Simple_12b.wav,He (not here) saw that they are playing with a stone.,He (not here) saw that they are playing with a stone.,0.0,0.0
+P-066_Simple_13a.wav,She (right here) said that the woman is sleeping on the floor.,She (right here) said that the woman is sleeping on the floor.,0.0,0.0
+P-066_Simple_14.wav,I want to go to the town tonight.,I want to go to the town tonight.,0.0,0.0
+P-066_Simple_15.wav,I know that tomorrow is a holiday.,I know that tomorrow is a holiday.,0.0,0.0
+P-066_Simple_21b.wav,She (not here) wanted to sleep early.,She (not here) wants to sleep early.,14.29,5.41
+P-066_Simple_26.wav,I told him (not here) that she is my sister.,I told him (not here) that she is my sister.,0.0,0.0
+P-066_Simple_5a.wav,Her (right here) name is Fatima.,Her (right here) name is Fatima.,0.0,0.0
+P-066_Simple_5b.wav,Her (not here) name is Fatima.,Her (not here) name is Fatima.,0.0,0.0
+P-066_Simple_6.wav,I have a headache.,I have a headache.,0.0,0.0
+P-066_Simple_7b.wav,She (not here) saw a man.,She (not here) saw a man.,0.0,0.0
+P-066_TAM_69.wav,I will go to Karachi on Sunday.,I will go to Karachi on Sunday.,0.0,0.0
+P-066_TAM_72a.wav,We are walking to the market now.,We are walking to the market now.,0.0,0.0
+P-066_TAM_74.wav,We could walk anywhere.,We could walk anywhere.,0.0,0.0
+P-066_TAM_75.wav,You walk to school daily.,You walk to school daily.,0.0,0.0
+P-066_TAM_79.wav,She will walk home after sunset.,She will walk home after sunset.,0.0,0.0
+P-066_TAM_86.wav,We used to walk together every evening.,We walk together every evening.,28.57,20.51
+P-066_TAM_88.wav,They had walked far before it started raining.,They had walked far before it started raining.,0.0,0.0
+P-066_TAM_92.wav,Jemal is not walking tomorrow.,Jamal is not walking tomorrow.,20.0,3.33
+P-066_TAM_93.wav,They might have walked without us.,They might have walked without us.,0.0,0.0
+P-066_Val_290.wav,They turned off the light.,They turned off the light.,0.0,0.0
+P-066_Val_300.wav,The noise made the baby cry.,The noise made the baby cry.,0.0,0.0
+P-066_Val_305.wav,She ate rice.,She ate rice.,0.0,0.0
+P-066_Val_309.wav,The teacher spoke.,The teacher spoke.,0.0,0.0
+P-066_Val_313.wav,The ball rolled.,The ball rolled.,0.0,0.0
+P-068_Adp_410.wav,The book is on the chair.,The book is on the chair.,0.0,0.0
+P-068_Adp_422.wav,He fell from the tree.,He fell from the tree.,0.0,0.0
+P-068_Adp_430.wav,She stood between the two boys.,She stood between the two boys.,0.0,0.0
+P-068_Adp_433.wav,The store is across the road.,The store is across the road.,0.0,0.0
+P-068_Case_31.wav,He (not here) kicked the ball.,He (not here) kicked the ball.,0.0,0.0
+P-068_Case_40.wav,Father bought a toy for his son.,Father bought a toy for his son.,0.0,0.0
+P-068_Case_41.wav,He is working only for his family.,He is working only for his family.,0.0,0.0
+P-068_Case_42.wav,Give ten rupees to each one of them.,Give ten rupees to each one of them.,0.0,0.0
+P-068_Case_43.wav,She gave bread to the child.,She gave bread to the child.,0.0,0.0
+P-068_Case_48.wav,He wrote the letter with a pen.,He wrote the letter with a pen.,0.0,0.0
+P-068_Case_55.wav,He is in the house.,He is in the house.,0.0,0.0
+P-068_Cau_316.wav,Mother made me go outside.,Mother made me go outside.,0.0,0.0
+P-068_Cau_317.wav,I made the girl clean the room.,I made the girl clean the room.,0.0,0.0
+P-068_Cau_322.wav,The dog made the baby cry.,The dog made the baby cry.,0.0,0.0
+P-068_Cau_325.wav,The chair was broken by the children.,The chair was broken by the children.,0.0,0.0
+P-068_Cau_330.wav,The parents made the boy study.,The parents made the boy study.,0.0,0.0
+P-068_Cau_335.wav,The loud noise made the birds fly away.,The loud noise made the birds fly away.,0.0,0.0
+P-068_Cau_337.wav,The doctor made me take medicine.,The doctor made me take medicine.,0.0,0.0
+P-068_Cau_344.wav,The teacher made them read the story again.,The teacher made them read the story again.,0.0,0.0
+P-068_Cls_188.wav,This is a wooden door.,This is a wooden door.,0.0,0.0
+P-068_Cls_192.wav,Give me a small banana.,Give me a small banana.,0.0,0.0
+P-068_Cls_195.wav,We built the house with stones.,We built the house with stones.,0.0,0.0
+P-068_Cls_206.wav,Bring two cups of water.,Bring two cups of water.,0.0,0.0
+P-068_ECV_154.wav,She has gone outside the house.,She has gone outside the house.,0.0,0.0
+P-068_ECV_156.wav,He died.,He died.,0.0,0.0
+P-068_ECV_160.wav,He cleaned up the room.,He cleaned up the room.,0.0,0.0
+P-068_ECV_169.wav,"He came, sat, ate and went away.","He came, sat, ate and went away.",0.0,0.0
+P-068_ECV_170.wav,"Simra sang, danced, and entertained the guests.","Simra sang, danced, and entertained the guests.",0.0,0.0
+P-068_ECV_175.wav,Wash your hands before eating.,Wash your hands before eating.,0.0,0.0
+P-068_ECV_178.wav,We came to help you.,We came to help you.,0.0,0.0
+P-068_ECV_179.wav,They sat together and talked for a long time.,They sat together and talked for a long time.,0.0,0.0
+P-068_ECV_183.wav,"After finishing the meeting, we went home.","After finishing the meeting, we went home.",0.0,0.0
+P-068_Imp_470.wav,Listen to me.,Listen to me.,0.0,0.0
+P-068_Imp_473.wav,Write your name.,Write your name.,0.0,0.0
+P-068_Imp_479.wav,Wait here.,Wait here.,0.0,0.0
+P-068_Imp_482.wav,Do not touch that.,Do not touch that.,0.0,0.0
+P-068_Imp_483.wav,Do not speak loudly.,Do not speak loudly.,0.0,0.0
+P-068_Imp_486.wav,Go and bring milk.,Go and bring milk.,0.0,0.0
+P-068_Imp_488.wav,Come and help me.,Come and help me.,0.0,0.0
+P-068_Imp_489.wav,Eat and sleep.,Eat and sleep.,0.0,0.0
+P-068_Imp_492.wav,Please help the children.,Please help the children.,0.0,0.0
+P-068_Imp_494.wav,Let them speak.,Let them speak.,0.0,0.0
+P-068_Imp_495.wav,Let her sit here.,Let her sit here.,0.0,0.0
+P-068_Imp_498.wav,Leave the bag on the table.,Leave the bag on the table.,0.0,0.0
+P-068_Imp_500.wav,Bring me your notes tomorrow.,Bring me your notes tomorrow.,0.0,0.0
+P-068_Int_215.wav,Where are you going?,Where are you going?,0.0,0.0
+P-068_Int_222.wav,Did you eat?,Did you eat?,0.0,0.0
+P-068_Int_228.wav,How many people are here?,How many people are here?,0.0,0.0
+P-068_Int_234.wav,What are they doing?,What are they doing?,0.0,0.0
+P-068_Int_236.wav,Can she speak English?,Can she speak English?,0.0,0.0
+P-068_Int_349.wav,Why are you crying?,Why are you crying?,0.0,0.0
+P-068_Int_351.wav,Did they finish the work?,Did they finish the work?,0.0,0.0
+P-068_Int_352.wav,Will she stay here?,Will she stay here?,0.0,0.0
+P-068_Int_359.wav,Whom did she meet there?,Whom did she meet there?,0.0,0.0
+P-068_Int_375.wav,Where did he go?,Where did he go?,0.0,0.0
+P-068_Neg_100.wav,I didn’t eat yesterday.,I didn’t eat yesterday.,0.0,0.0
+P-068_Neg_102.wav,I have not eaten.,I have not eaten.,0.0,0.0
+P-068_Neg_103.wav,I had not eaten yet.,I had not eaten yet.,0.0,0.0
+P-068_Neg_113.wav,I never drink juice.,I never drink juice.,0.0,0.0
+P-068_Neg_118.wav,Ali is nowhere in the village.,Ali is nowhere in the village.,0.0,0.0
+P-068_Neg_122.wav,The bird is no longer on the tree.,The bird is no longer on the tree.,0.0,0.0
+P-068_Neg_94b.wav,He (not here) is not a teacher.,He (not here) is not a teacher.,0.0,0.0
+P-068_Neg_99.wav,You must not move now.,You must not move now.,0.0,0.0
+P-068_Pas_437.wav,The door was opened by the boy.,The door was opened by the boy.,0.0,0.0
+P-068_Pas_438.wav,The food was cooked.,The food was cooked.,0.0,0.0
+P-068_Pas_442.wav,The letter was written.,The letter was written.,0.0,0.0
+P-068_Pas_443.wav,The letter was written by my brother.,The letter was written by my brother.,0.0,0.0
+P-068_Pas_453.wav,Many people were helped.,Many people were helped.,0.0,0.0
+P-068_Pas_454.wav,The children were fed.,The children were fed.,0.0,0.0
+P-068_Pas_464.wav,The bridge was destroyed by the flood.,The bridge was destroyed by the flood.,0.0,0.0
+P-068_Pos_376.wav,I have a book.,I have a book.,0.0,0.0
+P-068_Pos_379.wav,He has a house in the village.,He has a house in the village.,0.0,0.0
+P-068_Pos_382.wav,He has two brothers.,He has two brothers.,0.0,0.0
+P-068_Pos_383.wav,My family has land near the river.,My family has land near the river.,0.0,0.0
+P-068_Pos_397.wav,Their shop has fresh bread.,Their shop has fresh bread.,0.0,0.0
+P-068_Pos_398.wav,The river has clear water.,The river has clear water.,0.0,0.0
+P-068_Pos_400.wav,The city has many parks.,The city has many parks.,0.0,0.0
+P-068_Pos_401.wav,My brother has a bicycle.,My brother has a bicycle.,0.0,0.0
+P-068_Pos_403.wav,The farmer has two cows.,The farmer has two cows.,0.0,0.0
+P-068_Pro_244.wav,I am tired.,I am tired.,0.0,0.0
+P-068_Pro_247.wav,He is standing outside.,He is standing outside.,0.0,0.0
+P-068_Pro_252.wav,They called you yesterday.,They called you yesterday.,0.0,0.0
+P-068_Pro_258.wav,They washed themselves.,They washed themselves.,0.0,0.0
+P-068_Pro_268.wav,Come here.,Come here.,0.0,0.0
+P-068_Pro_279.wav,Tomorrow we will go.,Tomorrow we will go.,0.0,0.0
+P-068_Pro_280.wav,Here put it.,Here put it.,0.0,0.0
+P-068_Ref_125.wav,We saw ourselves in the mirror.,We saw ourselves in the mirror.,0.0,0.0
+P-068_Ref_131.wav,The door opened by itself.,The door opened by itself.,0.0,0.0
+P-068_Ref_136.wav,He hurt himself while running.,He hurt himself while running.,0.0,0.0
+P-068_Ref_138.wav,We introduced ourselves to the teacher.,We introduced ourselves to the teacher.,0.0,0.0
+P-068_Ref_141.wav,He blamed himself for the mistake.,He blamed himself for the mistake.,0.0,0.0
+P-068_Ref_147.wav,She protected herself from the cold.,She protected herself from the cold.,0.0,0.0
+P-068_Ref_153.wav,They hugged each other and cried.,They hugged each other and cried.,0.0,0.0
+P-068_Simple_10.wav,Today is Monday.,Today is Monday.,0.0,0.0
+P-068_Simple_13b.wav,She (not here) said that the woman is sleeping on the floor.,She (not here) said that the woman is sleeping on the floor.,0.0,0.0
+P-068_Simple_14.wav,I want to go to the town tonight.,I want to go to the town tonight.,0.0,0.0
+P-068_Simple_21a.wav,She (right here) wanted to sleep early.,She (right here) wanted to sleep early.,0.0,0.0
+P-068_Simple_3.wav,That house is big.,That house is big.,0.0,0.0
+P-068_Simple_7a.wav,She (right here) saw a man.,She (right here) saw a man.,0.0,0.0
+P-068_Simple_8a.wav,He (right here) met a new teacher at school.,He (right here) met a new teacher at school.,0.0,0.0
+P-068_TAM_65.wav,I am walking to field now.,I am walking to field now.,0.0,0.0
+P-068_TAM_68.wav,I walk to the field every day.,I walk to the field every day.,0.0,0.0
+P-068_TAM_84.wav,We will be walking when you arrive.,We will be walking when you arrive.,0.0,0.0
+P-068_TAM_92.wav,Jemal is not walking tomorrow.,Jemal is not walking tomorrow.,0.0,0.0
+P-068_Val_284.wav,The mother woke the child up.,The mother woke the child up.,0.0,0.0
+P-068_Val_286.wav,He broke the pot.,He broke the pot.,0.0,0.0
+P-068_Val_294.wav,The girl danced.,The girl danced.,0.0,0.0
+P-068_Val_298.wav,She made him go.,She made him go.,0.0,0.0
+P-068_Val_299.wav,The baby cried.,The baby cried.,0.0,0.0
+P-068_Val_309.wav,The teacher spoke.,The teacher spoke.,0.0,0.0
+P-068_Val_314.wav,She rolled the ball toward him.,He rolled the ball toward her.,33.33,12.9
+common_voice_bsk_41895859.wav,I am eating rice,I am eating rice,0.0,0.0
+common_voice_bsk_41895862.wav,How many children do you have,How many children do you have?,16.67,3.45
+common_voice_bsk_41895865.wav,She is a far relative,She is my distant relative,40.0,38.1
+common_voice_bsk_41895871.wav,The boy urinated in his clothes,The boy peed himself.,66.67,54.84
+common_voice_bsk_41895872.wav,Shiri badat story is very famous here,The story of Shiribadad is very famous here.,71.43,56.76
+common_voice_bsk_41895874.wav,An old lady said,An old lady said,0.0,0.0
+common_voice_bsk_41895899.wav,Cold like ice,It is freezing cold,133.33,115.38
+common_voice_bsk_41895925.wav,The dog is in the box,The dog is inside the box,16.67,19.05
+common_voice_bsk_41895944.wav,What happened,What happened?,50.0,7.69
+common_voice_bsk_41895952.wav,Bring a fire piston for me from market,Bring me a smoke ( cigarette ) from the market,75.0,63.16
+common_voice_bsk_41895972.wav,She is the woman I told you about,This is the woman I told you about,12.5,9.09
+common_voice_bsk_41895992.wav,"Here in Gilgit Baltistan, there are many stories in every language",In every language of Gilgit-Baltistan there are many stories,72.73,54.55
+common_voice_bsk_41895993.wav,We belong to Ashurjan family,We are Ashur Jan,80.0,60.71
+common_voice_bsk_41895995.wav,I like banans,I like bananas,33.33,7.69
+common_voice_bsk_41896016.wav,It’s my younger brother’s wedding,My younger brother is getting married,120.0,57.58
+common_voice_bsk_41896035.wav,The old woman said to me that she is not free,I am not free from the old lady,100.0,73.33
+common_voice_bsk_41896037.wav,Is there something cheaper than these?,Are there any cheaper than these?,33.33,28.95
+common_voice_bsk_41896070.wav,He burned the house,He burned the house,0.0,0.0
+common_voice_bsk_41896079.wav,Stay away from fire,Move away from the fire,50.0,42.11
+common_voice_bsk_41896104.wav,They slept,We were unable to hear,250.0,170.0
+common_voice_bsk_41909873.wav,This coat does not suit me.,This coat does not suit me,16.67,3.7
+common_voice_bsk_41910057.wav,I want to listen to a tune,I want to hear a tune,28.57,30.77
+common_voice_bsk_41910058.wav,She is asking us a question,She is asking a question from us,50.0,40.74
+common_voice_bsk_41910063.wav,safe travels,Safe travels,50.0,8.33
+common_voice_bsk_41910069.wav,Would you like tea or a cold drink?,Would you like to drink tea or a bottle?,50.0,51.43
+common_voice_bsk_41910075.wav,"The meat that is kept for winters, we make soup from that in winters.","In the winters, we make soup with dried meat",71.43,55.07
+common_voice_bsk_41910082.wav,These are for 10 rupees.,These cost 10 rupees,60.0,33.33
+common_voice_bsk_41910094.wav,What is the price of this camel?,How much is this camel for?,100.0,62.5
+common_voice_bsk_41910096.wav,Throw the comb behind.,Wash your hands,100.0,68.18
+common_voice_bsk_41910098.wav,You have no concern for us.,You are not aware of us.,66.67,40.74
+common_voice_bsk_41910112.wav,Close the doors as you leave,Close the doors when leaving.,50.0,35.71
+common_voice_bsk_41910117.wav,The day after tomorrow is Saturday.,It is a shame that I am old,133.33,82.86
+common_voice_bsk_41910122.wav,Did I get any calls?,Did I get a call?,40.0,15.0
+common_voice_bsk_41910123.wav,"First of all, the thorn bush did not move away.",He didn’t even get to the beginning,100.0,82.98
+common_voice_bsk_41910132.wav,What is this?,What is this?,0.0,0.0
+common_voice_bsk_41910210.wav,"Yes, if there’s no dancing and singing at a boy’s wedding, it’s no fun.","Yes, it is not fun if the boy is married with a bad wife.",92.86,66.2
+common_voice_bsk_41910212.wav,Light a fire,light the fire,66.67,33.33
+common_voice_bsk_41910213.wav,What’s up?,What is it?,150.0,40.0
+common_voice_bsk_41910247.wav,Stand up,Stand up,0.0,0.0
+common_voice_bsk_41910267.wav,He is your brother.,He is your brother.,0.0,0.0
+common_voice_bsk_41910307.wav,She is my sister,She is my sister,0.0,0.0
+common_voice_bsk_41910311.wav,I made the bird fly.,I flew the bird,40.0,45.0
+common_voice_bsk_41910314.wav,I’m not enjoying it here.,I am not going there,100.0,36.0
+common_voice_bsk_41910317.wav,My sides are hurting.,My back is hurting,75.0,42.86
+common_voice_bsk_41910319.wav,I left my phone in the car.,My phone was left in the car,71.43,59.26
+common_voice_bsk_41910320.wav,What’s there to eat today?,What is for food today?,80.0,42.31
+common_voice_bsk_41910339.wav,I thanked that woman.,I thanked the lady,50.0,33.33
+common_voice_bsk_41910344.wav,What time is it?,What time is it?,0.0,0.0
+common_voice_bsk_41910346.wav,He asked him to kill that wolf.,He requested that I beat that wolf.,57.14,48.39
+common_voice_bsk_41910351.wav,That man is killing the cow.,A man is killing a cow,50.0,28.57
+common_voice_bsk_41910353.wav,Where are you From? Where are they From?,Where are you from?,62.5,55.0
+common_voice_bsk_41910355.wav,It has become a huge forest.,The bus became a big jungle,83.33,57.14
+common_voice_bsk_41910367.wav,I saw a man.,I saw a man.,0.0,0.0
+common_voice_bsk_41910398.wav,Go straight and your destination will be on the left.,"When you walk straight from here, it will come on the left",80.0,60.38
+common_voice_bsk_41910405.wav,Please tutor my son.,Teach my son the tradition,125.0,100.0
+common_voice_bsk_41910414.wav,He went to Hunza.,He left for Hunza,75.0,29.41
+common_voice_bsk_41910418.wav,Leave me alone,Leave us alone,33.33,14.29
+common_voice_bsk_41910424.wav,Why are you going to America?,Why are you going to America?,0.0,0.0
+common_voice_bsk_41910427.wav,He told his story to him.,The bird told him its story.,100.0,68.0
+common_voice_bsk_41910434.wav,I am here with Michel.,I am sitting with Micheal,40.0,40.91
+common_voice_bsk_41910436.wav,No one helped him/,None of the birds helped,125.0,83.33
+common_voice_bsk_41910438.wav,She is a beautiful young lady.,She is a beautiful woman,33.33,30.0
+common_voice_bsk_41910440.wav,I have a daughter and a son.,I have one son and one daughter,57.14,71.43
+common_voice_bsk_41910441.wav,Do you need anything?,Do you need anything? Did you need anything?,100.0,109.52
+common_voice_bsk_41910451.wav,His daughter helped with the killing of her own father.,His daughter helped kill him,70.0,52.73
+common_voice_bsk_41910455.wav,"While he was crying and looked down, he saw an old woman outside her house.","When the man looked at her, he saw a woman standing outside the house.",73.33,48.0
+common_voice_bsk_41910484.wav,Where is his fiance from?,From where was a girl matched for him?,160.0,88.0
+common_voice_bsk_41910497.wav,We had already left before he arrived.,We left when she came,71.43,68.42
+common_voice_bsk_41921826.wav,Its 9 O clock,It is 9 o’clock.,100.0,38.46
+common_voice_bsk_41927375.wav,Someone is calling you.,You have a call.,100.0,65.22
+common_voice_bsk_41927377.wav,They are going into the details of everything.,They are nitpickers.,75.0,65.22
+common_voice_bsk_41927381.wav,I burned his house down.,I burned his house down,20.0,4.17
+common_voice_bsk_41927387.wav,Where are you going? Where are you guys going?,Where should I go?,88.89,71.74
+common_voice_bsk_41927393.wav,These are houses.,These are the houses.,33.33,23.53
+common_voice_bsk_41927394.wav,Michel is bald,Michael is a bad boy,133.33,57.14
+common_voice_bsk_41927400.wav,I am unhappy.,I am sad.,33.33,46.15
+common_voice_bsk_41927408.wav,Camera is on the table.,The camera is on the table.,40.0,21.74
+common_voice_bsk_41927410.wav,I was my grandmother’s favourite.,My grandmother loved me,100.0,51.52
+common_voice_bsk_41927416.wav,I will see you soon.,See you soon,80.0,45.0
+common_voice_bsk_41927418.wav,Soul got blessed,My heart felt happy,133.33,100.0
+common_voice_bsk_41927421.wav,There is a lot of lightning happening in the clouds but there isn’t a drop of rain on the surface.,There is a thunderstorm but no rain,75.0,70.41
+common_voice_bsk_41927424.wav,He was immortal.,Nothing could kill him,133.33,125.0
+common_voice_bsk_41927425.wav,She is our distant relative.,She is my distant relative,40.0,14.29
+common_voice_bsk_41927428.wav,He is feeling homesick.,I miss home,100.0,69.57
+common_voice_bsk_41927429.wav,It is spicy.,It is spicy,33.33,8.33
+common_voice_bsk_41927431.wav,Camel is behind the car.,There is a camel behind the car,80.0,58.33
+common_voice_bsk_41927434.wav,The glass overflowed with water.,The water spilled from the glass,100.0,75.0
+common_voice_bsk_41927448.wav,What are you working on?,What are you doing?,40.0,25.0
+common_voice_bsk_41927450.wav,He married twice.,He married twice.,0.0,0.0
+common_voice_bsk_41927452.wav,What do you like to eat?,What do you like to eat?,0.0,0.0
+common_voice_bsk_41927454.wav,It appeared like a steep mountain.,My whole body is hurting,100.0,70.59
+common_voice_bsk_41927455.wav,The bull also got angry.,The buffalo got angry,60.0,20.83
+common_voice_bsk_41927463.wav,It's long like a rope.,It is as long as a rope,100.0,45.45
+common_voice_bsk_41927468.wav,This coat suits me.,This coat suits me.,0.0,0.0
+common_voice_bsk_41927471.wav,I have already started walking on this route.,I walked this road before,87.5,73.33
+common_voice_bsk_41927472.wav,Apologies! I don’t know what this is. I am new here.,"I don't know, forgive me, I am new here.",54.55,48.08
+common_voice_bsk_41927479.wav,These men came yesterday.,These men came yesterday.,0.0,0.0
+common_voice_bsk_41959548.wav,"If you don’t come, I’ll go by myself.","If you’re not coming, I will leave.",87.5,59.46
+common_voice_bsk_41959550.wav,I will tell you guys a story.,I will tell you a story I heard,57.14,44.83
+common_voice_bsk_41959584.wav,I did’t came so I went by myself.,"You didn’t come, so I left.",75.0,54.55
+common_voice_bsk_41959750.wav,I did not see her.,I saw her.,60.0,55.56
+common_voice_bsk_41959791.wav,My grandfather was good at carpentry.,Grandmother was a skilled hand-worker,83.33,64.86
+common_voice_bsk_41984804.wav,The house is burning.,The house is burning.,0.0,0.0
+common_voice_bsk_41984832.wav,What’s in this bag.,What is in this bag?,75.0,15.79
+common_voice_bsk_41984833.wav,I am happy.,I am happy,33.33,9.09
+common_voice_bsk_41984840.wav,Piyar is teaching us Burushaski.,Piyar is making us eat burushaski,60.0,31.25
+common_voice_bsk_41984854.wav,He is ahead of me,He is in front of me,40.0,47.06
+common_voice_bsk_41984869.wav,I am hungry,I am hungry,0.0,0.0
+common_voice_bsk_41984870.wav,"Seeing it, the old woman almost died (from fear)","When he went, the old lady gave birth to a baby",100.0,68.75
+common_voice_bsk_41984876.wav,It is a green apple,It is a green apple,0.0,0.0
+common_voice_bsk_41984881.wav,We are tired,We got tired,33.33,25.0
+common_voice_bsk_41984893.wav,Thank You/ Thanks everyone,Thank you,75.0,69.23
+common_voice_bsk_41984895.wav,They used to eat children,They say children eat it,60.0,64.0
+common_voice_bsk_41984897.wav,"If you told the daughter, then let the daughter-in-law hear it too.",Don’t use abusive language against women.,100.0,73.13
+common_voice_bsk_41984903.wav,She shouted on me,She yelled at me,50.0,41.18
+common_voice_bsk_41984904.wav,There is nothing that is impossible,Nothing is impossible.,83.33,45.71
+common_voice_bsk_41984912.wav,"When he said that, the bird’s heart broke","When it was said, the bird’s heart completely broke.",62.5,51.22
+common_voice_bsk_41984919.wav,Safe travels,Sofar Mubarak,100.0,83.33
+common_voice_bsk_41984925.wav,My work has been done,I have work to do,100.0,76.19
+common_voice_bsk_41984940.wav,"When no one held its hand, the bird felt very sad","When nobody held its hand, the bird became very sad",27.27,16.33
+common_voice_bsk_41985006.wav,"While crying, it looked down and saw a woman in that house","When he looked under the thorn bush, he saw an old lady standing outside the house.",125.0,94.83
+common_voice_bsk_41985008.wav,He is inside,He is inside.,33.33,8.33
+common_voice_bsk_41985009.wav,He stepped aside,He moved aside.,66.67,37.5
+common_voice_bsk_41985024.wav,We are from Hunza,We are from Hunza.,25.0,5.88
+common_voice_bsk_41985025.wav,The sun has rise,The sun has risen,25.0,6.25
+common_voice_bsk_41985036.wav,"When (someone) said that, the bird felt disgusted","When it was said, the bird became distressed",62.5,46.94
+common_voice_bsk_41985039.wav,He went out,He went outside.,33.33,45.45
+common_voice_bsk_41985056.wav,Stories are good for learning language,Stories are good for learning language,0.0,0.0
+common_voice_bsk_41985089.wav,I am with micheal,I am with Michel.,25.0,17.65
+common_voice_bsk_41985115.wav,He sleeps everyday,He sleeps everyday,0.0,0.0
+common_voice_bsk_41985119.wav,Take care of yourself,Take a look at yourself.,100.0,42.86
+common_voice_bsk_41989930.wav,Don’t speak,Abtar,100.0,81.82
+common_voice_bsk_41989932.wav,No one helped the bird,None of the birds helped,100.0,68.18
+common_voice_bsk_41989934.wav,Once there was a king,There was a King,60.0,33.33
+common_voice_bsk_41989939.wav,I sent a gift for him through them,I gave him a gift,75.0,70.59
+common_voice_bsk_41989940.wav,"There’s a lot of thunder in the sky, but not a single tear on the ground",There is a thunderstorm but no rain.,93.75,63.89
+common_voice_bsk_41989941.wav,I am missing you,I am giving you a hand.,75.0,68.75
+common_voice_bsk_41989950.wav,It’s been long since grandfather died,It has been many years since my grandfather died.,100.0,43.24
+common_voice_bsk_41989951.wav,I listened to you,I heard you,50.0,52.94
+common_voice_bsk_41989983.wav,He requested him to kill that wolf.,He requested that I beat the wolf.,57.14,31.43
+common_voice_bsk_41989984.wav,"Grandpa told Grandma that a son is going to be born on the day of Ashura, so she should name him Ashur Jan.",Grandfather told grandmother that he will be giving him a son on the day of Ashura and he should give him the name Ashur Jan.,65.22,42.06
+common_voice_bsk_41989991.wav,The bird shared its entire story with her.,The bird told him his whole story,75.0,57.14
+common_voice_bsk_41990003.wav,My father's father was caliph.,My father’s name was Khalipa,60.0,30.0
+common_voice_bsk_41990021.wav,"Got it, became happy.","He stood up, picked the bag, and left.",200.0,138.1
+common_voice_bsk_41990023.wav,She gave me a gift.,She gave me a gift.,0.0,0.0
+common_voice_bsk_41990024.wav,"Get up, I am going.",I am going to sleep,100.0,89.47
+common_voice_bsk_41990043.wav,The old woman did not throw stones at the cat.,The old lady hit the cat with a stone,80.0,60.87
+common_voice_bsk_41990044.wav,I'm from Hunza.,I am from Hunza.,66.67,13.33
+common_voice_bsk_41990060.wav,Do you like bananas?,Do you like bananas?,0.0,0.0
+common_voice_bsk_41990061.wav,I will tell her the truth.,I will tell her the truth,16.67,3.85
+common_voice_bsk_41990065.wav,Give me that red book.,Give me that red book,20.0,4.55
+common_voice_bsk_41990066.wav,The boy cried.,The boy cried,33.33,7.14
+common_voice_bsk_41990068.wav,Leave me alone.,Leave us alone,66.67,20.0
+common_voice_bsk_41990081.wav,what is the girl doing?,What is the girl doing?,20.0,4.35
+common_voice_bsk_41990084.wav,I will go to the party,I will go to the party,0.0,0.0
+common_voice_bsk_41990087.wav,this mountainous place itself feels like a place from a story,The place of these mountains is like a place in a story,63.64,52.46
+common_voice_bsk_41990088.wav,I did not eat food,I did not eat food,0.0,0.0
+common_voice_bsk_41990092.wav,I will drink wine,I will drink wine,0.0,0.0
+common_voice_bsk_41990100.wav,I had just eaten rice when Tyler called.,I called Tyler when I was eating.,87.5,62.5
+common_voice_bsk_41990102.wav,When are you going home?,When are you going home?,0.0,0.0
+common_voice_bsk_41990108.wav,"Generally, in Hunza, children are closer to their father’s parents than to their mother’s parents.",In Hunza children love their paternal grandparents more than their maternal grandparents.,80.0,51.02
+common_voice_bsk_41990111.wav,It’s spicy.,It is spicy,150.0,27.27
+common_voice_bsk_41990120.wav,I made the bird fly.,I flew the bird,40.0,45.0
+common_voice_bsk_41990121.wav,Do you miss?,Are you missing (him/her),100.0,133.33
+common_voice_bsk_41990143.wav,I put the child to sleep.,I put the child to sleep,16.67,4.0
+common_voice_bsk_41990146.wav,I will not go to the party.,I will not go to the party,14.29,3.7
+common_voice_bsk_41990149.wav,It used to always sing love songs before.,He used to sing love songs to his wife.,62.5,46.34
+common_voice_bsk_41990154.wav,She is asking us question.,She is asking a question from us.,80.0,38.46
+common_voice_bsk_41990156.wav,The wind asked the bird.,The wind asked from the bird,40.0,25.0
+common_voice_bsk_41990160.wav,I feel like listening to a rythme/song.,I want to hear a tune,71.43,74.36
+common_voice_bsk_41990165.wav,There is one sheep.,There is a sheep,50.0,21.05
+common_voice_bsk_41990166.wav,It was hailing.,He was wearing a cap.,133.33,80.0
+common_voice_bsk_41990172.wav,Sea buckthorn bushes catches fire easily.,The fire ran to burn the thorn.,116.67,80.49
+common_voice_bsk_41990174.wav,Which book?,Which book?,0.0,0.0
+common_voice_bsk_41990187.wav,for how many days do you need the room ?,How much is the room for?,80.0,65.0
+common_voice_bsk_41990200.wav,When did you come?,When did you come?,0.0,0.0
+common_voice_bsk_41990204.wav,The lion has no mane.,There is no one like the sparrow.,140.0,104.76
+common_voice_bsk_41990217.wav,I am watching you,I can see you.,75.0,64.71
+common_voice_bsk_41990219.wav,One was named Mohd Rafiq and the other was named Mohd Sadiq.,One person’s name was Mohammad Rafiq and the other’s name was Mohammad Sidiq.,75.0,45.0
+common_voice_bsk_41990225.wav,It turned into an ocean.,It became like the sea,80.0,70.83
+common_voice_bsk_41990231.wav,He made the bird exhausted.,The bird’s heart broke.,100.0,74.07
+common_voice_bsk_41990233.wav,The horse disappeared from beneath her.,That horse disappeared from before her.,33.33,17.95
+common_voice_bsk_41990241.wav,What is your name?,What is your name?,0.0,0.0
+common_voice_bsk_41990245.wav,The book is on the table.,The book is on the table.,0.0,0.0
+common_voice_bsk_41990247.wav,The rhythm we heard last night was very good.,The tune we listened to last night was very nice.,44.44,42.22
+common_voice_bsk_41990248.wav,Which books do you like?,Which books do you like?,0.0,0.0
+common_voice_bsk_41990251.wav,The leopard has no fur.,There is no thaispur.,80.0,65.22
+common_voice_bsk_41990253.wav,"The Mir of Hunza gave land in Hunza Karimabad, and one grandfather married in Hunza.",King of Hunza gave land in Hunza Karimabad and one grandfather got married from Hunza.,33.33,19.05
+common_voice_bsk_41990267.wav,He fell down.,It fell down.,33.33,15.38
+common_voice_bsk_41990274.wav,"In earlier winters, when there was no electricity, people used to gather in one place.","In the past, when there was no electricity, people used to sit together.",40.0,31.4
+common_voice_bsk_41990286.wav,Open the door.,open the door.,33.33,7.14
+common_voice_bsk_41990295.wav,he had one daughter,He had one daughter.,50.0,10.53
+common_voice_bsk_41990298.wav,"The bird said to the wind, “No one heard my plea.”","No one listened to my appeal, the bird said to the wind",100.0,80.0
+common_voice_bsk_41990300.wav,We will make supra and sharbat at the wedding just like in old times.,"Like in the old days, we used to have soupra and sharbat (traditional dish) at home.",114.29,86.96
+common_voice_bsk_41997761.wav,The wind liked this bird very much.,the wind liked this bird a lot.,42.86,25.71
+common_voice_bsk_41997775.wav,Forgive me.,Forgive me.,0.0,0.0
+common_voice_bsk_41997817.wav,The girl was very happy with the boy.,The girl was more happy than the boy.,25.0,18.92
+common_voice_bsk_41997819.wav,The mountain bread is baking.,The bread is ready.,40.0,51.72
+common_voice_bsk_41997821.wav,My keys are lost.,My keys are lost.,0.0,0.0
+common_voice_bsk_41997830.wav,Is your body okay?,How is your body?,100.0,55.56
+common_voice_bsk_41997834.wav,She slept.,she slept.,50.0,10.0
+common_voice_bsk_41997845.wav,Drop me down there.,you will get it here.,125.0,68.42
+common_voice_bsk_41997857.wav,where did you say school?,when did you say school,40.0,12.0
+common_voice_bsk_41997880.wav,How is the weather?,How is the weather?,0.0,0.0
+common_voice_bsk_41997902.wav,what is your name?,What is your name?,25.0,5.56
+common_voice_bsk_41997937.wav,Please come in.,Are you enjoying it?,133.33,100.0
+common_voice_bsk_41997964.wav,it rained a lot.,It rained a lot.,25.0,6.25
+common_voice_bsk_41997971.wav,there are like ghosts,they are playing futki.,75.0,61.9
+common_voice_bsk_41997972.wav,Did you eat in the evening?,Did you have dinner in the evening?,33.33,37.04
+common_voice_bsk_41997983.wav,you came.,you came.,0.0,0.0
+common_voice_bsk_41998021.wav,are you able to go to the park?,you can go to the park.,50.0,38.71
+common_voice_bsk_41998022.wav,They are also not making it in china.,they are making it in china as well.,75.0,48.65
+common_voice_bsk_41998037.wav,she cried.,she cried.,0.0,0.0
+common_voice_bsk_41998045.wav,she got up.,she woke up.,33.33,27.27
+common_voice_bsk_41999376.wav,How far is it to the city?,how far is it to the city?,14.29,3.85
+common_voice_bsk_41999382.wav,"by coming out of the mosque, you will see it at the left side of the hospital","after coming out from the mosque, you will see the hospital on the right side.",52.94,42.86
+common_voice_bsk_41999386.wav,they got tall in height..,they are Thai.,80.0,60.0
+common_voice_bsk_41999388.wav,he is a prince.,he is a prince.,0.0,0.0
+common_voice_bsk_41999392.wav,it is 400 rupees for a day.,it will be 400 rupees a day.,42.86,37.04
+common_voice_bsk_41999393.wav,the monkey jumped into the water.,the monkey jumped into the water.,0.0,0.0
+common_voice_bsk_41999394.wav,he thought that it would hold his hand.,he thought that it will not come.,50.0,35.9
+common_voice_bsk_41999395.wav,my grandfather’s name is Hurmat.,my grandfather’s name is Hurmat.,0.0,0.0
+common_voice_bsk_41999398.wav,I made a fist and punched him.,i hit him with a stick.,100.0,76.67
+common_voice_bsk_41999400.wav,she got so hungry.,they were starving.,100.0,72.22
+common_voice_bsk_41999402.wav,wear a hat.,show me your palm.,133.33,118.18
+common_voice_bsk_41999409.wav,I will walk.,I will walk.,0.0,0.0
+common_voice_bsk_41999410.wav,if you are not coming then i will go.,"if you are not coming, i will go.",22.22,13.51
+common_voice_bsk_41999411.wav,"forgive me, there is no space.","i am sorry, there is no space.",50.0,33.33
+common_voice_bsk_41999417.wav,how much money do you have?,how much money do you have?,0.0,0.0
+common_voice_bsk_41999436.wav,Shouldn’t I eat my own healthy bull rather than their skinny bull.,i will not eat that thick meat.,100.0,72.73
+common_voice_bsk_41999442.wav,how far is it for the city?,how far is it to the city?,14.29,7.41
+common_voice_bsk_41999449.wav,Grandmother was good at cultivating.,grandmother was skilled in gardening.,80.0,47.22
+common_voice_bsk_41999454.wav,your sister is kissing you.,she is kissing you.,40.0,33.33
+common_voice_bsk_41999458.wav,the place I am from is Sumayr.,i was at the place.,100.0,73.33
+common_voice_bsk_41999462.wav,it thanked the wind so much.,it thanked the wind.,50.0,28.57
+common_voice_bsk_41999463.wav,"Phiti (local Bread, outer part is hard and inner is soft) is ready.",The bread is ready.,84.62,76.12
+common_voice_bsk_41999472.wav,Pigeon sat on my forehead,the pigeon perched on my head.,80.0,68.0
+common_voice_bsk_41999669.wav,did you make a judgment?,Did you have a dream father?,80.0,54.17
+common_voice_bsk_41999670.wav,Friends bride is so beautiful.,Friend’s bride is very beautiful.,40.0,16.67
+common_voice_bsk_41999675.wav,"I love butter so much, and she used to keep butter in her box.","I love the butter, she used to keep the butter for me in her box.",50.0,41.94
+common_voice_bsk_41999681.wav,are you comfortable here?,are you enjoying it here?,50.0,44.0
+common_voice_bsk_41999682.wav,where is the post office here?,Where is the post office here?,16.67,3.33
+common_voice_bsk_41999690.wav,An old lady said it.,An old lady said,20.0,20.0
+common_voice_bsk_41999693.wav,I just ate rice and Tyler called me.,I had eaten the rice when Tyler called.,75.0,47.22
+common_voice_bsk_41999694.wav,is your body cured now?,Is your body well now?,40.0,26.09
+common_voice_bsk_41999700.wav,The sun has set.,Yesterday it was.,100.0,87.5
+common_voice_bsk_41999713.wav,I will drink wine from tomorrow.,I will drink alcohol from tomorrow.,16.67,21.88
+common_voice_bsk_41999715.wav,Our neighbours ate the dried meat.,we eat dried meat in winters.,100.0,76.47
+common_voice_bsk_41999722.wav,man falls down daily.,The man always falls down.,100.0,80.95
+common_voice_bsk_41999725.wav,and he encouraged him.,"yes, I heard it.",100.0,72.73
+common_voice_bsk_41999728.wav,go from here.,go from here.,0.0,0.0
+common_voice_bsk_41999743.wav,are you good?/ I am good.  Thanks to God.,"All is well, thanks to God’s kindness.",100.0,82.93
+common_voice_bsk_41999753.wav,Would you like to drink tea or a bottle/cold drink?,will you drink tea or a bottle?,50.0,45.1
+common_voice_bsk_41999760.wav,donkey sleeps everyday.,the donkey sleeps everyday.,33.33,17.39
+common_voice_bsk_41999787.wav,we have to go to Baltit fort.,I have to go to Baltit fort.,14.29,6.9
+common_voice_bsk_41999788.wav,Did you have lunch?,Did you have lunch?,0.0,0.0
+common_voice_bsk_41999797.wav,we make noodle soup (dawdo) during winters.,We make soup with dried meat in the winters.,100.0,55.81
+common_voice_bsk_41999798.wav,he loves this story so much.,He liked this story a lot.,66.67,35.71
+common_voice_bsk_41999810.wav,he moved away.,He moved aside.,66.67,35.71
+common_voice_bsk_41999812.wav,The doctor said i have sugar (Diabetes) and high Blood pressure,The doctor told me that I have diabetes and hypertension.,81.82,52.38
+common_voice_bsk_41999824.wav,eat how much you can.,Eat until you are full.,100.0,80.95
+common_voice_bsk_41999832.wav,your brother is kissing you.,Your brother kisses you.,60.0,25.0
+common_voice_bsk_41999848.wav,is there any hotel nearby?,Is there any hotel nearby?,20.0,3.85
+common_voice_bsk_41999858.wav,I cradled him.,I shook it.,66.67,64.29
+common_voice_bsk_41999860.wav,The cat is under the bed,The cat is under the table.,16.67,16.67
+common_voice_bsk_41999862.wav,hunza comes after gulmit,Hunza is before Gulmit.,100.0,50.0
+common_voice_bsk_41999863.wav,it is beyond my understanding,It is beyond my thinking.,40.0,37.93
+common_voice_bsk_41999864.wav,Discuss it,Think.,100.0,100.0
+common_voice_bsk_41999869.wav,You woke me up,Did you wake me up?,100.0,50.0
+common_voice_bsk_41999870.wav,What are these?,What are these?,0.0,0.0
+common_voice_bsk_41999873.wav,we flew in the airplane,We flew in a plane,60.0,30.43
+common_voice_bsk_41999874.wav,it is snowing,It is snowing.,66.67,15.38
+common_voice_bsk_41999875.wav,it is very thick,it is as thick as leather.,75.0,100.0
+common_voice_bsk_41999876.wav,I love snow,I really like snowfall.,100.0,127.27
+common_voice_bsk_41999881.wav,she rode the horse,she fell on her back.,100.0,72.22
+common_voice_bsk_41999885.wav,Everyone liked this story,Everyone liked this story very much.,50.0,44.0
+common_voice_bsk_41999888.wav,Do you understand english?,Do you understand English?,25.0,3.85
+common_voice_bsk_41999890.wav,Welldone,Well done,200.0,12.5
+common_voice_bsk_41999891.wav,Now come,come now.,100.0,75.0
+common_voice_bsk_41999898.wav,He is a naughty child,he is a very nice person.,80.0,80.95
+common_voice_bsk_41999899.wav,it has gotten dark here.,It is dark outside.,80.0,66.67
+common_voice_bsk_41999907.wav,Will you drink chamus?,Would you like to drink apricot juice?,125.0,100.0
+common_voice_bsk_41999928.wav,I am dying,I am going.,33.33,30.0
+common_voice_bsk_41999930.wav,The water overflowed through the glass.,the water spilled from the glass.,50.0,33.33
+common_voice_bsk_41999947.wav,Bring me a smoke from the market.,Bring me a smoke ( cigarette or something else) from the market.,71.43,93.94
+common_voice_bsk_41999960.wav,Where have they gone?,where should i put it?,125.0,71.43
+common_voice_bsk_41999963.wav,How much are these gloves for?,How much are these gloves for?,0.0,0.0
+common_voice_bsk_41999972.wav,it was flying and it saw him climbing up the mountain,"While flying, I saw a hunter walking on the mountain.",90.91,50.94
+common_voice_bsk_41999973.wav,this is beyond my understanding.,It is beyond my thinking.,40.0,40.62
+common_voice_bsk_41999994.wav,The sweater is soaked in the water.,There is a sweater in the water.,57.14,37.14
+common_voice_bsk_41999996.wav,what is your name?,What is your name?,25.0,5.56
+common_voice_bsk_41999997.wav,eat a little more,Eat a little more.,50.0,11.76
+common_voice_bsk_42000001.wav,Is there one glass of water?,is there a glass of water?,33.33,14.29
+common_voice_bsk_42000002.wav,The sparrow became worried.,he became very remorseful.,100.0,74.07
+common_voice_bsk_42000009.wav,you hid from me,You hid from me.,50.0,13.33
+common_voice_bsk_42000011.wav,I walked,I am walking.,100.0,87.5
+common_voice_bsk_42000018.wav,the tune we listened to last night was good,The tune we listened to last night was good.,22.22,4.65
+common_voice_bsk_42000024.wav,where are you from?,where are you from?,0.0,0.0
+common_voice_bsk_42000026.wav,Im bored here/ Im not entertained here,i am not going there.,85.71,68.42
+common_voice_bsk_42000027.wav,piyar teaches us burushaski,Piyar is doing Russian.,100.0,66.67
+common_voice_bsk_42000039.wav,I'm eating rice.,I am eating rice.,66.67,12.5
+common_voice_bsk_42010232.wav,"Go straight and then turn left, its there","you will walk straight from here, it will be on the left.",137.5,90.24
+common_voice_bsk_42010262.wav,I will take these.,I will buy these.,25.0,22.22
+common_voice_bsk_42010265.wav,Did I get a call?,Did I get a call?,0.0,0.0
+common_voice_bsk_42010287.wav,Do you need something?,Do you need anything?,25.0,18.18
+common_voice_bsk_42010338.wav,I cradled the baby bed.,I swing the cruddle.,60.0,60.87
+common_voice_bsk_42010351.wav,They named him Ashur Jan.,They gave him the name Ashur Jan.,60.0,48.0
+common_voice_bsk_42010387.wav,It's freezing cold.,Its freezing cold,66.67,10.53
+common_voice_bsk_42010409.wav,I have a son and a daughter.,I have one son and one daughter.,28.57,21.43
+common_voice_bsk_42010410.wav,I have a stomach pain.,It is bitter.,100.0,81.82
+common_voice_bsk_42010421.wav,I'm going to Hunza.,I am going to Hunza.,50.0,10.53
+common_voice_bsk_42010428.wav,I will not go.,I will not go.,0.0,0.0
+common_voice_bsk_42028460.wav,tomorrow is saturday,Tomorrow is Saturday.,66.67,15.0
+common_voice_bsk_42028464.wav,Today is sunday,Today is Sunday.,33.33,13.33
+common_voice_bsk_42028470.wav,May God help,May God help you.,33.33,41.67
+common_voice_bsk_42028471.wav,A grain of rice fell of,A grain of rice fell down.,16.67,17.39
+common_voice_bsk_42028474.wav,what do you call this in Burushahski?,What do you call this in Burushahski?,14.29,2.7
+common_voice_bsk_42028475.wav,we will say the same thing,I will say it by listening to you.,100.0,76.92
+common_voice_bsk_42028504.wav,Im leaving,I am going.,150.0,70.0
+common_voice_bsk_42028505.wav,The tune we listened to last night was good.,The tune we listened to last night was good.,0.0,0.0
+common_voice_bsk_42028508.wav,I made her cry,I made her cry.,25.0,7.14
+common_voice_bsk_42028530.wav,The movie that we watched yesterday was good.,The movie we watched last night was good.,37.5,28.89
+common_voice_bsk_42028562.wav,I have to speak.,I have to speak.,0.0,0.0
+common_voice_bsk_42028595.wav,Will you drop me here?,Or here it is burning.,100.0,95.45
+common_voice_bsk_42028596.wav,He is a (phutkish) boy.,he is a very nice person.,80.0,65.22
+common_voice_bsk_42028608.wav,I work daily.,I work everyday.,33.33,53.85
+common_voice_bsk_42028609.wav,I am laughing.,I am laughing.,0.0,0.0
+common_voice_bsk_42028626.wav,I keep you a secret.,I will hide you.,80.0,75.0
+common_voice_bsk_42028630.wav,I had finished the rice when Taylor called me.,I was eating rice when Tyler called.,66.67,39.13
+common_voice_bsk_42028635.wav,It is cloudy.,It is cloudy.,0.0,0.0
+common_voice_bsk_42028637.wav,The water is boiling.,water is boiling.,25.0,19.05
+common_voice_bsk_42028638.wav,How is it?,How is it?,0.0,0.0
+common_voice_bsk_42028640.wav,Was there a call for me?,Did I get a call?,100.0,62.5
+common_voice_bsk_42028642.wav,Sadaf buys food daily.,Sadaf buys food everyday.,25.0,31.82
+common_voice_bsk_42028644.wav,There is a small table along with the bed.,There is a small table with the bed.,11.11,14.29
+common_voice_bsk_42028645.wav,"Give us the bill, sweetheart.",Give us the bill dear.,40.0,27.59
+common_voice_bsk_42028647.wav,Divide these among yourselves.,Distribute these amongst yourselves.,50.0,26.67
+common_voice_bsk_42028652.wav,My mothers makes the food for me.,My mother cooks food for me.,42.86,27.27
+common_voice_bsk_42028805.wav,How much money do you have?,How much money do you have?,0.0,0.0
+common_voice_bsk_42028806.wav,He was a king.,There was a King,50.0,42.86
+common_voice_bsk_42028810.wav,People were very afraid of him.,He was very scared of the people.,83.33,70.97
+common_voice_bsk_42028811.wav,It is sweet to wait for you.,Waiting for you is a sweet joy.,100.0,85.71
+common_voice_bsk_42028815.wav,What is the time?,What is the day?,25.0,23.53
+common_voice_bsk_42028819.wav,I drink water.,I drank water.,33.33,7.14
+common_voice_bsk_42028826.wav,My foot has swollen.,The goat gave birth,100.0,80.0
+common_voice_bsk_42028827.wav,It is 9 o’clock.,Its 9:00,100.0,68.75
+common_voice_bsk_42028830.wav,The car has no tyres.,The car does not have tires.,80.0,47.62
+common_voice_bsk_42028834.wav,"Do you know, I will ask from somewhere else.",Do you know where I can get it?,77.78,61.36
+common_voice_bsk_42028838.wav,I told him to boil the water.,I told him to boil the water.,0.0,0.0
+common_voice_bsk_42028848.wav,We will speak at the same time.,We will speak in one voice.,57.14,35.48
+common_voice_bsk_42029188.wav,I am enjoying here a lot.,I am having a lot of fun here.,100.0,80.0
+common_voice_bsk_42029199.wav,The lady standing by the door is my sister.,The woman standing at the door is my sister,33.33,18.6
+common_voice_bsk_42029214.wav,She fell down.,She fell down,33.33,7.14
+common_voice_bsk_42029217.wav,I am going to tell her the truth.,I am going to tell her the truth,12.5,3.03
+common_voice_bsk_42029224.wav,People were too afraid of him.,People were scared of him,50.0,26.67
+common_voice_bsk_42029229.wav,He felt very sad.,the bird’s heart was broken by the thief.,200.0,188.24
+common_voice_bsk_42029231.wav,They are tall and beautiful.,they are tall and beautiful.,20.0,3.57
+common_voice_bsk_42029260.wav,The lady that I talked about to you is this.,The woman I told you about is hers.,70.0,50.0
+common_voice_bsk_42029264.wav,Was it fun?,Did you enjoy?,100.0,100.0
+common_voice_bsk_42029269.wav,I am walking.,I am walking.,0.0,0.0
+common_voice_bsk_42029290.wav,"You have dropped it, pick it up yourself.","I am giving it to you, you take it",112.5,70.73
+common_voice_bsk_42029403.wav,How much do those gloves cost?,How much are those gloves for?,33.33,20.0
+common_voice_bsk_42029422.wav,Give me your number.,Give me your number.,0.0,0.0
+common_voice_bsk_42029423.wav,I am eating potatoes.,I am eating potatoes.,0.0,0.0
+common_voice_bsk_42029424.wav,It has gone that way.,It is on that way.,40.0,19.05
+common_voice_bsk_42029430.wav,Wash clothes.,Wash the clothes.,50.0,30.77
+common_voice_bsk_42029432.wav,The bread is baking.,The bread is in the oven.,75.0,55.0
+common_voice_bsk_42029433.wav,Are you awake?,are you awake?,33.33,7.14
+common_voice_bsk_42029435.wav,Is there something cheaper than these?,Are there any cheaper than these?,33.33,28.95
+common_voice_bsk_42029436.wav,She sat.,She stayed.,50.0,50.0
+common_voice_bsk_42029460.wav,Bring a cigarette for me from the market.,Bring me a smoke ( cigarette or something else) from the market.,75.0,60.98
+common_voice_bsk_42029470.wav,I am feeling hungry.,I am hungry.,25.0,40.0
+common_voice_bsk_42029471.wav,Stay away from fire.,Stay away from fire.,0.0,0.0
+common_voice_bsk_42029486.wav,Monkey jumped into water.,The monkey jumped into the water.,75.0,36.0
+common_voice_bsk_42029493.wav,They are three men.,There are three men.,25.0,10.53
+common_voice_bsk_42029501.wav,Listen to me.,Listen to me.,0.0,0.0
+common_voice_bsk_42029503.wav,The wait for you is sweet.,Waiting for you is a sweet joy.,83.33,53.85
+common_voice_bsk_42029518.wav,"In Hunza, children adore the father's family more than their mother’s family.",In our Hunza children love their paternal grandparents more than their maternal grandparents.,66.67,54.55
+common_voice_bsk_42029527.wav,There are a lot of stories in every language of Gilgit-Baltistan.,In every language of Gilgit-Baltistan there are many stories.,90.91,78.46
+common_voice_bsk_42029718.wav,He is your brother,He is your brother.,25.0,5.56
+common_voice_bsk_42042471.wav,Tumomi is really nice,The milk is good for the body,150.0,100.0
+common_voice_bsk_42042479.wav,What is the time?,What time is it?,75.0,52.94
+common_voice_bsk_42042506.wav,"Unsure of what to do next, he sat on a rock, deep in thought",He sat on a rock thinking what to do next.,92.86,75.0
+common_voice_bsk_42042516.wav,How much is the meadow far from here,How far is it from here to the mountain?,87.5,77.78
+common_voice_bsk_42042518.wav,You cannot go to park,You can not go to the park,60.0,23.81
+common_voice_bsk_42045007.wav,Who ate my food,Who ate my food?,25.0,6.67
+common_voice_bsk_42045019.wav,The man falls everyday,The man falls every day.,50.0,9.09
+common_voice_bsk_42045033.wav,You slept early today,I am not giving you money today.,175.0,104.76
+common_voice_bsk_42045061.wav,I thanked the lady,I thanked the lady,0.0,0.0
+common_voice_bsk_42045070.wav,Who are you?,Who are you?,0.0,0.0
+common_voice_bsk_42045088.wav,Everyday (he/they) used to eat a child,he used to eat one child every day.,71.43,78.95
+common_voice_bsk_42045089.wav,Nobody has seen my daughter yet,I never saw my daughter.,83.33,54.84
+common_voice_bsk_42045095.wav,The child got sick,The child got sick,0.0,0.0
+common_voice_bsk_42045107.wav,The whole area felt strange,The whole country has become strange.,80.0,55.56
+common_voice_bsk_42045120.wav,He came earlier,He was here before.,100.0,80.0
+common_voice_bsk_42045121.wav,I have one rupee,I have one rupee.,25.0,6.25
+common_voice_bsk_42045141.wav,I turned on the bulb,I burned the bulb.,60.0,25.0
+common_voice_bsk_42045147.wav,My throat is hurting,My throat is hurting,0.0,0.0
+common_voice_bsk_42045184.wav,She is asking a question from us,She is asking a question from us.,14.29,3.12
+common_voice_bsk_42045200.wav,The car hit a tree,The car stopped at the tree,60.0,66.67
+common_voice_bsk_42045205.wav,From where have you arranged a marriage proposal for him with a girl?,Where did you get the idea of making a girl?,76.92,57.97
+common_voice_bsk_42045211.wav,He had one daughter,There was one girl,75.0,68.42
+common_voice_bsk_42045212.wav,Do you want to play cricket?,do you play cricket?,50.0,32.14
+common_voice_bsk_42045219.wav,This is mine,this is mine.,66.67,16.67
+common_voice_bsk_42045223.wav,He was diamond below his tummy,He was silver before his belly button.,66.67,70.0
+common_voice_bsk_42045232.wav,She gave birth to a girl,She gave birth to a girl,0.0,0.0
+common_voice_bsk_42045248.wav,The king had allied the Ashurjan people with the Diram people.,The king gave him money to build a wall around the river.,90.91,66.13
+common_voice_bsk_42045252.wav,Pull up your sweater,Who is it that you are looking for?,200.0,135.0
+common_voice_bsk_42045254.wav,He went to his town after getting married. Grandmother was in Hunza,"After getting married, he went back to his homeland; Grandma was still here in Hunza.",100.0,82.09
+common_voice_bsk_42045270.wav,Grandfather told grandmother that his son was going to be born on the day of Ashura and that his name should be Ashurjan,"Grandfather told grandmother that on Ashura day, he will give birth to a boy.",78.26,56.67
+common_voice_bsk_42045273.wav,The plane flew/flies,The aeroplane has flown.,100.0,65.0
+common_voice_bsk_42045287.wav,What are you recording,Why are you going to America?,100.0,77.27
+common_voice_bsk_42045290.wav,"What are you saying? I can’t hear/understand you, please speak louder.","I don’t understand what you are saying, can you please say that aloud.",109.09,70.0
+common_voice_bsk_42045296.wav,My mother had a very deep bond with her parents because my father’s parents had passed away before I was born,"My mother’s parents were very close to me, my father’s parents passed away before I was born.",52.38,36.7
+common_voice_bsk_42045301.wav,"Dear cat, please eat that rat",Oh cat please eat this mouse,66.67,41.38
+common_voice_bsk_42045328.wav,Step outside,Come out.,100.0,66.67
+common_voice_bsk_42045357.wav,I saw a dream,I saw a dream.,25.0,7.69
+common_voice_bsk_42045361.wav,I am old,I am old.,33.33,12.5
+common_voice_bsk_42045374.wav,Jan is standing between ammie and marry,Jaan is standing between Amie and Marie.,42.86,17.95
+common_voice_bsk_42045382.wav,He sent a letter,He sent a letter.,25.0,6.25
+common_voice_bsk_42045393.wav,I love snowfall,I really like snowfall.,100.0,66.67
+common_voice_bsk_42045424.wav,The sweater is short,The sweater is small.,25.0,25.0
+common_voice_bsk_42045432.wav,You have to give me,You have to give me.,20.0,5.26
+common_voice_bsk_42045433.wav,Nothing,Nothing at all.,200.0,114.29
+common_voice_bsk_42045544.wav,It’s bright,It is very bright.,200.0,72.73
+common_voice_bsk_42045598.wav,I don’t have fun here,I am not sleeping here.,80.0,57.14
+common_voice_bsk_42045648.wav,the woman helped me.,this woman helped me,50.0,15.0
+common_voice_bsk_42045653.wav,you ask from him.,you ask from him.,0.0,0.0
+common_voice_bsk_42045654.wav,Thank You.,"Thank you, thank you.",150.0,120.0
+common_voice_bsk_42045674.wav,There are Pancakes too.,There are also Giyalin.,50.0,52.17
+common_voice_bsk_42045682.wav,The woman I told you about is hers.,i told the woman that she is the one.,100.0,77.14
+common_voice_bsk_42045721.wav,i am infront of you/ ahead of you.,i am in front of you.,50.0,44.12
+common_voice_bsk_42045724.wav,we left when he came.,We went to the door.,100.0,57.14
+common_voice_bsk_42045747.wav,the donkey works daily.,the donkey works everyday.,25.0,30.43
+common_voice_bsk_42045803.wav,then he shedded all her hair/wool.,then the bird called to everyone.,83.33,58.82
+common_voice_bsk_42045812.wav,i m a girl.,i am a girl.,25.0,9.09
+common_voice_bsk_42045813.wav,a man is killing a cow.,A man is missing his wife.,66.67,47.83
+common_voice_bsk_42045832.wav,i brush my teeth twice a day.,I brush my teeth twice a day.,14.29,3.45
+common_voice_bsk_42045845.wav,i just ate the potatoes.,I just ate potatoes.,40.0,20.83
+common_voice_bsk_42045856.wav,i will ask questions.,We will ask questions.,25.0,9.52
+common_voice_bsk_42045862.wav,he used to work in the upper village.,He also did stone work.,100.0,75.68
+common_voice_bsk_42045863.wav,they are here.,they are here,33.33,7.14
+common_voice_bsk_42045864.wav,what is in the bag?,What is in this bag?,40.0,15.79
+common_voice_bsk_42086673.wav,she gave birth to a boy.,she gave birth to twins.,33.33,20.83
+common_voice_bsk_42086679.wav,my grandfather was a leader,My father was a calipa.,60.0,48.15
+common_voice_bsk_42086699.wav,give us mutton curry and vegetable curry.,One mutton curry and one vegetable curry.,42.86,24.39
+common_voice_bsk_42086700.wav,this is mine.,this is mine.,0.0,0.0
+common_voice_bsk_42086724.wav,it is a bit far from here.,It is a bit far from here.,14.29,3.85
+common_voice_bsk_42086725.wav,she missed the return of the bird.,the bird came and the butter came.,100.0,70.59
+common_voice_bsk_42086740.wav,I will be going.,I am about to leave.,100.0,93.75
+common_voice_bsk_42086741.wav,the bird complained to the wind.,the wind complained to the bird.,33.33,12.5
+common_voice_bsk_42086905.wav,it’s dark outside.,It is dark outside.,66.67,16.67
+common_voice_bsk_42086921.wav,you came.,Did you come?,100.0,66.67
+common_voice_bsk_42086931.wav,he is a prisoner.,he is a prisoner.,0.0,0.0
+common_voice_bsk_42086934.wav,you are mistaken here.,You are mistaken here.,25.0,4.55
+common_voice_bsk_42086974.wav,tell me the truth. / Speak the truth.,tell me the truth.,50.0,51.35
+common_voice_bsk_42086975.wav,I swung at him.,I made a plan.,75.0,66.67
+common_voice_bsk_42087020.wav,It Couldn’t get there and pleaded with the thorn.,he begged the thorn that didn’t prick.,100.0,69.39
+common_voice_bsk_42095499.wav,come now.,"Here, take this.",150.0,144.44
+common_voice_bsk_42095580.wav,where were you born?,where were you born?,0.0,0.0
+common_voice_bsk_42095636.wav,cradle the baby.,He moved the baby.,66.67,43.75
+common_voice_bsk_42095639.wav,she is my aunty.,she is my aunt.,25.0,6.25
+common_voice_bsk_42095642.wav,drop me right here.,drop me right here.,0.0,0.0
+common_voice_bsk_42095656.wav,I came from so far away.,I came from very far away.,16.67,16.67
+common_voice_bsk_42095658.wav,which book?,Which book?,50.0,9.09
+common_voice_bsk_42095678.wav,I am sending a letter to you.,i am sending a letter to you.,14.29,3.45
+common_voice_bsk_42095690.wav,it is too expensive.,It is too expensive.,25.0,5.0
+common_voice_bsk_42095706.wav,Everyone really liked/loved that story.,everyone loved this story.,80.0,41.03
+common_voice_bsk_42095715.wav,It is nice to see you.,I am happy to see you.,50.0,36.36
+common_voice_bsk_42095727.wav,"Not salty, but sweet.","No salt, sugar.",100.0,47.62
+common_voice_bsk_42095742.wav,"Shouldn’t I burn this nice wood, but those nasty, prickly thorns instead.","I will not learn this good advice, but I will learn to sing this song.",108.33,67.12
+common_voice_bsk_42095747.wav,It’s cloudy.,It is cloudy.,100.0,16.67
+common_voice_bsk_42095773.wav,I saw these men yesterday.,I saw this man yesterday.,40.0,11.54
+common_voice_bsk_42095780.wav,The boy is tall.,the boy is tall.,25.0,6.25
+common_voice_bsk_42095806.wav,This is mine.,this is mine.,33.33,7.69
+common_voice_bsk_42095807.wav,The sky is rumbling.,There is thunder in the sky.,150.0,95.0
+common_voice_bsk_42095818.wav,I give you a letter.,I am giving you a letter.,40.0,30.0
+common_voice_bsk_42095821.wav,There are a lot of lessons in the story.,There are a lot of things to learn in a story.,44.44,40.0
+common_voice_bsk_42095822.wav,Is your family doing well?,How are your kids?,100.0,73.08
+common_voice_bsk_42095824.wav,My grandmother is making me food.,Mother is preparing dinner for me.,100.0,66.67
+common_voice_bsk_42095841.wav,I am happy to see you.,I am happy to see you.,0.0,0.0
+common_voice_bsk_42095842.wav,Did you have fun?,Did you enjoy?,50.0,41.18
+common_voice_bsk_42188952.wav,The sky is rumbling.,There is thunder in the sky.,150.0,95.0
+common_voice_bsk_42188954.wav,Close the door.,close the door.,33.33,6.67
+common_voice_bsk_42188979.wav,Take care of yourself.,Take care of yourself.,0.0,0.0
+common_voice_bsk_42188982.wav,Today’s lesson is very hard.,Today’s lesson is very hard,20.0,3.57
+common_voice_bsk_42189002.wav,All thanks to God.,It’s all thanks to God’s kindness,100.0,94.44
+common_voice_bsk_42189060.wav,How much is this for?,How much is this for?,0.0,0.0
+common_voice_bsk_42189061.wav,May God help!,May God help you,66.67,30.77
+common_voice_bsk_42189070.wav,This coat looks good on me.:,This coat suits me.,66.67,46.43
+common_voice_bsk_42189073.wav,I will walk.,I will walk,33.33,8.33
+common_voice_bsk_42189074.wav,I am doing well. How about you?,"I am fine, you tell me.",71.43,61.29
+common_voice_bsk_42189093.wav,I walked.,I am walking.,100.0,66.67
+common_voice_bsk_42189118.wav,All of you come in.,"Everyone, come inside.",80.0,73.68
+common_voice_bsk_42189123.wav,The boy peed his pants.,The boy peed himself.,40.0,30.43
+common_voice_bsk_42189125.wav,"Here in every language of Gilgit-Baltistan, there are many stories.",In every language of Gilgit-Baltistan there are many stories.,30.0,10.45
+common_voice_bsk_42189126.wav,"The woman I told you about, this is her.",The woman I told you about is her.,22.22,15.0
+common_voice_bsk_42189133.wav,You like bananas.,You like bananas,33.33,5.88
+common_voice_bsk_42189142.wav,This is beyond my comprehension.,It is beyond my thinking.,40.0,43.75
+common_voice_bsk_42189145.wav,I have told this story to many of my friends in my childhood.,I have told this story to many friends in my childhood,23.08,11.48
+common_voice_bsk_42189146.wav,There is a knocking on the door.,There is a knock on the door.,14.29,9.38
+common_voice_bsk_42189149.wav,She fell down.,She fell down.,0.0,0.0
+common_voice_bsk_42189185.wav,The time is 8 o’clock.,It is 9 o’clock.,60.0,36.36
+common_voice_bsk_42189195.wav,Where are you headed off to?,Where should I put it?,83.33,57.14
+common_voice_bsk_42189209.wav,It tastes bitter.,It is bitter.,33.33,29.41
+common_voice_bsk_42189211.wav,Is your body all well now?,Is your body well now?,16.67,15.38
+common_voice_bsk_42189212.wav,The boy is upset.,The hunter went to kill the wolf.,150.0,147.06
+common_voice_bsk_42189218.wav,Many congratulations on your wedding!,Congratulations on your wedding.,60.0,18.92
+common_voice_bsk_42390546.wav,Not liking someone./ Having grudges for someone.,The woman of the house did not have a house.,142.86,79.17
+common_voice_bsk_42390564.wav,Having a lot of responsibilities at a time. / Having a lot on the plate.,I will start with the mountain and finish with the valley.,93.33,72.22
+common_voice_bsk_42390566.wav,One extraordinary person is equal to one hundred ordinary people.,One good thing is that it is a thousand times better.,90.0,69.23
+common_voice_bsk_42390596.wav,"When you’re starving, you can eat anything.",Like a wolf eating its own calf after eating its own sheep.,171.43,100.0
+common_voice_bsk_42390616.wav,"As long as it’s male, its origin doesn’t matter even if it came from a donkey’s tail.",A donkey can become a man after his wife.,100.0,74.12
+common_voice_bsk_42390672.wav,The one with the big mouth talks more.,The dog will bark at the baby.,87.5,63.16
+common_voice_bsk_42390675.wav,"If your parents don’t teach you, life will.","If your parents don’t love you, they will never love you.",75.0,55.81
+common_voice_bsk_42390691.wav,Don’t take the risk alone.,Do your own home work.,100.0,69.23
+common_voice_bsk_42419022.wav,Trying to get water from dry hay.,Like a snake that has come out of the hole,142.86,96.97
+common_voice_bsk_42419090.wav,Why say Bismillah when the dinner has already begun.,Why are you eating the leaf?,77.78,71.15
+common_voice_bsk_42419099.wav,We have to dance according to the music.,"When there is a fight, the crowd dances.",100.0,77.5
+common_voice_bsk_42419132.wav,"Man and women both are child of Adam, Both are good in their own capacities.",The man and the woman are two different things. Both have skills better than the other.,86.67,72.37
+common_voice_bsk_42419148.wav,Salam Baig will hunt Markhor and Juvar Baig will take the credit.,Salam is the name of the cow and the cow is the name of the hunter.,108.33,66.15
+common_voice_bsk_42419189.wav,What you eat shows up in your strength.,Keep your words.,87.5,74.36
+common_voice_bsk_42419239.wav,Cow is in good health but the butter milk is of low quality.,The cow got sick and started to cry.,100.0,76.67
+common_voice_bsk_42419344.wav,If the elders don’t give advice the house becomes a mess.,"If the old lady in the house doesn’t sit, the house will be destroyed.",90.91,70.18
+common_voice_bsk_42419523.wav,Talk is more sweeter than food./ Talk about the important stuff is more important than other things.,I will tell her the truth.,94.12,82.0
+common_voice_bsk_42419560.wav,Karma,The bull also listened to them.,600.0,580.0
+common_voice_bsk_42419578.wav,All five fingers are not equal./ Everyone is different.,There is no need to fight the enemy.,100.0,76.36
+common_voice_bsk_42419596.wav,Don’t take those actions that lead to your own failure.,Don’t use foul language in front of a student.,90.0,65.45
+common_voice_bsk_42419606.wav,Infant and King are alive.,The King of the children is one.,140.0,96.15
+common_voice_bsk_42419616.wav,Animas sacred for HIndu are halal for muslims.,Hindu goods are halal for Muslims.,62.5,43.48
+common_voice_bsk_42419635.wav,Like a sheep that eats dirt.,Like a thorn,66.67,64.29
+common_voice_bsk_42419678.wav,You should learn from your own mistakes.,"When one person is sick, another one needs to be fed.",157.14,100.0
+common_voice_bsk_42419679.wav,You learn with practice.,Working is working.,100.0,75.0
+common_voice_bsk_42419701.wav,Money/ Material world is more important than life.,You can go anywhere you want.,100.0,74.0
+common_voice_bsk_42432122.wav,Someone who is needy.,Like thorn that is unable to move from its place.,225.0,176.19
+common_voice_bsk_42432124.wav,Like giving bones to sheep and goats and giving grass to the dogs.,Like a snake that bites its own ass.,92.31,68.18
+common_voice_bsk_42433849.wav,Donkey’s death is good news for the dog.,A wolf will bite its own ass.,100.0,80.0
+common_voice_bsk_42433870.wav,When you spit with your face facing the sky it will come down to your own face.,"When you are in the dark, you can see the light.",82.35,65.82
+common_voice_bsk_42433948.wav,If 100 people claim its right then its right.,Bad things are happening one after another.,100.0,82.22
+common_voice_bsk_42434061.wav,Black and white both are dogs.,Dogs barking at the bees.,100.0,70.0
+common_voice_bsk_42434086.wav,My skin tore apart.,My feet got cold,75.0,68.42
+common_voice_bsk_42434154.wav,Neither with that side nor with this side.,Nothing is impossible.,100.0,71.43
+common_voice_bsk_42434195.wav,I closed the door.,I closed the door.,0.0,0.0
+common_voice_bsk_42434336.wav,I like snow fall.,I really like snowfall.,75.0,47.06
+common_voice_bsk_42434387.wav,Like a witch.,Like a Witch,33.33,15.38
+common_voice_bsk_42434480.wav,I am hungry.,I am hungry.,0.0,0.0
+common_voice_bsk_42434536.wav,Parents care for their children and children care for the Earth.,"Their parents love their children, and their children love nature.",81.82,53.12
+common_voice_bsk_42434560.wav,He talked to me.,He talked to me.,0.0,0.0
+common_voice_bsk_42434590.wav,Karma,Even the bull was startled.,500.0,500.0
+common_voice_bsk_42446085.wav,first settle down with your own cap then go to the gathering,"When you are in the right place, everything will go according to plan.",100.0,91.67
+common_voice_bsk_42446103.wav,Don’t mess with the beehive,Don’t play with bees' nests.,60.0,51.85
+common_voice_bsk_42446104.wav,who calls their own buttermilk sour,Who is thankful to their partner?,100.0,74.29
+common_voice_bsk_42446151.wav,It is like when a piece of cloth is stuck to a thorn,Like thorn that is unable to move from its hole.,100.0,78.85
+common_voice_bsk_42446181.wav,I woke you up,I woke you up,0.0,0.0
+common_voice_bsk_42446301.wav,When did you come,When did you come?,25.0,5.88
+common_voice_bsk_42446354.wav,The film I saw last night was great,The movie we watched last night was good,50.0,48.57
+common_voice_bsk_42446363.wav,"what a deaf person is saying, only his mother will know",The mother of the camel will take care of the camel.,100.0,83.64
+common_voice_bsk_42446386.wav,"they are selling a camel, but I don’t even have a penny","They are shouting, but there is no one near them.",83.33,63.64
+common_voice_bsk_42446387.wav,Every drop adds to form a river,Like drops combining to make a river.,71.43,64.52
+common_voice_bsk_42446388.wav,Get out of here,Go from here,75.0,46.67
+common_voice_bsk_42446434.wav,Even the smell of meadows is sweet,"One after another, they were killed.",100.0,88.24
+common_voice_bsk_42446464.wav,just like throwing a bone at a dog,Like a dog eating its own kittens.,100.0,82.35
+common_voice_bsk_42446595.wav,thin blood,You are late.,150.0,120.0
+common_voice_bsk_42517336.wav,Where are you?,Where are you?,0.0,0.0
+common_voice_bsk_42517340.wav,I took a rest.,I took a rest,25.0,7.14
+common_voice_bsk_42517341.wav,your bead did not reach him,It did not reach the pearl inside.,83.33,88.89
+common_voice_bsk_42517342.wav,Listen to your mother,Listen to your mother,0.0,0.0
+common_voice_bsk_42517345.wav,I am hungry.,I am hungry,33.33,8.33
+common_voice_bsk_42517348.wav,I am with Micheal.,I am with Michel.,25.0,5.56
+common_voice_bsk_42527576.wav,I will drink wine from tomorrow.,I will drink alcohol from tomorrow,33.33,25.0
+common_voice_bsk_42527586.wav,Sit down,Sit down,0.0,0.0
+common_voice_bsk_42527594.wav,There are giyalin also.,There are also Giyaling.,50.0,47.83
+common_voice_bsk_42527596.wav,How did he die?,How did he die?,0.0,0.0
+common_voice_bsk_42527599.wav,This is a story.,This is a story/tale.,25.0,31.25
+common_voice_bsk_42527600.wav,The wind complained to the bird.,The wind complained to the bird.,0.0,0.0
+common_voice_bsk_42527601.wav,You arrived?,Did you come?,150.0,91.67
+common_voice_bsk_42527605.wav,There was a king.,There was a King,25.0,11.76
+common_voice_bsk_42527612.wav,Pull the sweater a bit up.,Wear a cap.,83.33,69.23
+common_voice_bsk_42527616.wav,He talked to me.,He got mad at me.,75.0,50.0
+common_voice_bsk_42527648.wav,"Dear brother, I have come to you because I am in great trouble, said the bird to the hunter.","Aya Kaku is very close to the dark side, the bird told the hunter.",73.68,57.61
+common_voice_bsk_42527677.wav,She is a beautiful woman.,There is a beautiful woman.,20.0,12.0
+common_voice_bsk_42527685.wav,Who are you?,Who are you(plural)?,33.33,66.67
+common_voice_bsk_42527693.wav,I said thanks to the woman,I thanked the lady.,66.67,53.85
+common_voice_bsk_42527704.wav,We went after he came,We left when she came.,80.0,38.1
+common_voice_bsk_42527710.wav,Yes I can understand a little bit,"Yes, I understand a little.",57.14,27.27
+common_voice_bsk_42527714.wav,Are you tired?,Are you tired?,0.0,0.0
+common_voice_bsk_42527716.wav,Michael is good among all the boys,Michael is better than all the boys,28.57,29.41
+common_voice_bsk_42527729.wav,There are two sheeps.,There are two sheeps,25.0,4.76
+common_voice_bsk_42527732.wav,Talk to me,Talk to me.,33.33,10.0
+common_voice_bsk_42527735.wav,I made the bird fly,I heard a bird.,80.0,57.89
+common_voice_bsk_42527746.wav,she gave birth to a baby girl,she drew a girl,57.14,58.62
+common_voice_bsk_42527750.wav,My grandfather was a Khalifa.,My father’s name was Khalipa,80.0,48.28
+common_voice_bsk_42527751.wav,My grandmother’s name is Shafiya.,My grandmother’s name is Shapia,20.0,9.09
+common_voice_bsk_42527752.wav,What happened to you?,How are you?,75.0,61.9
+common_voice_bsk_42527760.wav,I will see you soon.,See you soon,80.0,45.0
