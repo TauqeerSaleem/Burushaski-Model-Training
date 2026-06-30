@@ -1,0 +1,5 @@
+path:
+  dataset_dir: /kaggle/working/parrot_dataset
+  hubert_ckpt: /kaggle/working/Parrot-TTS/utils/hubert_extraction/hubert_base_ls960.pt
+  km_path: /kaggle/working/Parrot-TTS/utils/hubert_extraction/km.bin
+  root_dir: /kaggle/working/runs/hubert_extraction

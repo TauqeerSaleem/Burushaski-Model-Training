@@ -1,0 +1,5 @@
+non_en_preprocess:
+  do_transliteration: false
+path:
+  dataset_dir: /kaggle/working/parrot_dataset
+  root_dir: /kaggle/working/runs/aligner
