@@ -106,3 +106,5 @@ This repository is developed using insights from:
 - [Speech Resynthesis by Facebook Research](https://github.com/facebookresearch/speech-resynthesis)
 - [FastSpeech2 by Ming024](https://github.com/ming024/FastSpeech2)
 - [Deep Forced Aligner](https://github.com/as-ideas/DeepForcedAligner)
+## Pretrained TTE Checkpoint
+Download from Hugging Face: https://huggingface.co/fatimazahra9115/burushaski-tte-checkpoint
