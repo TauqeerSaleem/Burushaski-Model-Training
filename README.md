@@ -44,12 +44,7 @@ Pre-downloads model weights so training doesn't fetch them mid-run.
 python setup/verify_environment.py
 ```
 
-**5. Test data loading**
-```bash
-python test_run_loader.py
-```
-
-**6. Run training**
+**5. Run training**
 ```bash
 python train/whisper.py --use-supabase --use-mdc --epochs 5
 # add --use-hf once HuggingFace dataset repo IDs are filled in configs/datasets.yaml
