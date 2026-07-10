@@ -18,6 +18,8 @@ from data.loader import load_dataset
 
 load_dotenv()
 
+os.environ.setdefault("WANDB_PROJECT", os.getenv("WANDB_PROJECT", "whisper-v1"))
+
 MODEL_NAME = "openai/whisper-small"
 
 

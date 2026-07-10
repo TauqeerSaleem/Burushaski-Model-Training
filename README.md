@@ -25,7 +25,10 @@ This installs pip packages, creates `.env` from the template, and validates that
 HF_TOKEN=           # Hugging Face token (for private dataset access)
 SUPABASE_URL=       # Supabase project URL
 SUPABASE_KEY=       # Supabase service role key (not anon)
-WANDB_API_KEY=      # Weights & Biases
+WANDB_API_KEY=      # Weights & Biases API key
+WANDB_PROJECT=      # Weights & Biases project name (e.g. whisper-v1)
+MDC_API_KEY=        # Mozilla Data Collective API key
+MDC_DATASET_ID=     # MDC dataset ID
 CACHE_DIR=          # Optional: set to network volume path to persist audio cache across pods
 ```
 
@@ -47,7 +50,13 @@ python test_run_loader.py
 
 **6. Run training**
 ```bash
-# (scripts to be added per model)
+python train/whisper.py --use-supabase --use-mdc --epochs 5
+# add --use-hf once HuggingFace dataset repo IDs are filled in configs/datasets.yaml
+```
+
+**7. Evaluate**
+```bash
+python evaluate/whisper.py --model-path outputs/whisper_final --use-hf
 ```
 
 ---
@@ -72,8 +81,10 @@ setup/
   download_models.py   # pre-downloads model weights
   verify_environment.py  # checks CUDA, GPU memory
 
-train/                 # training scripts per model (to be added)
-evaluate/              # evaluation scripts per model (to be added)
+train/
+  whisper.py           # fine-tune Whisper (Burushaski → English)
+evaluate/
+  whisper.py           # compute BLEU, chrF++, BERTScore, WER, CER
 
 Old_Model/             # historical notebooks (Whisper ASR, HuBERT TTS) — reference only
 ```
@@ -87,3 +98,11 @@ The `recordings` table in Supabase has 245+ rows. Only rows with `audio_path`, `
 Audio files are `.m4a`, stored in Supabase Storage under `dialect/participant_id/module_id/` paths and cached locally under `cache/audio/` (or `CACHE_DIR` if set).
 
 The HuggingFace dataset has `train`, `test`, and `sample` splits. Supabase data is always merged into `train` only.
+
+---
+
+## Known Limitations
+
+- **HuggingFace source disabled by default** — `configs/datasets.yaml` has empty repo IDs. Fill these in before using the `--use-hf` flag, otherwise training will crash.
+- **MDC download requires Terms acceptance** — visit your dataset page on `mozilladatacollective.com` while logged in and accept the terms before the MDC source will work.
+- **Supabase `--use-supabase` flag** — if you get a 401 error despite a valid service role key, this is a transient Supabase API issue. Retry or disable the flag and train with MDC/HF only.
