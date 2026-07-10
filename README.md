@@ -2,9 +2,10 @@
 
 Fine-tuning machine translation models for Burushaski, an endangered low-resource language spoken in northern Pakistan. The project targets Burushaski ↔ English translation using models such as Whisper, mT5, and others to be evaluated.
 
-Training data comes from two sources:
-- A custom dataset hosted on Hugging Face (versioned, with train/test/sample splits)
-- A live Supabase database of recordings being actively collected and transcribed (treated as additional training data)
+Training data comes from three sources:
+- **Mozilla Data Collective (MDC)** — primary working source; audio + English translation pairs with train/test/sample splits
+- **Supabase** — live database of recordings being actively collected and transcribed; currently intermittent API issues
+- **Hugging Face** — versioned dataset with train/test/sample splits; not yet configured (repo IDs pending)
 
 Training runs on RunPod cloud GPUs.
 

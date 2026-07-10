@@ -1,5 +1,6 @@
 import csv
 import os
+import tarfile
 import zipfile
 from pathlib import Path
 
@@ -13,12 +14,23 @@ MDC_DATASET_ID = os.getenv("MDC_DATASET_ID")
 MDC_DOWNLOAD_PATH = os.getenv("CACHE_DIR", "cache/mdc")
 
 def extract_archive(archive_path: Path) -> Path:
-    extract_dir = archive_path.parent / archive_path.stem
-    if extract_dir.exists():
-        return extract_dir
-    with zipfile.ZipFile(archive_path, "r") as zf:
-        zf.extractall(archive_path.parent)
-    return extract_dir
+    parent = archive_path.parent
+
+    # find any existing extracted directory (non-archive sibling folder)
+    existing = [p for p in parent.iterdir() if p.is_dir()]
+    if existing:
+        return existing[0]
+
+    if tarfile.is_tarfile(archive_path):
+        with tarfile.open(archive_path, "r:*") as tf:
+            tf.extractall(parent)
+    else:
+        with zipfile.ZipFile(archive_path, "r") as zf:
+            zf.extractall(parent)
+
+    # return whichever directory appeared after extraction
+    dirs = [p for p in parent.iterdir() if p.is_dir()]
+    return dirs[0]
 
 def load_participant_metadata(dataset_root: Path) -> dict:
     metadata = {}
