@@ -15,7 +15,7 @@ supabase = create_client(
 )
 
 BUCKET_NAME = "audio-recordings"
-CACHE_DIR = Path("cache/audio")
+CACHE_DIR = Path(os.getenv("CACHE_DIR", "cache/audio"))
 
 CACHE_DIR.mkdir(
     parents = True,
