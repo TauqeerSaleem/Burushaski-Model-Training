@@ -1,8 +1,28 @@
-from transformers import WhisperForConditionalGeneration, WhisperProcessor
+from transformers import (
+    AutoModelForSeq2SeqLM,
+    AutoTokenizer,
+    Wav2Vec2ForCTC,
+    Wav2Vec2FeatureExtractor,
+    WhisperForConditionalGeneration,
+    WhisperProcessor,
+)
 
-MODEL_NAME = "openai/whisper-small"
+MODELS = {
+    "whisper": "openai/whisper-small",
+    "xlsr": "facebook/wav2vec2-xls-r-300m",
+    "mt5": "google/mt5-base",
+}
 
-print(f"Downloading {MODEL_NAME}...")
-WhisperProcessor.from_pretrained(MODEL_NAME)
-WhisperForConditionalGeneration.from_pretrained(MODEL_NAME)
-print(f"Done. {MODEL_NAME} is cached and ready.")
+print(f"Downloading {MODELS['whisper']}...")
+WhisperProcessor.from_pretrained(MODELS["whisper"])
+WhisperForConditionalGeneration.from_pretrained(MODELS["whisper"])
+
+print(f"Downloading {MODELS['xlsr']}...")
+Wav2Vec2FeatureExtractor.from_pretrained(MODELS["xlsr"])
+Wav2Vec2ForCTC.from_pretrained(MODELS["xlsr"])
+
+print(f"Downloading {MODELS['mt5']}...")
+AutoTokenizer.from_pretrained(MODELS["mt5"])
+AutoModelForSeq2SeqLM.from_pretrained(MODELS["mt5"])
+
+print("Done. Base models are cached and ready.")

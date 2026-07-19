@@ -1,3 +1,5 @@
+import os
+
 from datasets import load_dataset
 import yaml
 
@@ -10,7 +12,10 @@ def load_hf_dataset(
         split = "train"
 ):
     config = load_dataset_config()
-    repo = config[task]["hf"][0]
+    repos = [repo for repo in config.get(task, {}).get("hf", []) if repo]
+    if not repos:
+        raise ValueError(f"No Hugging Face repo configured for task '{task}'")
 
-    dataset = load_dataset(repo, split=split)
-    return dataset
+    repo = repos[0]
+    token = os.getenv("HF_TOKEN") or None
+    return load_dataset(repo, split=split, token=token)

@@ -1,0 +1,17 @@
+model_name: facebook/wav2vec2-xls-r-300m
+train_split: train
+eval_split: test
+text_field: transcript
+normalized_text_field: bsk_text_normalized
+output_dir: outputs/asr-xlsr
+wandb_project: asr_xlsr_hunza_v1
+target_dialects:
+  - hunza
+learning_rate: 0.00003
+num_train_epochs: 10
+batch_size: 8
+gradient_accumulation_steps: 2
+eval_steps: 200
+save_steps: 200
+warmup_steps: 200
+max_duration_seconds: 30

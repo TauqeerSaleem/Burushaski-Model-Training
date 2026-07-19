@@ -6,7 +6,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import jiwer
-import librosa
 import numpy as np
 import pandas as pd
 import torch
@@ -17,6 +16,7 @@ from tqdm import tqdm
 from transformers import WhisperForConditionalGeneration, WhisperProcessor
 
 from data.loader import load_dataset
+from data.audio_io import load_audio_16k
 
 load_dotenv()
 
@@ -30,6 +30,7 @@ def normalize_text(text: str) -> str:
 def main(args):
     print("Loading test data...")
     test_hf = load_dataset(
+        task="s2tt",
         split="test",
         use_hf=args.use_hf,
         use_supabase=False,
@@ -54,7 +55,7 @@ def main(args):
             if not reference:
                 continue
 
-            audio, _ = librosa.load(row["audio"], sr=16000)
+            audio = load_audio_16k(row["audio"])
             inputs = processor(audio, sampling_rate=16000, return_tensors="pt").input_features.to(device)
 
             with torch.no_grad():
@@ -66,7 +67,7 @@ def main(args):
             filenames.append(row["id"])
 
         except Exception as e:
-            print(f"  Failed: {row['id']} — {e}")
+            print(f"  Failed: {row['id']} - {e}")
             failed.append(row["id"])
 
     print(f"\nProcessed: {len(hypotheses)} | Failed: {len(failed)}")

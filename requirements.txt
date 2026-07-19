@@ -7,6 +7,7 @@ torch
 torchaudio
 transformers
 accelerate
+sentencepiece
 librosa
 soundfile
 sacrebleu

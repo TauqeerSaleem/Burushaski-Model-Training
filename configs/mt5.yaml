@@ -1,0 +1,21 @@
+model_name: google/mt5-base
+train_split: train
+eval_split: test
+output_dir: outputs/mt5-bsk-eng
+wandb_project: mt5_bidir_hunza_v1
+directions:
+  - bsk_to_eng
+  - eng_to_bsk
+target_dialects:
+  - hunza
+bsk_text_field: bsk_text_normalized
+english_field: english_translation
+max_source_length: 256
+max_target_length: 256
+learning_rate: 0.0001
+num_train_epochs: 10
+batch_size: 4
+gradient_accumulation_steps: 4
+eval_steps: 200
+save_steps: 200
+warmup_steps: 200

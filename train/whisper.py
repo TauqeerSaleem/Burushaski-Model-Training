@@ -9,7 +9,6 @@ from dataclasses import dataclass
 from typing import Any, Dict, List, Union
 
 import torch
-import torchaudio
 from dotenv import load_dotenv
 from transformers import (
     Seq2SeqTrainer,
@@ -19,6 +18,7 @@ from transformers import (
 )
 
 from data.loader import load_dataset
+from data.audio_io import load_audio_16k
 
 load_dotenv()
 
@@ -37,10 +37,7 @@ class BurushaskiDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         row = self.data[idx]
-        waveform, sr = torchaudio.load(row["audio"])
-        if sr != 16000:
-            waveform = torchaudio.functional.resample(waveform, sr, 16000)
-        audio = waveform.squeeze().numpy()
+        audio = load_audio_16k(row["audio"])
         inputs = self.processor(audio, sampling_rate=16000, return_tensors="pt")
         labels = self.processor.tokenizer(row["english_translation"], return_tensors="pt").input_ids
         return {
@@ -68,6 +65,7 @@ class DataCollatorSpeechSeq2SeqWithPadding:
 def main(args):
     print(f"Loading train data (hf={args.use_hf}, supabase={args.use_supabase}, mdc={args.use_mdc})...")
     train_hf = load_dataset(
+        task="s2tt",
         split="train",
         use_hf=args.use_hf,
         use_supabase=args.use_supabase,

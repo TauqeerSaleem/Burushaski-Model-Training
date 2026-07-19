@@ -1,0 +1,14 @@
+model_name: openai/whisper-small
+train_split: train
+eval_split: test
+output_dir: outputs/whisper-s2tt
+wandb_project: whisper_s2tt_hunza_baseline
+target_dialects:
+  - hunza
+learning_rate: 0.00001
+num_train_epochs: 5
+batch_size: 16
+gradient_accumulation_steps: 2
+eval_steps: 200
+save_steps: 200
+warmup_steps: 200

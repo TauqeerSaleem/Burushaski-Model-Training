@@ -1,11 +1,15 @@
 asr:
   hf:
-    - ""
+    - "Yaraan/burushaski_english_translation_v1"
 
 mt:
   hf:
-    - ""
+    - "Yaraan/burushaski_english_translation_v1"
 
 tts:
   hf:
     - ""
+
+s2tt:
+  hf:
+    - "Yaraan/burushaski_english_translation_v1"
