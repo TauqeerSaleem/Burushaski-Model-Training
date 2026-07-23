@@ -1,4 +1,6 @@
 import argparse
+import json
+import os
 import string
 import sys
 from pathlib import Path
@@ -25,6 +27,10 @@ def normalize_for_wer(text: str) -> str:
     return " ".join(text.split())
 
 
+def plain_for_wer(text: str) -> str:
+    return " ".join(str(text or "").lower().split())
+
+
 def decode_ctc(processor, logits):
     predicted_ids = torch.argmax(logits, dim=-1)
     text = processor.batch_decode(predicted_ids)[0]
@@ -34,15 +40,31 @@ def decode_ctc(processor, logits):
 def score_by_group(rows, group_key):
     summary = []
     for group, group_rows in pd.DataFrame(rows).groupby(group_key, dropna=False):
-        refs = group_rows["reference_normalized"].tolist()
-        hyps = group_rows["hypothesis_normalized"].tolist()
+        refs_raw = group_rows["reference_raw_metric"].tolist()
+        hyps_raw = group_rows["hypothesis_raw_metric"].tolist()
+        refs_norm = group_rows["reference_normalized"].tolist()
+        hyps_norm = group_rows["hypothesis_normalized"].tolist()
         summary.append({
             group_key: group,
             "samples": len(group_rows),
-            "wer_%": round(jiwer.wer(refs, hyps) * 100, 2),
-            "cer_%": round(jiwer.cer(refs, hyps) * 100, 2),
+            "raw_wer_%": round(jiwer.wer(refs_raw, hyps_raw) * 100, 2),
+            "raw_cer_%": round(jiwer.cer(refs_raw, hyps_raw) * 100, 2),
+            "normalized_wer_%": round(jiwer.wer(refs_norm, hyps_norm) * 100, 2),
+            "normalized_cer_%": round(jiwer.cer(refs_norm, hyps_norm) * 100, 2),
         })
     return summary
+
+
+def log_to_wandb(metrics, output_dir):
+    if not os.getenv("WANDB_API_KEY"):
+        return
+    import wandb
+
+    wandb.init(project=os.getenv("WANDB_PROJECT", "asr_xlsr_hunza_v1"), job_type="eval", reinit=True)
+    wandb.log(metrics)
+    wandb.save(str(output_dir / "*.csv"))
+    wandb.save(str(output_dir / "*.json"))
+    wandb.finish()
 
 
 def main(args):
@@ -54,7 +76,7 @@ def main(args):
         split=args.split,
         use_hf=args.use_hf,
         use_supabase=False,
-        use_mdc=False,
+        dialects=args.dialect,
     )
     print(f"ASR evaluation examples: {len(dataset)}")
 
@@ -76,8 +98,11 @@ def main(args):
                 "filename": row.get("filename") or row.get("id"),
                 "dialect": row.get("dialect"),
                 "participant_id": row.get("participant_id"),
+                "gender": row.get("gender"),
                 "reference": reference,
                 "hypothesis": hypothesis,
+                "reference_raw_metric": plain_for_wer(reference),
+                "hypothesis_raw_metric": plain_for_wer(hypothesis),
                 "reference_normalized": normalize_for_wer(reference),
                 "hypothesis_normalized": normalize_for_wer(hypothesis),
             })
@@ -87,24 +112,31 @@ def main(args):
     if not rows:
         raise ValueError("No ASR predictions were produced.")
 
-    refs = [row["reference_normalized"] for row in rows]
-    hyps = [row["hypothesis_normalized"] for row in rows]
+    refs_raw = [row["reference_raw_metric"] for row in rows]
+    hyps_raw = [row["hypothesis_raw_metric"] for row in rows]
+    refs_norm = [row["reference_normalized"] for row in rows]
+    hyps_norm = [row["hypothesis_normalized"] for row in rows]
     metrics = {
         "samples": len(rows),
         "failed": len(failed),
-        "wer_%": round(jiwer.wer(refs, hyps) * 100, 2),
-        "cer_%": round(jiwer.cer(refs, hyps) * 100, 2),
+        "raw_wer_%": round(jiwer.wer(refs_raw, hyps_raw) * 100, 2),
+        "raw_cer_%": round(jiwer.cer(refs_raw, hyps_raw) * 100, 2),
+        "normalized_wer_%": round(jiwer.wer(refs_norm, hyps_norm) * 100, 2),
+        "normalized_cer_%": round(jiwer.cer(refs_norm, hyps_norm) * 100, 2),
     }
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(rows).to_csv(output_dir / "xlsr_predictions.csv", index=False)
     pd.DataFrame([metrics]).to_csv(output_dir / "xlsr_metrics_summary.csv", index=False)
+    (output_dir / "xlsr_metrics_summary.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
     pd.DataFrame(score_by_group(rows, "dialect")).to_csv(output_dir / "xlsr_metrics_by_dialect.csv", index=False)
     pd.DataFrame(score_by_group(rows, "participant_id")).to_csv(output_dir / "xlsr_metrics_by_participant.csv", index=False)
+    pd.DataFrame(score_by_group(rows, "gender")).to_csv(output_dir / "xlsr_metrics_by_gender.csv", index=False)
     if failed:
         pd.DataFrame(failed).to_csv(output_dir / "xlsr_failed_rows.csv", index=False)
 
+    log_to_wandb(metrics, output_dir)
     print(metrics)
     print(f"Results saved to {output_dir}")
 
@@ -114,6 +146,10 @@ if __name__ == "__main__":
     parser.add_argument("--model-path", default="outputs/asr-xlsr_final")
     parser.add_argument("--output-dir", default="outputs/asr-xlsr/results")
     parser.add_argument("--split", default="test")
+    parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--cpu", action="store_true", default=False)
-    main(parser.parse_args())
+    parsed_args = parser.parse_args()
+    if parsed_args.dialect is None:
+        parsed_args.dialect = ["hunza"]
+    main(parsed_args)

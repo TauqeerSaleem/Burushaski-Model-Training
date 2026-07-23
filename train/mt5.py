@@ -49,11 +49,19 @@ def make_translation_pairs(dataset, config):
             rows.append({
                 "source_text": f"translate bsk_{dialect} to eng: {bsk_text}",
                 "target_text": english,
+                "direction": "bsk_to_eng",
+                "dialect": dialect,
+                "participant_id": row.get("participant_id"),
+                "source": row.get("source"),
             })
         if "eng_to_bsk" in directions:
             rows.append({
                 "source_text": f"translate eng to bsk_{dialect}: {english}",
                 "target_text": bsk_text,
+                "direction": "eng_to_bsk",
+                "dialect": dialect,
+                "participant_id": row.get("participant_id"),
+                "source": row.get("source"),
             })
 
     return rows
@@ -88,24 +96,22 @@ class TextPairDataset:
 def main(args):
     config = read_config(args.config)
     os.environ.setdefault("WANDB_PROJECT", config.get("wandb_project", "mt5_bsk_eng"))
+    target_dialects = config.get("target_dialects")
 
     train_data = load_dataset(
         task="mt",
         split=config.get("train_split", "train"),
         use_hf=args.use_hf,
         use_supabase=args.use_supabase,
-        use_mdc=False,
+        dialects=target_dialects,
     )
     eval_data = load_dataset(
         task="mt",
         split=config.get("eval_split", "test"),
         use_hf=args.use_hf,
         use_supabase=False,
-        use_mdc=False,
+        dialects=target_dialects,
     )
-
-    train_data = keep_dialects(train_data, config.get("target_dialects"))
-    eval_data = keep_dialects(eval_data, config.get("target_dialects"))
 
     train_rows = make_translation_pairs(train_data, config)
     eval_rows = make_translation_pairs(eval_data, config)

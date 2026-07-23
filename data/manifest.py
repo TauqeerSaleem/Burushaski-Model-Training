@@ -38,12 +38,9 @@ def main(args):
         split=args.split,
         use_hf=args.use_hf,
         use_supabase=args.use_supabase,
-        use_mdc=args.use_mdc,
+        dialects=args.dialect,
     )
     rows = [canonicalize_row(row) for row in ds]
-    if args.dialect:
-        wanted = {d.lower() for d in args.dialect}
-        rows = [row for row in rows if row["dialect"] in wanted]
 
     write_jsonl(rows, Path(args.output))
     print(f"Wrote {len(rows)} rows to {args.output}")
@@ -51,11 +48,10 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--task", default="mt", choices=["asr", "mt", "s2tt", "tts"])
+    parser.add_argument("--task", default="mt", choices=["asr", "mt"])
     parser.add_argument("--split", default="train")
     parser.add_argument("--output", default="data/manifests/train.jsonl")
     parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--use-supabase", action="store_true", default=False)
-    parser.add_argument("--use-mdc", action="store_true", default=False)
     main(parser.parse_args())

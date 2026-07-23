@@ -1,11 +1,10 @@
 # Burushaski Model Training - Project Yaraan
 
-Training code for the Burushaski speech and translation models used in Project Yaraan. Burushaski is an endangered low-resource language spoken in northern Pakistan. The main plan is deliberately modular: train ASR, text translation, and TTS as separate pieces so that errors can be inspected instead of hidden inside one large black box.
+Training code for the Burushaski speech and translation models used in Project Yaraan. Burushaski is an endangered low-resource language spoken in northern Pakistan. The current training path is deliberately modular: train ASR and text translation as separate pieces so that errors can be inspected instead of hidden inside one large black box.
 
 Training data comes from linked project sources:
 - **Hugging Face** - versioned consolidated datasets under the `Yaraan` organization
 - **Supabase** - live PWA database and storage for newly collected recordings
-- **Mozilla Data Collective (MDC)** - optional speech-to-English baseline source
 
 Training runs on RunPod cloud GPUs.
 
@@ -15,18 +14,19 @@ Training runs on RunPod cloud GPUs.
 
 ## Status
 
-This branch has the first runnable training pipeline scaffold:
+This branch has the first runnable Hunza-focused XLS-R/mT5 pipeline scaffold:
 
 - XLS-R ASR training: implemented in `train/xlsr.py`
 - mT5 text translation training: implemented in `train/mt5.py`
-- Whisper direct speech-to-English baseline: implemented in `train/whisper.py`
-- XLS-R, mT5, Whisper, and cascade evaluation scripts: implemented in `evaluate/`
-- shared data loading from HF/Supabase/MDC: implemented in `data/loader.py`
+- XLS-R, mT5, and cascade evaluation scripts: implemented in `evaluate/`
+- shared data loading from HF/Supabase: implemented in `data/loader.py`
 
 Still pending after the first GPU runs:
 
-- TTS training script
 - stricter speaker/prompt-aware split generation
+- final trained checkpoints and real evaluation scores
+
+TTS, Whisper, MMS, and SeamlessM4T are outside this branch's current training run.
 
 ---
 
@@ -38,13 +38,13 @@ Main speech-to-English pipeline:
 Burushaski audio -> XLS-R ASR -> Burushaski text -> mT5 -> English text
 ```
 
-Reverse pipeline:
+Reverse text pipeline for now:
 
 ```text
-English text -> mT5 -> Burushaski text -> Burushaski TTS -> Burushaski audio
+English text -> mT5 -> Burushaski text
 ```
 
-Whisper is kept as a direct speech-to-English baseline. SeamlessM4T is worth testing later, but it should not be the first system because Burushaski is not a standard supported language and debugging hidden ASR/translation mistakes will be harder.
+Whisper, MMS, SeamlessM4T, and TTS are outside the current run. They can be evaluated separately later, but the main system here is the interpretable XLS-R -> mT5 cascade.
 
 The first training phase focuses on Hunza because the consolidated dataset currently has the strongest Hunza coverage. The translation model still uses dialect tags in its prompts so Nagar and Yasin can be added later without changing the training script.
 
@@ -64,11 +64,10 @@ This installs pip packages, creates `.env` from the template, and validates that
 ```
 HF_TOKEN=           # Hugging Face token (for private dataset access)
 SUPABASE_URL=       # Supabase project URL
-SUPABASE_KEY=       # Supabase service role key (not anon)
+SUPABASE_SERVICE_ROLE_KEY=  # Supabase service role key, preferred
+SUPABASE_KEY=       # Alternative name for the same service role key
 WANDB_API_KEY=      # Weights & Biases API key
-WANDB_PROJECT=      # Weights & Biases project name (e.g. whisper-v1)
-MDC_API_KEY=        # Mozilla Data Collective API key
-MDC_DATASET_ID=     # MDC dataset ID
+WANDB_PROJECT=      # Weights & Biases project name (e.g. yaraan-hunza-xlsr-mt5)
 CACHE_DIR=          # Optional: set to network volume path to persist audio cache across pods
 ```
 
@@ -83,22 +82,23 @@ Pre-downloads model weights so training doesn't fetch them mid-run.
 python setup/verify_environment.py
 ```
 
-**5. Run training**
+**5. Check data access before training**
 ```bash
-# Main RunPod/Kaggle path: read the consolidated private dataset from Hugging Face
-python train/whisper.py --use-hf --use-supabase --epochs 5
-python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --use-supabase --fp16
-python train/mt5.py --config configs/mt5.yaml --use-hf --use-supabase --fp16
-
-# MDC-only direct speech-to-English baseline, useful if HF is not ready yet
-python train/whisper.py --use-mdc --epochs 5
+python test_run_loader.py --task asr --split train --use-hf --use-supabase --dialect hunza
+python test_run_loader.py --task mt --split train --use-hf --use-supabase --dialect hunza
 ```
 
-**6. Evaluate**
+**6. Run training**
 ```bash
-# Whisper direct speech-to-English baseline
-python evaluate/whisper.py --model-path outputs/whisper_final --use-hf
+# Main RunPod/Kaggle path: read the consolidated private dataset from Hugging Face
+python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --use-supabase --fp16
+python train/mt5.py --config configs/mt5.yaml --use-hf --use-supabase --fp16
+```
 
+Both configs currently filter to the Hunza dialect through `target_dialects: [hunza]`.
+
+**7. Evaluate**
+```bash
 # XLS-R ASR
 python evaluate/xlsr.py --model-path outputs/asr-xlsr_final --use-hf
 
@@ -108,6 +108,8 @@ python evaluate/mt5.py --model-path outputs/mt5-bsk-eng_final --use-hf
 # Full cascade: XLS-R transcript -> mT5 English
 python evaluate/pipeline.py --asr-model-path outputs/asr-xlsr_final --mt-model-path outputs/mt5-bsk-eng_final --use-hf
 ```
+
+Evaluation writes detailed predictions plus summary CSV/JSON files under `outputs/.../results`. If `WANDB_API_KEY` is set, the summary metrics and result files are also attached to the W&B run.
 
 ---
 
@@ -146,7 +148,6 @@ configs/
   datasets.yaml        # HF repo IDs for linked dataset loading
   asr_xlsr.yaml        # XLS-R ASR settings
   mt5.yaml             # mT5 translation settings
-  whisper_s2tt.yaml    # Whisper speech-to-English baseline settings
 
 data/
   loader.py            # entry point: load_dataset(...)
@@ -156,7 +157,6 @@ data/
   sources/
     hf.py              # loads from HuggingFace Hub
     supabase.py        # loads from Supabase recordings table
-    mdc.py             # loads Mozilla Data Collective when enabled
   storage/
     audio.py           # downloads audio from Supabase Storage, caches locally
 
@@ -166,11 +166,9 @@ setup/
   verify_environment.py  # checks CUDA, GPU memory
 
 train/
-  whisper.py           # fine-tune Whisper direct speech-to-English baseline
   xlsr.py              # fine-tune XLS-R CTC ASR
   mt5.py               # fine-tune mT5 text translation
 evaluate/
-  whisper.py           # compute BLEU, chrF++, BERTScore, WER, CER
   xlsr.py              # compute ASR CER/WER
   mt5.py               # compute MT chrF++/BLEU
   pipeline.py          # compare gold transcript MT vs XLS-R -> mT5 cascade
@@ -192,14 +190,10 @@ The live app stores recordings in Supabase. The training loader reads from `acti
 
 - ASR: `audio_path` + `transcript`
 - MT: `transcript` + `english_translation`
-- speech-to-text translation: `audio_path` + `english_translation`
-- TTS: `audio_path` + `transcript`
 
-Audio files are `.m4a`, stored in Supabase Storage under `dialect/participant_id/module_id/` paths and cached locally under `cache/audio/` (or `CACHE_DIR` if set).
+Audio files are stored in Supabase Storage under `dialect/participant_id/module_id/` paths and cached locally under `cache/audio/` (or `CACHE_DIR` if set). Older app recordings may be `.m4a`; newer browser-friendly recordings may be `.webm`.
 
 The Hugging Face consolidated dataset is configured in `configs/datasets.yaml`. Supabase data is merged into `train` only so that live app data does not accidentally leak into the held-out HF test split.
-
-MDC is useful for direct speech-to-English experiments because it has Burushaski audio paired with English text. True ASR needs Burushaski transcripts, so use the consolidated HF/Supabase rows for XLS-R.
 
 The old translation workbook is text-only. If those rows are needed for RunPod training, fold them into the Hugging Face consolidated dataset first rather than reading an `.xlsx` from a local machine.
 
@@ -215,12 +209,12 @@ python data/manifest.py --task mt --split train --use-hf --use-supabase --dialec
 
 The evaluation scripts run after a checkpoint exists. They do not contain fixed results or placeholder scores.
 
-ASR is evaluated with:
+ASR is evaluated with both raw and normalized:
 
 - `WER`: word error rate
 - `CER`: character error rate
 
-CER is especially important here because Burushaski spelling is not fully standardized, and character-level mistakes are more informative than only counting whole-word errors.
+CER is especially important here because Burushaski spelling is not fully standardized, and character-level mistakes are more informative than only counting whole-word errors. The evaluator also writes group summaries by dialect, participant, and gender.
 
 Text translation and speech-to-English outputs are evaluated with:
 
@@ -228,6 +222,8 @@ Text translation and speech-to-English outputs are evaluated with:
 - `BLEU`
 
 `chrF++` is useful for low-resource and spelling-variable settings because it gives credit for character n-gram overlap, while BLEU remains a common comparison point in MT and speech-translation papers.
+
+The mT5 evaluator writes summaries by translation direction, dialect, and source.
 
 The cascade evaluator reports two systems on the same test set:
 
@@ -243,7 +239,6 @@ This shows how much performance is lost because of ASR errors.
 ## Known Limitations
 
 - **HuggingFace private access** - set `HF_TOKEN` before using `--use-hf`.
-- **MDC download requires Terms acceptance** - visit your dataset page on `mozilladatacollective.com` while logged in and accept the terms before the MDC source will work.
 - **Supabase `--use-supabase` flag** - use a service role key in `.env`. Do not paste it into notebooks or logs.
 - **Splits still need tightening** - the next step is speaker/prompt-aware splitting. Do not treat random clip-level splits as final research results.
 - **Current implementation is training/evaluation-ready, not result-ready** - run smoke tests on GPU first, then report only the metrics produced from trained checkpoints.

@@ -3,19 +3,12 @@ from transformers import (
     AutoTokenizer,
     Wav2Vec2ForCTC,
     Wav2Vec2FeatureExtractor,
-    WhisperForConditionalGeneration,
-    WhisperProcessor,
 )
 
 MODELS = {
-    "whisper": "openai/whisper-small",
     "xlsr": "facebook/wav2vec2-xls-r-300m",
     "mt5": "google/mt5-base",
 }
-
-print(f"Downloading {MODELS['whisper']}...")
-WhisperProcessor.from_pretrained(MODELS["whisper"])
-WhisperForConditionalGeneration.from_pretrained(MODELS["whisper"])
 
 print(f"Downloading {MODELS['xlsr']}...")
 Wav2Vec2FeatureExtractor.from_pretrained(MODELS["xlsr"])

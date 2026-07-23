@@ -1,5 +1,4 @@
 import os
-import shutil
 
 import torch
 from dotenv import load_dotenv

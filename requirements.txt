@@ -1,7 +1,6 @@
 datasets
 python-dotenv
 supabase
-datacollective
 pyyaml
 torch
 torchaudio
@@ -11,7 +10,6 @@ sentencepiece
 librosa
 soundfile
 sacrebleu
-bert-score
 jiwer
 evaluate
 wandb

@@ -5,11 +5,11 @@ from data.loader import load_dataset
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--task", default="mt", choices=["asr", "mt", "s2tt", "tts"])
+    parser.add_argument("--task", default="mt", choices=["asr", "mt"])
     parser.add_argument("--split", default="train")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--use-supabase", action="store_true", default=False)
-    parser.add_argument("--use-mdc", action="store_true", default=False)
+    parser.add_argument("--dialect", action="append")
     args = parser.parse_args()
 
     dataset = load_dataset(
@@ -17,7 +17,7 @@ def main():
         split=args.split,
         use_hf=args.use_hf,
         use_supabase=args.use_supabase,
-        use_mdc=args.use_mdc,
+        dialects=args.dialect,
     )
 
     print(f"Loaded {len(dataset)} rows for task={args.task}, split={args.split}")

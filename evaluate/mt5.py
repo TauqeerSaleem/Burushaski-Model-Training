@@ -1,4 +1,6 @@
 import argparse
+import json
+import os
 import string
 import sys
 from pathlib import Path
@@ -33,6 +35,29 @@ def score_text(hypotheses, references):
     }
 
 
+def grouped_scores(rows, group_key):
+    summary = []
+    for group, group_rows in pd.DataFrame(rows).groupby(group_key, dropna=False):
+        summary.append({
+            group_key: group,
+            "samples": len(group_rows),
+            **score_text(group_rows["hypothesis"].tolist(), group_rows["reference"].tolist()),
+        })
+    return summary
+
+
+def log_to_wandb(metrics, output_dir):
+    if not os.getenv("WANDB_API_KEY"):
+        return
+    import wandb
+
+    wandb.init(project=os.getenv("WANDB_PROJECT", "mt5_bidir_hunza_v1"), job_type="eval", reinit=True)
+    wandb.log(metrics)
+    wandb.save(str(output_dir / "*.csv"))
+    wandb.save(str(output_dir / "*.json"))
+    wandb.finish()
+
+
 def main(args):
     if not Path(args.model_path).exists():
         raise FileNotFoundError(f"Model path not found: {args.model_path}")
@@ -43,9 +68,9 @@ def main(args):
         split=args.split,
         use_hf=args.use_hf,
         use_supabase=False,
-        use_mdc=False,
+        dialects=args.dialect or config.get("target_dialects"),
     )
-    dataset = keep_dialects(dataset, config.get("target_dialects"))
+    dataset = keep_dialects(dataset, args.dialect or config.get("target_dialects"))
     pairs = make_translation_pairs(dataset, config)
     if not pairs:
         raise ValueError("No MT evaluation pairs found.")
@@ -70,9 +95,11 @@ def main(args):
                 num_beams=args.num_beams,
             )
         hypothesis = tokenizer.decode(output_ids[0], skip_special_tokens=True).strip()
-        direction = pair["source_text"].split(":", 1)[0]
         rows.append({
-            "direction": direction,
+            "direction": pair.get("direction") or pair["source_text"].split(":", 1)[0],
+            "dialect": pair.get("dialect"),
+            "participant_id": pair.get("participant_id"),
+            "source_name": pair.get("source"),
             "source": pair["source_text"],
             "reference": pair["target_text"],
             "hypothesis": hypothesis,
@@ -87,16 +114,13 @@ def main(args):
         "samples": len(rows),
         **score_text([row["hypothesis"] for row in rows], [row["reference"] for row in rows]),
     }
-    by_direction = []
-    for direction, group in pd.DataFrame(rows).groupby("direction"):
-        by_direction.append({
-            "scope": direction,
-            "samples": len(group),
-            **score_text(group["hypothesis"].tolist(), group["reference"].tolist()),
-        })
 
     pd.DataFrame([all_scores]).to_csv(output_dir / "mt5_metrics_summary.csv", index=False)
-    pd.DataFrame(by_direction).to_csv(output_dir / "mt5_metrics_by_direction.csv", index=False)
+    (output_dir / "mt5_metrics_summary.json").write_text(json.dumps(all_scores, indent=2), encoding="utf-8")
+    pd.DataFrame(grouped_scores(rows, "direction")).to_csv(output_dir / "mt5_metrics_by_direction.csv", index=False)
+    pd.DataFrame(grouped_scores(rows, "dialect")).to_csv(output_dir / "mt5_metrics_by_dialect.csv", index=False)
+    pd.DataFrame(grouped_scores(rows, "source_name")).to_csv(output_dir / "mt5_metrics_by_source.csv", index=False)
+    log_to_wandb(all_scores, output_dir)
     print(all_scores)
     print(f"Results saved to {output_dir}")
 
@@ -107,6 +131,7 @@ if __name__ == "__main__":
     parser.add_argument("--config", default="configs/mt5.yaml")
     parser.add_argument("--output-dir", default="outputs/mt5-bsk-eng/results")
     parser.add_argument("--split", default="test")
+    parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--num-beams", type=int, default=4)
     parser.add_argument("--cpu", action="store_true", default=False)

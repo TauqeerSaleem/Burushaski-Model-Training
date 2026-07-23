@@ -1,4 +1,6 @@
 import argparse
+import json
+import os
 import string
 import sys
 from pathlib import Path
@@ -34,6 +36,44 @@ def score_translation(hypotheses, references):
     }
 
 
+def grouped_system_scores(rows, group_key):
+    summary = []
+    frame = pd.DataFrame(rows)
+    for group, group_rows in frame.groupby(group_key, dropna=False):
+        references = group_rows["reference_english"].tolist()
+        summary.append({
+            group_key: group,
+            "system": "gold_bsk_to_mt5",
+            "samples": len(group_rows),
+            **score_translation(group_rows["gold_bsk_to_english"].tolist(), references),
+        })
+        summary.append({
+            group_key: group,
+            "system": "xlsr_to_mt5",
+            "samples": len(group_rows),
+            **score_translation(group_rows["asr_cascade_to_english"].tolist(), references),
+        })
+    return summary
+
+
+def log_to_wandb(metrics, output_dir):
+    if not os.getenv("WANDB_API_KEY"):
+        return
+    import wandb
+
+    wandb.init(project=os.getenv("WANDB_PROJECT", "xlsr_mt5_pipeline_hunza_v1"), job_type="eval", reinit=True)
+    for row in metrics:
+        prefix = row["system"]
+        wandb.log({
+            f"{prefix}/bleu": row["bleu"],
+            f"{prefix}/chrf++": row["chrf++"],
+            f"{prefix}/samples": row["samples"],
+        })
+    wandb.save(str(output_dir / "*.csv"))
+    wandb.save(str(output_dir / "*.json"))
+    wandb.finish()
+
+
 def decode_asr(asr_processor, asr_model, audio, device):
     inputs = asr_processor(audio, sampling_rate=16000, return_tensors="pt", padding=True)
     with torch.no_grad():
@@ -60,7 +100,7 @@ def main(args):
         split=args.split,
         use_hf=args.use_hf,
         use_supabase=False,
-        use_mdc=False,
+        dialects=args.dialect,
     )
 
     device = "cuda" if torch.cuda.is_available() and not args.cpu else "cpu"
@@ -91,6 +131,7 @@ def main(args):
             "filename": row.get("filename") or row.get("id"),
             "dialect": dialect,
             "participant_id": row.get("participant_id"),
+            "source": row.get("source"),
             "gold_bsk": gold_bsk,
             "asr_bsk": asr_text,
             "reference_english": reference_english,
@@ -113,6 +154,10 @@ def main(args):
     output_dir.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(rows).to_csv(output_dir / "pipeline_predictions.csv", index=False)
     pd.DataFrame(metrics).to_csv(output_dir / "pipeline_metrics_summary.csv", index=False)
+    (output_dir / "pipeline_metrics_summary.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+    pd.DataFrame(grouped_system_scores(rows, "dialect")).to_csv(output_dir / "pipeline_metrics_by_dialect.csv", index=False)
+    pd.DataFrame(grouped_system_scores(rows, "source")).to_csv(output_dir / "pipeline_metrics_by_source.csv", index=False)
+    log_to_wandb(metrics, output_dir)
     print(metrics)
     print(f"Results saved to {output_dir}")
 
@@ -123,8 +168,12 @@ if __name__ == "__main__":
     parser.add_argument("--mt-model-path", default="outputs/mt5-bsk-eng_final")
     parser.add_argument("--output-dir", default="outputs/pipeline/results")
     parser.add_argument("--split", default="test")
+    parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--max-length", type=int, default=256)
     parser.add_argument("--num-beams", type=int, default=4)
     parser.add_argument("--cpu", action="store_true", default=False)
-    main(parser.parse_args())
+    parsed_args = parser.parse_args()
+    if parsed_args.dialect is None:
+        parsed_args.dialect = ["hunza"]
+    main(parsed_args)

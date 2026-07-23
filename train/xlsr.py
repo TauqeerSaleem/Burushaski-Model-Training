@@ -49,6 +49,7 @@ def build_vocab(dataset, text_field: str, output_dir: Path) -> Path:
     chars = set()
     for row in dataset:
         chars.update(prepare_ctc_text(row.get(text_field) or row.get("transcript") or ""))
+    chars.add("|")
 
     vocab = {char: idx for idx, char in enumerate(sorted(chars))}
     for token in ["[UNK]", "[PAD]"]:
@@ -102,24 +103,23 @@ class DataCollatorCTCWithPadding:
 def main(args):
     config = read_config(args.config)
     os.environ.setdefault("WANDB_PROJECT", config.get("wandb_project", "asr_xlsr"))
+    target_dialects = config.get("target_dialects")
 
     train_data = load_dataset(
         task="asr",
         split=config.get("train_split", "train"),
         use_hf=args.use_hf,
         use_supabase=args.use_supabase,
-        use_mdc=False,
+        dialects=target_dialects,
     )
     eval_data = load_dataset(
         task="asr",
         split=config.get("eval_split", "test"),
         use_hf=args.use_hf,
         use_supabase=False,
-        use_mdc=False,
+        dialects=target_dialects,
     )
 
-    train_data = keep_dialects(train_data, config.get("target_dialects"))
-    eval_data = keep_dialects(eval_data, config.get("target_dialects"))
     if len(train_data) == 0:
         raise ValueError("No ASR training rows found. XLS-R needs audio plus Burushaski transcript.")
 
@@ -147,6 +147,7 @@ def main(args):
         vocab_size=len(processor.tokenizer),
         pad_token_id=processor.tokenizer.pad_token_id,
         ctc_loss_reduction="mean",
+        ignore_mismatched_sizes=True,
     )
     model.freeze_feature_encoder()
 
