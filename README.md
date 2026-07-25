@@ -1,12 +1,12 @@
 # Burushaski Model Training - Project Yaraan
 
-Training code for the Burushaski speech and translation models used in Project Yaraan. Burushaski is an endangered low-resource language spoken in northern Pakistan. The current training path is deliberately modular: train ASR and text translation as separate pieces so that errors can be inspected instead of hidden inside one large black box.
+Training code for the Burushaski speech and translation models used in Project Yaraan. The current training path keeps ASR and translation separate so each part can be checked properly.
 
 Training data comes from linked project sources:
 - **Hugging Face** - versioned consolidated datasets under the `Yaraan` organization
 - **Supabase** - live PWA database and storage for newly collected recordings
 
-Training runs on RunPod cloud GPUs.
+Training runs on RunPod.
 
 ![Project Yaraan training and evaluation flow](assets/pipeline_block_diagram.png)
 
@@ -14,14 +14,14 @@ Training runs on RunPod cloud GPUs.
 
 ## Status
 
-This branch has the first runnable Hunza-focused XLS-R/mT5 pipeline scaffold:
+This branch has the Hunza-focused XLS-R/mT5 pipeline:
 
 - XLS-R ASR training: implemented in `train/xlsr.py`
 - mT5 text translation training: implemented in `train/mt5.py`
 - XLS-R, mT5, and cascade evaluation scripts: implemented in `evaluate/`
 - shared data loading from HF/Supabase: implemented in `data/loader.py`
 
-Still pending after the first GPU runs:
+Still pending after the first training runs:
 
 - stricter speaker/prompt-aware split generation
 - final trained checkpoints and real evaluation scores
@@ -44,9 +44,9 @@ Reverse text pipeline for now:
 English text -> mT5 -> Burushaski text
 ```
 
-Whisper, MMS, SeamlessM4T, and TTS are outside the current run. They can be evaluated separately later, but the main system here is the interpretable XLS-R -> mT5 cascade.
+Whisper, MMS, SeamlessM4T, and TTS are outside the current run.
 
-The first training phase focuses on Hunza because the consolidated dataset currently has the strongest Hunza coverage. The translation model still uses dialect tags in its prompts so Nagar and Yasin can be added later without changing the training script.
+The first training phase focuses on Hunza because that is where we currently have the strongest coverage. The translation model still keeps dialect tags in the prompts.
 
 For the current PI-requested run, training uses the Hugging Face Hunza training split only. Evaluation uses the held-out Hugging Face test split plus all complete Hunza rows currently available from Supabase.
 
@@ -93,13 +93,13 @@ python test_run_loader.py --task mt --split test --use-hf --use-supabase --diale
 python test_run_loader.py --task asr --split test --use-supabase --dialect hunza --source supabase --decode-audio
 ```
 
-**6. Run bounded micro-training first**
+**6. Run a short training check first**
 ```bash
 python train/xlsr.py --config configs/asr_xlsr_micro.yaml --use-hf --fp16
 python train/mt5.py --config configs/mt5_micro.yaml --use-hf
 ```
 
-These commands run only a couple of optimizer steps and confirm that the actual RunPod image can train, save, and reload before the paid full run. For mT5, avoid `--fp16` because the Kaggle smoke test produced NaNs in FP16. On A100/H100-class GPUs, use `--bf16` for mT5 after verifying BF16 is supported.
+These commands only run a couple of optimizer steps. Use them to check that training, saving, and reloading work before starting the full run. For mT5, use the default precision first unless you have already tested another precision mode on the target GPU.
 
 **7. Run full training**
 ```bash
@@ -150,7 +150,7 @@ python train/mt5.py --config configs/mt5.yaml --use-hf --push-to-hub
 
 Private Hugging Face datasets cannot be cloned with your account password. Use a user access token.
 
-On RunPod or Kaggle, the easiest path is usually:
+On RunPod, the easiest path is usually:
 
 ```bash
 huggingface-cli login
@@ -286,4 +286,4 @@ The cascade evaluator also writes an ASR summary with normalized WER/CER for the
 - **HuggingFace private access** - set `HF_TOKEN` before using `--use-hf`.
 - **Supabase `--use-supabase` flag** - use a service role key in `.env`. Do not paste it into notebooks or logs.
 - **Splits still need tightening** - the next step is speaker/prompt-aware splitting. Do not treat random clip-level splits as final research results.
-- **Current implementation is training/evaluation-ready, not result-ready** - run smoke tests on GPU first, then report only the metrics produced from trained checkpoints.
+- **Current implementation is training/evaluation-ready, not result-ready** - report only the metrics produced from trained checkpoints.
