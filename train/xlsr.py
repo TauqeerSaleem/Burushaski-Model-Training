@@ -1,4 +1,5 @@
 import argparse
+import inspect
 import json
 import os
 import re
@@ -43,6 +44,21 @@ def prepare_ctc_text(text: str) -> str:
     text = str(text or "").lower()
     text = re.sub(r"\s+", " ", text).strip()
     return text.replace(" ", "|")
+
+
+def limit_rows(rows, limit):
+    if limit is None:
+        return rows
+    limit = int(limit)
+    if limit <= 0:
+        return rows
+    return rows[:limit]
+
+
+def evaluation_strategy_arg(arguments_cls, value):
+    parameters = inspect.signature(arguments_cls.__init__).parameters
+    key = "eval_strategy" if "eval_strategy" in parameters else "evaluation_strategy"
+    return {key: value}
 
 
 def build_vocab(dataset, text_field: str, output_dir: Path) -> Path:
@@ -101,6 +117,9 @@ class DataCollatorCTCWithPadding:
 
 
 def main(args):
+    if args.fp16 and args.bf16:
+        raise ValueError("Choose either --fp16 or --bf16, not both")
+
     config = read_config(args.config)
     os.environ.setdefault("WANDB_PROJECT", config.get("wandb_project", "asr_xlsr"))
     target_dialects = config.get("target_dialects")
@@ -122,6 +141,9 @@ def main(args):
 
     if len(train_data) == 0:
         raise ValueError("No ASR training rows found. XLS-R needs audio plus Burushaski transcript.")
+
+    train_data = limit_rows(train_data, config.get("max_train_samples"))
+    eval_data = limit_rows(eval_data, config.get("max_eval_samples"))
 
     output_dir = Path(config.get("output_dir", "outputs/asr-xlsr"))
     text_field = config.get("normalized_text_field") or config.get("text_field", "transcript")
@@ -150,6 +172,8 @@ def main(args):
         ignore_mismatched_sizes=True,
     )
     model.freeze_feature_encoder()
+    if config.get("gradient_checkpointing", True):
+        model.gradient_checkpointing_enable()
 
     train_dataset = ASRDataset(
         train_data,
@@ -172,12 +196,14 @@ def main(args):
         learning_rate=config.get("learning_rate", 3e-5),
         warmup_steps=config.get("warmup_steps", 200),
         num_train_epochs=config.get("num_train_epochs", 10),
-        eval_strategy="steps" if eval_dataset else "no",
+        max_steps=config.get("max_steps", -1),
+        **evaluation_strategy_arg(TrainingArguments, "steps" if eval_dataset else "no"),
         eval_steps=config.get("eval_steps", 200),
         save_strategy="steps",
         save_steps=config.get("save_steps", 200),
         save_total_limit=2,
         fp16=args.fp16,
+        bf16=args.bf16,
         report_to="wandb" if os.getenv("WANDB_API_KEY") else "none",
         remove_unused_columns=False,
     )
@@ -210,6 +236,7 @@ if __name__ == "__main__":
     parser.add_argument("--config", default="configs/asr_xlsr.yaml")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--fp16", action="store_true", default=False)
+    parser.add_argument("--bf16", action="store_true", default=False)
     parser.add_argument("--resume-from-checkpoint", default=None)
     parser.add_argument("--push-to-hub", action="store_true", default=False)
     parser.add_argument("--hub-model-id", default=None)

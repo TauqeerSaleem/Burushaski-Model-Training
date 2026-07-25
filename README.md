@@ -90,18 +90,27 @@ python test_run_loader.py --task asr --split train --use-hf --dialect hunza
 python test_run_loader.py --task mt --split train --use-hf --dialect hunza
 python test_run_loader.py --task asr --split test --use-hf --use-supabase --dialect hunza
 python test_run_loader.py --task mt --split test --use-hf --use-supabase --dialect hunza
+python test_run_loader.py --task asr --split test --use-supabase --dialect hunza --source supabase --decode-audio
 ```
 
-**6. Run training**
+**6. Run bounded micro-training first**
+```bash
+python train/xlsr.py --config configs/asr_xlsr_micro.yaml --use-hf --fp16
+python train/mt5.py --config configs/mt5_micro.yaml --use-hf
+```
+
+These commands run only a couple of optimizer steps and confirm that the actual RunPod image can train, save, and reload before the paid full run. For mT5, avoid `--fp16` because the Kaggle smoke test produced NaNs in FP16. On A100/H100-class GPUs, use `--bf16` for mT5 after verifying BF16 is supported.
+
+**7. Run full training**
 ```bash
 # Train on the Hugging Face Hunza training split only
 python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --fp16
-python train/mt5.py --config configs/mt5.yaml --use-hf --fp16
+python train/mt5.py --config configs/mt5.yaml --use-hf
 ```
 
 Both configs currently filter to the Hunza dialect through `target_dialects: [hunza]`.
 
-**7. Evaluate**
+**8. Evaluate**
 ```bash
 # XLS-R ASR
 python evaluate/xlsr.py --model-path outputs/asr-xlsr_final --use-hf --use-supabase
@@ -122,7 +131,7 @@ python evaluate/saved_predictions.py --task asr --predictions outputs/asr-xlsr/r
 python evaluate/saved_predictions.py --task mt --predictions outputs/mt5-bsk-eng/results/mt5_predictions.csv --output outputs/recomputed_metrics/mt5
 ```
 
-**8. Upload final checkpoints to Hugging Face**
+**9. Upload final checkpoints to Hugging Face**
 ```bash
 huggingface-cli upload Yaraan/xlsr-hunza-asr-v1 outputs/asr-xlsr_final .
 huggingface-cli upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/mt5-bsk-eng_final .
@@ -132,7 +141,7 @@ For a fresh run, the training scripts can also upload automatically after traini
 
 ```bash
 python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --fp16 --push-to-hub
-python train/mt5.py --config configs/mt5.yaml --use-hf --fp16 --push-to-hub
+python train/mt5.py --config configs/mt5.yaml --use-hf --push-to-hub
 ```
 
 ---
@@ -206,8 +215,8 @@ evaluate/
 The normal training path is linked mode. Hugging Face supplies the 80/20 training/test split, while Supabase is used as an additional Hunza evaluation source.
 
 ```bash
-python train/xlsr.py --use-hf --fp16
-python train/mt5.py --use-hf --fp16
+python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --fp16
+python train/mt5.py --config configs/mt5.yaml --use-hf
 ```
 
 The live app stores recordings in Supabase. The training loader reads from `active_recordings` and only keeps rows that have the fields needed for the current task:

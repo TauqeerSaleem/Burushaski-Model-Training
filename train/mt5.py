@@ -1,4 +1,5 @@
 import argparse
+import inspect
 import os
 import sys
 from pathlib import Path
@@ -67,6 +68,21 @@ def make_translation_pairs(dataset, config):
     return rows
 
 
+def limit_rows(rows, limit):
+    if limit is None:
+        return rows
+    limit = int(limit)
+    if limit <= 0:
+        return rows
+    return rows[:limit]
+
+
+def evaluation_strategy_arg(arguments_cls, value):
+    parameters = inspect.signature(arguments_cls.__init__).parameters
+    key = "eval_strategy" if "eval_strategy" in parameters else "evaluation_strategy"
+    return {key: value}
+
+
 class TextPairDataset:
     def __init__(self, rows, tokenizer, max_source_length, max_target_length):
         self.rows = rows
@@ -94,6 +110,9 @@ class TextPairDataset:
 
 
 def main(args):
+    if args.fp16 and args.bf16:
+        raise ValueError("Choose either --fp16 or --bf16, not both")
+
     config = read_config(args.config)
     os.environ.setdefault("WANDB_PROJECT", config.get("wandb_project", "mt5_bsk_eng"))
     target_dialects = config.get("target_dialects")
@@ -115,6 +134,8 @@ def main(args):
 
     train_rows = make_translation_pairs(train_data, config)
     eval_rows = make_translation_pairs(eval_data, config)
+    train_rows = limit_rows(train_rows, config.get("max_train_samples"))
+    eval_rows = limit_rows(eval_rows, config.get("max_eval_samples"))
     if not train_rows:
         raise ValueError("No MT training pairs found. Check transcript/translation fields and dialect filters.")
 
@@ -124,6 +145,9 @@ def main(args):
     model_name = config.get("model_name", "google/mt5-base")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+    model.config.use_cache = False
+    if config.get("gradient_checkpointing", True):
+        model.gradient_checkpointing_enable()
 
     train_dataset = TextPairDataset(
         train_rows,
@@ -146,13 +170,15 @@ def main(args):
         learning_rate=config.get("learning_rate", 1e-4),
         warmup_steps=config.get("warmup_steps", 200),
         num_train_epochs=config.get("num_train_epochs", 10),
-        eval_strategy="steps" if eval_dataset else "no",
+        max_steps=config.get("max_steps", -1),
+        **evaluation_strategy_arg(Seq2SeqTrainingArguments, "steps" if eval_dataset else "no"),
         eval_steps=config.get("eval_steps", 200),
         save_strategy="steps",
         save_steps=config.get("save_steps", 200),
         save_total_limit=2,
         predict_with_generate=True,
         fp16=args.fp16,
+        bf16=args.bf16,
         report_to="wandb" if os.getenv("WANDB_API_KEY") else "none",
     )
 
@@ -184,6 +210,7 @@ if __name__ == "__main__":
     parser.add_argument("--config", default="configs/mt5.yaml")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--fp16", action="store_true", default=False)
+    parser.add_argument("--bf16", action="store_true", default=False)
     parser.add_argument("--resume-from-checkpoint", default=None)
     parser.add_argument("--push-to-hub", action="store_true", default=False)
     parser.add_argument("--hub-model-id", default=None)

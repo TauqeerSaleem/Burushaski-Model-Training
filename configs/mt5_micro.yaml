@@ -1,9 +1,9 @@
 model_name: google/mt5-base
 train_split: train
 eval_split: test
-output_dir: outputs/mt5-bsk-eng
+output_dir: outputs/mt5-bsk-eng-micro
 hub_model_id: Yaraan/mt5-hunza-bsk-eng-v1
-wandb_project: mt5_bidir_hunza_v1
+wandb_project: mt5_bidir_hunza_micro
 directions:
   - bsk_to_eng
   - eng_to_bsk
@@ -11,14 +11,16 @@ target_dialects:
   - hunza
 bsk_text_field: bsk_text_normalized
 english_field: english_translation
-max_source_length: 128
-max_target_length: 128
+max_source_length: 64
+max_target_length: 64
 learning_rate: 0.0001
-num_train_epochs: 10
+num_train_epochs: 1
 batch_size: 1
-gradient_accumulation_steps: 8
-eval_steps: 200
-save_steps: 200
-warmup_steps: 200
-max_steps: -1
+gradient_accumulation_steps: 1
+eval_steps: 1
+save_steps: 1
+warmup_steps: 0
+max_steps: 2
+max_train_samples: 4
+max_eval_samples: 2
 gradient_checkpointing: true
