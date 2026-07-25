@@ -29,7 +29,7 @@ def keep_dialects(dataset, dialects):
     wanted = {d.lower() for d in dialects or []}
     if not wanted:
         return dataset
-    return dataset.filter(lambda row: str(row.get("dialect", "")).lower() in wanted)
+    return [row for row in dataset if str(row.get("dialect", "")).lower() in wanted]
 
 
 def make_translation_pairs(dataset, config):
@@ -102,7 +102,7 @@ def main(args):
         task="mt",
         split=config.get("train_split", "train"),
         use_hf=args.use_hf,
-        use_supabase=args.use_supabase,
+        use_supabase=False,
         dialects=target_dialects,
     )
     eval_data = load_dataset(
@@ -170,13 +170,21 @@ def main(args):
     trainer.save_model(final_dir)
     tokenizer.save_pretrained(final_dir)
     print(f"Saved final mT5 model to {final_dir}")
+    hub_model_id = args.hub_model_id or config.get("hub_model_id")
+    if args.push_to_hub:
+        if not hub_model_id:
+            raise ValueError("Set --hub-model-id or hub_model_id in the config before pushing to Hugging Face")
+        model.push_to_hub(hub_model_id)
+        tokenizer.push_to_hub(hub_model_id)
+        print(f"Pushed mT5 model to Hugging Face: {hub_model_id}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="configs/mt5.yaml")
     parser.add_argument("--use-hf", action="store_true", default=False)
-    parser.add_argument("--use-supabase", action="store_true", default=False)
     parser.add_argument("--fp16", action="store_true", default=False)
     parser.add_argument("--resume-from-checkpoint", default=None)
+    parser.add_argument("--push-to-hub", action="store_true", default=False)
+    parser.add_argument("--hub-model-id", default=None)
     main(parser.parse_args())

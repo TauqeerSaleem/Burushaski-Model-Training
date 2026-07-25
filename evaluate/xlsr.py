@@ -64,6 +64,7 @@ def log_to_wandb(metrics, output_dir):
     wandb.log(metrics)
     wandb.save(str(output_dir / "*.csv"))
     wandb.save(str(output_dir / "*.json"))
+    wandb.save(str(output_dir / "*.txt"))
     wandb.finish()
 
 
@@ -75,7 +76,7 @@ def main(args):
         task="asr",
         split=args.split,
         use_hf=args.use_hf,
-        use_supabase=False,
+        use_supabase=args.use_supabase,
         dialects=args.dialect,
     )
     print(f"ASR evaluation examples: {len(dataset)}")
@@ -130,6 +131,18 @@ def main(args):
     pd.DataFrame(rows).to_csv(output_dir / "xlsr_predictions.csv", index=False)
     pd.DataFrame([metrics]).to_csv(output_dir / "xlsr_metrics_summary.csv", index=False)
     (output_dir / "xlsr_metrics_summary.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+    (output_dir / "xlsr_metrics_summary.txt").write_text(
+        "\n".join([
+            "XLS-R ASR Evaluation Summary",
+            f"Samples evaluated: {metrics['samples']}",
+            f"Failed rows: {metrics['failed']}",
+            f"Raw WER: {metrics['raw_wer_%']}%",
+            f"Raw CER: {metrics['raw_cer_%']}%",
+            f"Normalized WER: {metrics['normalized_wer_%']}%",
+            f"Normalized CER: {metrics['normalized_cer_%']}%",
+        ]),
+        encoding="utf-8",
+    )
     pd.DataFrame(score_by_group(rows, "dialect")).to_csv(output_dir / "xlsr_metrics_by_dialect.csv", index=False)
     pd.DataFrame(score_by_group(rows, "participant_id")).to_csv(output_dir / "xlsr_metrics_by_participant.csv", index=False)
     pd.DataFrame(score_by_group(rows, "gender")).to_csv(output_dir / "xlsr_metrics_by_gender.csv", index=False)
@@ -148,6 +161,7 @@ if __name__ == "__main__":
     parser.add_argument("--split", default="test")
     parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
+    parser.add_argument("--use-supabase", action="store_true", default=False)
     parser.add_argument("--cpu", action="store_true", default=False)
     parsed_args = parser.parse_args()
     if parsed_args.dialect is None:

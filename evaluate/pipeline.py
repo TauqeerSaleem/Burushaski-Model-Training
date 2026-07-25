@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pandas as pd
 import torch
+import jiwer
 from dotenv import load_dotenv
 from sacrebleu.metrics import BLEU, CHRF
 from tqdm import tqdm
@@ -25,6 +26,16 @@ def normalize_english(text: str) -> str:
     text = str(text or "").lower()
     text = text.translate(str.maketrans("", "", string.punctuation))
     return " ".join(text.split())
+
+
+def normalize_bsk_metric(text: str) -> str:
+    text = normalize_burushaski_text(text).lower()
+    text = text.translate(str.maketrans("", "", string.punctuation))
+    return " ".join(text.split())
+
+
+def plain_bsk_metric(text: str) -> str:
+    return " ".join(str(text or "").lower().split())
 
 
 def score_translation(hypotheses, references):
@@ -71,6 +82,26 @@ def log_to_wandb(metrics, output_dir):
         })
     wandb.save(str(output_dir / "*.csv"))
     wandb.save(str(output_dir / "*.json"))
+    wandb.save(str(output_dir / "*.txt"))
+    wandb.finish()
+
+
+def log_asr_to_wandb(metrics, output_dir):
+    if not os.getenv("WANDB_API_KEY"):
+        return
+    import wandb
+
+    wandb.init(project=os.getenv("WANDB_PROJECT", "xlsr_mt5_pipeline_hunza_v1"), job_type="eval", reinit=True)
+    wandb.log({
+        "pipeline_asr/raw_wer_%": metrics["raw_wer_%"],
+        "pipeline_asr/raw_cer_%": metrics["raw_cer_%"],
+        "pipeline_asr/normalized_wer_%": metrics["normalized_wer_%"],
+        "pipeline_asr/normalized_cer_%": metrics["normalized_cer_%"],
+        "pipeline_asr/samples": metrics["samples"],
+    })
+    wandb.save(str(output_dir / "*.csv"))
+    wandb.save(str(output_dir / "*.json"))
+    wandb.save(str(output_dir / "*.txt"))
     wandb.finish()
 
 
@@ -99,7 +130,7 @@ def main(args):
         task="asr",
         split=args.split,
         use_hf=args.use_hf,
-        use_supabase=False,
+        use_supabase=args.use_supabase,
         dialects=args.dialect,
     )
 
@@ -149,16 +180,46 @@ def main(args):
         {"system": "gold_bsk_to_mt5", "samples": len(rows), **score_translation(gold_hypotheses, references)},
         {"system": "xlsr_to_mt5", "samples": len(rows), **score_translation(cascade_hypotheses, references)},
     ]
+    gold_bsk_raw = [plain_bsk_metric(row["gold_bsk"]) for row in rows]
+    asr_bsk_raw = [plain_bsk_metric(row["asr_bsk"]) for row in rows]
+    gold_bsk_norm = [normalize_bsk_metric(row["gold_bsk"]) for row in rows]
+    asr_bsk_norm = [normalize_bsk_metric(row["asr_bsk"]) for row in rows]
+    asr_metrics = {
+        "samples": len(rows),
+        "raw_wer_%": round(jiwer.wer(gold_bsk_raw, asr_bsk_raw) * 100, 2),
+        "raw_cer_%": round(jiwer.cer(gold_bsk_raw, asr_bsk_raw) * 100, 2),
+        "normalized_wer_%": round(jiwer.wer(gold_bsk_norm, asr_bsk_norm) * 100, 2),
+        "normalized_cer_%": round(jiwer.cer(gold_bsk_norm, asr_bsk_norm) * 100, 2),
+    }
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(rows).to_csv(output_dir / "pipeline_predictions.csv", index=False)
     pd.DataFrame(metrics).to_csv(output_dir / "pipeline_metrics_summary.csv", index=False)
+    pd.DataFrame([asr_metrics]).to_csv(output_dir / "pipeline_asr_metrics_summary.csv", index=False)
     (output_dir / "pipeline_metrics_summary.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+    (output_dir / "pipeline_asr_metrics_summary.json").write_text(json.dumps(asr_metrics, indent=2), encoding="utf-8")
+    (output_dir / "pipeline_metrics_summary.txt").write_text(
+        "\n".join([
+            "XLS-R -> mT5 Pipeline Evaluation Summary",
+            f"Samples evaluated: {len(rows)}",
+            f"Gold BSK -> mT5 BLEU: {metrics[0]['bleu']}",
+            f"Gold BSK -> mT5 chrF++: {metrics[0]['chrf++']}",
+            f"XLS-R -> mT5 BLEU: {metrics[1]['bleu']}",
+            f"XLS-R -> mT5 chrF++: {metrics[1]['chrf++']}",
+            f"Pipeline ASR raw WER: {asr_metrics['raw_wer_%']}%",
+            f"Pipeline ASR raw CER: {asr_metrics['raw_cer_%']}%",
+            f"Pipeline ASR normalized WER: {asr_metrics['normalized_wer_%']}%",
+            f"Pipeline ASR normalized CER: {asr_metrics['normalized_cer_%']}%",
+        ]),
+        encoding="utf-8",
+    )
     pd.DataFrame(grouped_system_scores(rows, "dialect")).to_csv(output_dir / "pipeline_metrics_by_dialect.csv", index=False)
     pd.DataFrame(grouped_system_scores(rows, "source")).to_csv(output_dir / "pipeline_metrics_by_source.csv", index=False)
     log_to_wandb(metrics, output_dir)
+    log_asr_to_wandb(asr_metrics, output_dir)
     print(metrics)
+    print(asr_metrics)
     print(f"Results saved to {output_dir}")
 
 
@@ -170,6 +231,7 @@ if __name__ == "__main__":
     parser.add_argument("--split", default="test")
     parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
+    parser.add_argument("--use-supabase", action="store_true", default=False)
     parser.add_argument("--max-length", type=int, default=256)
     parser.add_argument("--num-beams", type=int, default=4)
     parser.add_argument("--cpu", action="store_true", default=False)

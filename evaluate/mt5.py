@@ -55,6 +55,7 @@ def log_to_wandb(metrics, output_dir):
     wandb.log(metrics)
     wandb.save(str(output_dir / "*.csv"))
     wandb.save(str(output_dir / "*.json"))
+    wandb.save(str(output_dir / "*.txt"))
     wandb.finish()
 
 
@@ -67,7 +68,7 @@ def main(args):
         task="mt",
         split=args.split,
         use_hf=args.use_hf,
-        use_supabase=False,
+        use_supabase=args.use_supabase,
         dialects=args.dialect or config.get("target_dialects"),
     )
     dataset = keep_dialects(dataset, args.dialect or config.get("target_dialects"))
@@ -117,6 +118,15 @@ def main(args):
 
     pd.DataFrame([all_scores]).to_csv(output_dir / "mt5_metrics_summary.csv", index=False)
     (output_dir / "mt5_metrics_summary.json").write_text(json.dumps(all_scores, indent=2), encoding="utf-8")
+    (output_dir / "mt5_metrics_summary.txt").write_text(
+        "\n".join([
+            "mT5 Translation Evaluation Summary",
+            f"Samples evaluated: {all_scores['samples']}",
+            f"BLEU: {all_scores['bleu']}",
+            f"chrF++: {all_scores['chrf++']}",
+        ]),
+        encoding="utf-8",
+    )
     pd.DataFrame(grouped_scores(rows, "direction")).to_csv(output_dir / "mt5_metrics_by_direction.csv", index=False)
     pd.DataFrame(grouped_scores(rows, "dialect")).to_csv(output_dir / "mt5_metrics_by_dialect.csv", index=False)
     pd.DataFrame(grouped_scores(rows, "source_name")).to_csv(output_dir / "mt5_metrics_by_source.csv", index=False)
@@ -133,6 +143,7 @@ if __name__ == "__main__":
     parser.add_argument("--split", default="test")
     parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
+    parser.add_argument("--use-supabase", action="store_true", default=False)
     parser.add_argument("--num-beams", type=int, default=4)
     parser.add_argument("--cpu", action="store_true", default=False)
     main(parser.parse_args())

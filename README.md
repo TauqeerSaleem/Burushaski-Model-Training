@@ -48,6 +48,8 @@ Whisper, MMS, SeamlessM4T, and TTS are outside the current run. They can be eval
 
 The first training phase focuses on Hunza because the consolidated dataset currently has the strongest Hunza coverage. The translation model still uses dialect tags in its prompts so Nagar and Yasin can be added later without changing the training script.
 
+For the current PI-requested run, training uses the Hugging Face Hunza training split only. Evaluation uses the held-out Hugging Face test split plus all complete Hunza rows currently available from Supabase.
+
 ---
 
 ## RunPod Setup
@@ -84,15 +86,17 @@ python setup/verify_environment.py
 
 **5. Check data access before training**
 ```bash
-python test_run_loader.py --task asr --split train --use-hf --use-supabase --dialect hunza
-python test_run_loader.py --task mt --split train --use-hf --use-supabase --dialect hunza
+python test_run_loader.py --task asr --split train --use-hf --dialect hunza
+python test_run_loader.py --task mt --split train --use-hf --dialect hunza
+python test_run_loader.py --task asr --split test --use-hf --use-supabase --dialect hunza
+python test_run_loader.py --task mt --split test --use-hf --use-supabase --dialect hunza
 ```
 
 **6. Run training**
 ```bash
-# Main RunPod/Kaggle path: read the consolidated private dataset from Hugging Face
-python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --use-supabase --fp16
-python train/mt5.py --config configs/mt5.yaml --use-hf --use-supabase --fp16
+# Train on the Hugging Face Hunza training split only
+python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --fp16
+python train/mt5.py --config configs/mt5.yaml --use-hf --fp16
 ```
 
 Both configs currently filter to the Hunza dialect through `target_dialects: [hunza]`.
@@ -100,16 +104,29 @@ Both configs currently filter to the Hunza dialect through `target_dialects: [hu
 **7. Evaluate**
 ```bash
 # XLS-R ASR
-python evaluate/xlsr.py --model-path outputs/asr-xlsr_final --use-hf
+python evaluate/xlsr.py --model-path outputs/asr-xlsr_final --use-hf --use-supabase
 
 # mT5 text translation
-python evaluate/mt5.py --model-path outputs/mt5-bsk-eng_final --use-hf
+python evaluate/mt5.py --model-path outputs/mt5-bsk-eng_final --use-hf --use-supabase
 
 # Full cascade: XLS-R transcript -> mT5 English
-python evaluate/pipeline.py --asr-model-path outputs/asr-xlsr_final --mt-model-path outputs/mt5-bsk-eng_final --use-hf
+python evaluate/pipeline.py --asr-model-path outputs/asr-xlsr_final --mt-model-path outputs/mt5-bsk-eng_final --use-hf --use-supabase
 ```
 
-Evaluation writes detailed predictions plus summary CSV/JSON files under `outputs/.../results`. If `WANDB_API_KEY` is set, the summary metrics and result files are also attached to the W&B run.
+Evaluation writes detailed predictions plus summary CSV, JSON, and short readable TXT files under `outputs/.../results`. If `WANDB_API_KEY` is set, the summary metrics and result files are also attached to the W&B run.
+
+**8. Upload final checkpoints to Hugging Face**
+```bash
+huggingface-cli upload Yaraan/xlsr-hunza-asr-v1 outputs/asr-xlsr_final .
+huggingface-cli upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/mt5-bsk-eng_final .
+```
+
+For a fresh run, the training scripts can also upload automatically after training:
+
+```bash
+python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --fp16 --push-to-hub
+python train/mt5.py --config configs/mt5.yaml --use-hf --fp16 --push-to-hub
+```
 
 ---
 
@@ -179,11 +196,11 @@ evaluate/
 
 ## Data
 
-The normal training path is linked mode: Hugging Face for the consolidated dataset and Supabase for newly collected complete PWA rows.
+The normal training path is linked mode. Hugging Face supplies the 80/20 training/test split, while Supabase is used as an additional Hunza evaluation source.
 
 ```bash
-python train/xlsr.py --use-hf --use-supabase --fp16
-python train/mt5.py --use-hf --use-supabase --fp16
+python train/xlsr.py --use-hf --fp16
+python train/mt5.py --use-hf --fp16
 ```
 
 The live app stores recordings in Supabase. The training loader reads from `active_recordings` and only keeps rows that have the fields needed for the current task:
@@ -193,7 +210,7 @@ The live app stores recordings in Supabase. The training loader reads from `acti
 
 Audio files are stored in Supabase Storage under `dialect/participant_id/module_id/` paths and cached locally under `cache/audio/` (or `CACHE_DIR` if set). Older app recordings may be `.m4a`; newer browser-friendly recordings may be `.webm`.
 
-The Hugging Face consolidated dataset is configured in `configs/datasets.yaml`. Supabase data is merged into `train` only so that live app data does not accidentally leak into the held-out HF test split.
+The Hugging Face consolidated dataset is configured in `configs/datasets.yaml`. Supabase data is not used for training in the current run. It is added during evaluation so the final test report covers the HF held-out split and all complete Hunza app rows.
 
 The old translation workbook is text-only. If those rows are needed for RunPod training, fold them into the Hugging Face consolidated dataset first rather than reading an `.xlsx` from a local machine.
 
@@ -233,6 +250,8 @@ XLS-R predicted transcript -> mT5 -> English
 ```
 
 This shows how much performance is lost because of ASR errors.
+
+The cascade evaluator also writes an ASR summary with normalized WER/CER for the XLS-R transcript used inside the pipeline.
 
 ---
 

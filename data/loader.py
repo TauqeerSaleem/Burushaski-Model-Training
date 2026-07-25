@@ -1,5 +1,3 @@
-from datasets import concatenate_datasets
-
 from data.sources.hf import load_hf_dataset
 from data.sources.supabase import load_supabase_dataset
 from data.normalization import normalize_burushaski_text
@@ -46,6 +44,13 @@ def _standardize(dataset, task):
   dataset = dataset.map(convert, remove_columns=dataset.column_names)
   return dataset.filter(lambda row: _complete_for_task(row, task))
 
+def _set_source(dataset, source_name):
+  return dataset.map(lambda row: {**row, "source": source_name if row.get("source") == "unknown" else row.get("source")})
+
+
+def _to_rows(dataset):
+  return [dict(row) for row in dataset]
+
 def load_dataset(
         task: str = "mt",
         split: str = "train",
@@ -59,21 +64,16 @@ def load_dataset(
         task=task,
         split=split,
     )
-    datasets.append(_standardize(hf_dataset, task))
-  if use_supabase and split == "train":
+    datasets.extend(_to_rows(_set_source(_standardize(hf_dataset, task), "hf")))
+  if use_supabase:
     supabase_dataset = load_supabase_dataset(task=task, dialects=dialects)
-    datasets.append(_standardize(supabase_dataset, task))
+    datasets.extend(_to_rows(_standardize(supabase_dataset, task)))
   if len(datasets) == 0:
     raise ValueError("No dataset sources selected")
 
-  if len(datasets) == 1:
-    dataset = datasets[0]
-  else:
-    dataset = concatenate_datasets(datasets)
-
   if dialects:
     wanted = {dialect.lower() for dialect in dialects}
-    dataset = dataset.filter(lambda row: str(row.get("dialect", "")).lower() in wanted)
+    datasets = [row for row in datasets if str(row.get("dialect", "")).lower() in wanted]
 
-  return dataset
+  return datasets
 

@@ -4,6 +4,7 @@ eval_split: test
 text_field: transcript
 normalized_text_field: bsk_text_normalized
 output_dir: outputs/asr-xlsr
+hub_model_id: Yaraan/xlsr-hunza-asr-v1
 wandb_project: asr_xlsr_hunza_v1
 target_dialects:
   - hunza
