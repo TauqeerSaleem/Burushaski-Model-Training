@@ -115,6 +115,13 @@ python evaluate/pipeline.py --asr-model-path outputs/asr-xlsr_final --mt-model-p
 
 Evaluation writes detailed predictions plus summary CSV, JSON, and short readable TXT files under `outputs/.../results`. If `WANDB_API_KEY` is set, the summary metrics and result files are also attached to the W&B run.
 
+Saved prediction CSVs can be rescored later without retraining:
+
+```bash
+python evaluate/saved_predictions.py --task asr --predictions outputs/asr-xlsr/results/xlsr_predictions.csv --output outputs/recomputed_metrics/xlsr
+python evaluate/saved_predictions.py --task mt --predictions outputs/mt5-bsk-eng/results/mt5_predictions.csv --output outputs/recomputed_metrics/mt5
+```
+
 **8. Upload final checkpoints to Hugging Face**
 ```bash
 huggingface-cli upload Yaraan/xlsr-hunza-asr-v1 outputs/asr-xlsr_final .
@@ -230,6 +237,12 @@ ASR is evaluated with both raw and normalized:
 
 - `WER`: word error rate
 - `CER`: character error rate
+- word accuracy
+- character accuracy
+- sentence error rate
+- exact match rate
+- empty prediction rate
+- average reference/prediction length
 
 CER is especially important here because Burushaski spelling is not fully standardized, and character-level mistakes are more informative than only counting whole-word errors. The evaluator also writes group summaries by dialect, participant, and gender.
 
@@ -237,6 +250,10 @@ Text translation and speech-to-English outputs are evaluated with:
 
 - `chrF++`
 - `BLEU`
+- `TER`
+- exact match rate
+- empty prediction rate
+- average length ratio
 
 `chrF++` is useful for low-resource and spelling-variable settings because it gives credit for character n-gram overlap, while BLEU remains a common comparison point in MT and speech-translation papers.
 

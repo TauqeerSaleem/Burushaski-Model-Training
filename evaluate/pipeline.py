@@ -9,15 +9,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pandas as pd
 import torch
-import jiwer
 from dotenv import load_dotenv
-from sacrebleu.metrics import BLEU, CHRF
 from tqdm import tqdm
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, Wav2Vec2ForCTC, Wav2Vec2Processor
 
 from data.audio_io import load_audio_16k
 from data.loader import load_dataset
 from data.normalization import normalize_burushaski_text
+from eval_metrics import asr_scores, mt_scores
 
 load_dotenv()
 
@@ -41,10 +40,7 @@ def plain_bsk_metric(text: str) -> str:
 def score_translation(hypotheses, references):
     hyp_norm = [normalize_english(text) for text in hypotheses]
     ref_norm = [normalize_english(text) for text in references]
-    return {
-        "bleu": round(BLEU().corpus_score(hyp_norm, [ref_norm]).score, 2),
-        "chrf++": round(CHRF(word_order=2).corpus_score(hyp_norm, [ref_norm]).score, 2),
-    }
+    return mt_scores(hyp_norm, ref_norm)
 
 
 def grouped_system_scores(rows, group_key):
@@ -95,8 +91,12 @@ def log_asr_to_wandb(metrics, output_dir):
     wandb.log({
         "pipeline_asr/raw_wer_%": metrics["raw_wer_%"],
         "pipeline_asr/raw_cer_%": metrics["raw_cer_%"],
+        "pipeline_asr/raw_word_accuracy_%": metrics["raw_word_accuracy_%"],
+        "pipeline_asr/raw_sentence_error_rate_%": metrics["raw_sentence_error_rate_%"],
         "pipeline_asr/normalized_wer_%": metrics["normalized_wer_%"],
         "pipeline_asr/normalized_cer_%": metrics["normalized_cer_%"],
+        "pipeline_asr/normalized_word_accuracy_%": metrics["normalized_word_accuracy_%"],
+        "pipeline_asr/normalized_sentence_error_rate_%": metrics["normalized_sentence_error_rate_%"],
         "pipeline_asr/samples": metrics["samples"],
     })
     wandb.save(str(output_dir / "*.csv"))
@@ -186,10 +186,8 @@ def main(args):
     asr_bsk_norm = [normalize_bsk_metric(row["asr_bsk"]) for row in rows]
     asr_metrics = {
         "samples": len(rows),
-        "raw_wer_%": round(jiwer.wer(gold_bsk_raw, asr_bsk_raw) * 100, 2),
-        "raw_cer_%": round(jiwer.cer(gold_bsk_raw, asr_bsk_raw) * 100, 2),
-        "normalized_wer_%": round(jiwer.wer(gold_bsk_norm, asr_bsk_norm) * 100, 2),
-        "normalized_cer_%": round(jiwer.cer(gold_bsk_norm, asr_bsk_norm) * 100, 2),
+        **asr_scores(asr_bsk_raw, gold_bsk_raw, prefix="raw_"),
+        **asr_scores(asr_bsk_norm, gold_bsk_norm, prefix="normalized_"),
     }
 
     output_dir = Path(args.output_dir)
@@ -205,12 +203,17 @@ def main(args):
             f"Samples evaluated: {len(rows)}",
             f"Gold BSK -> mT5 BLEU: {metrics[0]['bleu']}",
             f"Gold BSK -> mT5 chrF++: {metrics[0]['chrf++']}",
+            f"Gold BSK -> mT5 TER: {metrics[0]['ter']}",
             f"XLS-R -> mT5 BLEU: {metrics[1]['bleu']}",
             f"XLS-R -> mT5 chrF++: {metrics[1]['chrf++']}",
+            f"XLS-R -> mT5 TER: {metrics[1]['ter']}",
             f"Pipeline ASR raw WER: {asr_metrics['raw_wer_%']}%",
             f"Pipeline ASR raw CER: {asr_metrics['raw_cer_%']}%",
+            f"Pipeline ASR raw word accuracy: {asr_metrics['raw_word_accuracy_%']}%",
             f"Pipeline ASR normalized WER: {asr_metrics['normalized_wer_%']}%",
             f"Pipeline ASR normalized CER: {asr_metrics['normalized_cer_%']}%",
+            f"Pipeline ASR normalized word accuracy: {asr_metrics['normalized_word_accuracy_%']}%",
+            f"Pipeline ASR normalized sentence error rate: {asr_metrics['normalized_sentence_error_rate_%']}%",
         ]),
         encoding="utf-8",
     )

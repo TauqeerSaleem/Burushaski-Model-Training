@@ -7,7 +7,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-import jiwer
 import pandas as pd
 import torch
 from dotenv import load_dotenv
@@ -17,6 +16,7 @@ from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
 from data.audio_io import load_audio_16k
 from data.loader import load_dataset
 from data.normalization import normalize_burushaski_text
+from eval_metrics import asr_scores
 
 load_dotenv()
 
@@ -44,13 +44,13 @@ def score_by_group(rows, group_key):
         hyps_raw = group_rows["hypothesis_raw_metric"].tolist()
         refs_norm = group_rows["reference_normalized"].tolist()
         hyps_norm = group_rows["hypothesis_normalized"].tolist()
+        raw_scores = asr_scores(hyps_raw, refs_raw, prefix="raw_")
+        normalized_scores = asr_scores(hyps_norm, refs_norm, prefix="normalized_")
         summary.append({
             group_key: group,
             "samples": len(group_rows),
-            "raw_wer_%": round(jiwer.wer(refs_raw, hyps_raw) * 100, 2),
-            "raw_cer_%": round(jiwer.cer(refs_raw, hyps_raw) * 100, 2),
-            "normalized_wer_%": round(jiwer.wer(refs_norm, hyps_norm) * 100, 2),
-            "normalized_cer_%": round(jiwer.cer(refs_norm, hyps_norm) * 100, 2),
+            **raw_scores,
+            **normalized_scores,
         })
     return summary
 
@@ -120,10 +120,8 @@ def main(args):
     metrics = {
         "samples": len(rows),
         "failed": len(failed),
-        "raw_wer_%": round(jiwer.wer(refs_raw, hyps_raw) * 100, 2),
-        "raw_cer_%": round(jiwer.cer(refs_raw, hyps_raw) * 100, 2),
-        "normalized_wer_%": round(jiwer.wer(refs_norm, hyps_norm) * 100, 2),
-        "normalized_cer_%": round(jiwer.cer(refs_norm, hyps_norm) * 100, 2),
+        **asr_scores(hyps_raw, refs_raw, prefix="raw_"),
+        **asr_scores(hyps_norm, refs_norm, prefix="normalized_"),
     }
 
     output_dir = Path(args.output_dir)
@@ -138,8 +136,13 @@ def main(args):
             f"Failed rows: {metrics['failed']}",
             f"Raw WER: {metrics['raw_wer_%']}%",
             f"Raw CER: {metrics['raw_cer_%']}%",
+            f"Raw word accuracy: {metrics['raw_word_accuracy_%']}%",
+            f"Raw sentence error rate: {metrics['raw_sentence_error_rate_%']}%",
             f"Normalized WER: {metrics['normalized_wer_%']}%",
             f"Normalized CER: {metrics['normalized_cer_%']}%",
+            f"Normalized word accuracy: {metrics['normalized_word_accuracy_%']}%",
+            f"Normalized sentence error rate: {metrics['normalized_sentence_error_rate_%']}%",
+            f"Empty predictions: {metrics['normalized_empty_prediction_%']}%",
         ]),
         encoding="utf-8",
     )

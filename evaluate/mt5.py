@@ -10,11 +10,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import pandas as pd
 import torch
 from dotenv import load_dotenv
-from sacrebleu.metrics import BLEU, CHRF
 from tqdm import tqdm
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 from data.loader import load_dataset
+from eval_metrics import mt_scores
 from train.mt5 import keep_dialects, make_translation_pairs, read_config
 
 load_dotenv()
@@ -29,10 +29,7 @@ def normalize_text(text: str) -> str:
 def score_text(hypotheses, references):
     hyp_norm = [normalize_text(text) for text in hypotheses]
     ref_norm = [normalize_text(text) for text in references]
-    return {
-        "bleu": round(BLEU().corpus_score(hyp_norm, [ref_norm]).score, 2),
-        "chrf++": round(CHRF(word_order=2).corpus_score(hyp_norm, [ref_norm]).score, 2),
-    }
+    return mt_scores(hyp_norm, ref_norm)
 
 
 def grouped_scores(rows, group_key):
@@ -124,6 +121,10 @@ def main(args):
             f"Samples evaluated: {all_scores['samples']}",
             f"BLEU: {all_scores['bleu']}",
             f"chrF++: {all_scores['chrf++']}",
+            f"TER: {all_scores['ter']}",
+            f"Exact match: {all_scores['exact_match_%']}%",
+            f"Empty predictions: {all_scores['empty_prediction_%']}%",
+            f"Mean length ratio: {all_scores['mean_length_ratio']}",
         ]),
         encoding="utf-8",
     )
