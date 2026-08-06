@@ -1,4 +1,5 @@
 model_name: Yaraan/bsk-eng-stt-translate
+processor_name: openai/whisper-large-v3
 train_split: train
 eval_split: test
 output_dir: outputs/whisper-bsk-eng-short
@@ -20,4 +21,3 @@ save_steps: 500
 warmup_steps: 100
 max_steps: -1
 gradient_checkpointing: true
-

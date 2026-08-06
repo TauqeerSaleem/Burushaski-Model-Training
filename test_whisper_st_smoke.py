@@ -31,7 +31,9 @@ def main():
     audio = load_audio_16k(rows[0]["audio"])
     print("Audio seconds:", round(len(audio) / 16000, 3))
 
-    processor = AutoProcessor.from_pretrained(config.get("model_name", "openai/whisper-large-v3"))
+    processor = AutoProcessor.from_pretrained(
+        config.get("processor_name") or config.get("model_name", "openai/whisper-large-v3")
+    )
     features = processor.feature_extractor(audio, sampling_rate=16000).input_features[0]
     labels = processor.tokenizer(
         make_target(rows[0], config),
@@ -55,4 +57,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

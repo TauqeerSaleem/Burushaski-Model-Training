@@ -20,6 +20,7 @@ BASE_MODELS = {
     "xlsr_base": "facebook/wav2vec2-xls-r-300m",
     "mt5_base": "google/mt5-base",
     "whisper_st_start": "Yaraan/bsk-eng-stt-translate",
+    "whisper_st_processor": "openai/whisper-large-v3",
 }
 
 
@@ -49,7 +50,12 @@ def main():
 
     cache_model("xlsr_base", "ctc_base", BASE_MODELS["xlsr_base"])
     cache_model("mt5_base", "seq2seq", BASE_MODELS["mt5_base"])
-    cache_model("whisper_st_start", "whisper", BASE_MODELS["whisper_st_start"])
+    cache_model(
+        "whisper_st_start",
+        "whisper",
+        BASE_MODELS["whisper_st_start"],
+        processor_id=BASE_MODELS["whisper_st_processor"],
+    )
 
     if args.include_trained:
         registry = read_registry(args.registry)

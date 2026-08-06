@@ -118,7 +118,8 @@ def main(args):
     print("Target example:", make_target(train_rows[0], config).replace("\n", " | "))
 
     model_name = config.get("model_name", "openai/whisper-large-v3")
-    processor = AutoProcessor.from_pretrained(model_name)
+    processor_name = config.get("processor_name", model_name)
+    processor = AutoProcessor.from_pretrained(processor_name)
     model = AutoModelForSpeechSeq2Seq.from_pretrained(model_name)
     model.config.use_cache = False
     model.config.forced_decoder_ids = None
@@ -184,4 +185,3 @@ if __name__ == "__main__":
     parser.add_argument("--push-to-hub", action="store_true", default=False)
     parser.add_argument("--hub-model-id", default=None)
     main(parser.parse_args())
-
