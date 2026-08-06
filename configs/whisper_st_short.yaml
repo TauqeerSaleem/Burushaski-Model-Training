@@ -1,0 +1,23 @@
+model_name: Yaraan/bsk-eng-stt-translate
+train_split: train
+eval_split: test
+output_dir: outputs/whisper-bsk-eng-short
+hub_model_id: Yaraan/whisper-hunza-bsk-eng-v1
+wandb_project: whisper_bsk_eng_hunza_v1
+target_dialects:
+  - hunza
+target_mode: bsk_and_eng
+bsk_text_field: bsk_text_normalized
+english_field: english_translation
+max_audio_seconds: 20
+max_target_length: 160
+learning_rate: 0.00001
+num_train_epochs: 2
+batch_size: 1
+gradient_accumulation_steps: 4
+eval_steps: 500
+save_steps: 500
+warmup_steps: 100
+max_steps: -1
+gradient_checkpointing: true
+

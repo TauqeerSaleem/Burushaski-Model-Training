@@ -229,7 +229,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--asr-model-path", default="outputs/asr-xlsr_final")
-    parser.add_argument("--mt-model-path", default="outputs/mt5-bsk-eng_final")
+    parser.add_argument("--mt-model-path", default="outputs/mt5-bsk-eng-short_final")
     parser.add_argument("--output-dir", default="outputs/pipeline/results")
     parser.add_argument("--split", default="test")
     parser.add_argument("--dialect", action="append")

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 echo "++++++++++++++++++++++++"
-echo "Project Yaraan - RunPod Setting"
+echo "Project Yaraan - RunPod setup"
 echo "++++++++++++++++++++++++"
 
 apt-get update

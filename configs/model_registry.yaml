@@ -1,0 +1,28 @@
+asr:
+  xlsr:
+    kind: ctc
+    model_id: Yaraan/xlsr-hunza-asr-v1
+  mms:
+    kind: mms_ctc
+    model_id: Yaraan/mms-burushaski-ctc
+  whisper:
+    kind: whisper
+    model_id: Yaraan/whisper-burushaski-lora
+    # If this HF repo is a LoRA adapter rather than a merged model, set base_model.
+    base_model: openai/whisper-large-v3-turbo
+    processor_id: openai/whisper-large-v3-turbo
+    generate_kwargs:
+      max_new_tokens: 128
+
+text_translation:
+  mt5:
+    kind: seq2seq
+    model_id: outputs/mt5-bsk-eng-short_final
+
+direct_speech_translation:
+  whisper_st:
+    kind: whisper
+    model_id: outputs/whisper-bsk-eng-short_final
+    processor_id: outputs/whisper-bsk-eng-short_final
+    generate_kwargs:
+      max_new_tokens: 160

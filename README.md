@@ -12,39 +12,42 @@ Training runs on RunPod.
 
 ---
 
-## Status
+## Scope
 
-This branch has the Hunza-focused XLS-R/mT5 pipeline:
+This branch contains the Hunza-focused ASR, translation, and cascade evaluation pipeline:
 
 - XLS-R ASR training: implemented in `train/xlsr.py`
 - mT5 text translation training: implemented in `train/mt5.py`
-- XLS-R, mT5, and cascade evaluation scripts: implemented in `evaluate/`
+- Whisper direct speech-to-English training: implemented in `train/whisper_st.py`
+- ASR comparison for XLS-R, MMS, and Whisper checkpoints: implemented in `evaluate/asr_all.py`
+- mT5 and cascade evaluation scripts: implemented in `evaluate/`
 - shared data loading from HF/Supabase: implemented in `data/loader.py`
 
-Still pending after the first training runs:
-
-- stricter speaker/prompt-aware split generation
-- final trained checkpoints and real evaluation scores
-
-TTS, Whisper, MMS, and SeamlessM4T are outside this branch's current training run.
+TTS and SeamlessM4T are outside this branch's current training run.
 
 ---
 
 ## Current Model Plan
 
-Main speech-to-English pipeline:
+Main speech-to-English cascade:
 
 ```text
-Burushaski audio -> XLS-R ASR -> Burushaski text -> mT5 -> English text
+Burushaski audio -> XLS-R/MMS/Whisper ASR -> Burushaski text -> mT5 -> English text
 ```
 
-Reverse text pipeline for now:
+Direct speech-to-English baseline:
 
 ```text
-English text -> mT5 -> Burushaski text
+Burushaski audio -> Whisper -> Burushaski transcript + English text
 ```
 
-Whisper, MMS, SeamlessM4T, and TTS are outside the current run.
+Text translation:
+
+```text
+Burushaski text -> mT5 -> English text
+```
+
+Whisper is used with audio input. It is not used as a Burushaski-text-to-English text model.
 
 The first training phase focuses on Hunza because that is where we currently have the strongest coverage. The translation model still keeps dialect tags in the prompts.
 
@@ -79,6 +82,12 @@ python setup/download_models.py
 ```
 Pre-downloads model weights so training doesn't fetch them mid-run.
 
+To also cache the trained ASR checkpoints used during comparison:
+
+```bash
+python setup/download_models.py --include-trained
+```
+
 **4. Verify GPU and environment**
 ```bash
 python setup/verify_environment.py
@@ -93,33 +102,40 @@ python test_run_loader.py --task mt --split test --use-hf --use-supabase --diale
 python test_run_loader.py --task asr --split test --use-supabase --dialect hunza --source supabase --decode-audio
 ```
 
-**6. Run a short training check first**
+**6. Run short checks first**
 ```bash
 python train/xlsr.py --config configs/asr_xlsr_micro.yaml --use-hf --fp16
 python train/mt5.py --config configs/mt5_micro.yaml --use-hf
+python test_translation_smoke.py --config configs/mt5_short.yaml --use-hf --use-supabase --forward
+python test_whisper_st_smoke.py --config configs/whisper_st_micro.yaml --use-hf --forward
 ```
 
 These commands only run a couple of optimizer steps. Use them to check that training, saving, and reloading work before starting the full run. For mT5, use the default precision first unless you have already tested another precision mode on the target GPU.
 
-**7. Run full training**
+After the translation models are saved, these two commands check the comparison scripts on a tiny sample before running the full evaluation:
+
 ```bash
-# Train on the Hugging Face Hunza training split only
-python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --fp16
-python train/mt5.py --config configs/mt5.yaml --use-hf
+python evaluate/asr_all.py --use-hf --use-supabase --max-samples 2
+python evaluate/cascade_all.py --use-hf --use-supabase --max-samples 2
 ```
 
-Both configs currently filter to the Hunza dialect through `target_dialects: [hunza]`.
+**7. Train text and direct speech translation**
+```bash
+python train/mt5.py --config configs/mt5_short.yaml --use-hf
+python train/whisper_st.py --config configs/whisper_st_short.yaml --use-hf --fp16
+```
+
+The mT5 short config trains Burushaski text to English for three epochs. The Whisper short config continues the speech-to-English checkpoint and trains it to output both Burushaski transcript and English translation.
 
 **8. Evaluate**
 ```bash
-# XLS-R ASR
+# Single-model checks
 python evaluate/xlsr.py --model-path outputs/asr-xlsr_final --use-hf --use-supabase
+python evaluate/mt5.py --model-path outputs/mt5-bsk-eng-short_final --config configs/mt5_short.yaml --use-hf --use-supabase
 
-# mT5 text translation
-python evaluate/mt5.py --model-path outputs/mt5-bsk-eng_final --use-hf --use-supabase
-
-# Full cascade: XLS-R transcript -> mT5 English
-python evaluate/pipeline.py --asr-model-path outputs/asr-xlsr_final --mt-model-path outputs/mt5-bsk-eng_final --use-hf --use-supabase
+# Model comparison
+python evaluate/asr_all.py --use-hf --use-supabase
+python evaluate/cascade_all.py --use-hf --use-supabase
 ```
 
 Evaluation writes detailed predictions plus summary CSV, JSON, and short readable TXT files under `outputs/.../results`. If `WANDB_API_KEY` is set, the summary metrics and result files are also attached to the W&B run.
@@ -133,15 +149,19 @@ python evaluate/saved_predictions.py --task mt --predictions outputs/mt5-bsk-eng
 
 **9. Upload final checkpoints to Hugging Face**
 ```bash
-huggingface-cli upload Yaraan/xlsr-hunza-asr-v1 outputs/asr-xlsr_final .
-huggingface-cli upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/mt5-bsk-eng_final .
+hf upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/mt5-bsk-eng-short_final .
+hf upload Yaraan/whisper-hunza-bsk-eng-v1 outputs/whisper-bsk-eng-short_final .
+hf upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/mt5-bsk-eng/results results
+hf upload Yaraan/whisper-hunza-bsk-eng-v1 outputs/cascade-all/results cascade-results
+hf upload Yaraan/yaraan-hunza-asr-comparison-results outputs/asr-all/results .
+hf upload Yaraan/yaraan-hunza-cascade-results outputs/cascade-all/results .
 ```
 
 For a fresh run, the training scripts can also upload automatically after training:
 
 ```bash
-python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --fp16 --push-to-hub
-python train/mt5.py --config configs/mt5.yaml --use-hf --push-to-hub
+python train/mt5.py --config configs/mt5_short.yaml --use-hf --push-to-hub
+python train/whisper_st.py --config configs/whisper_st_short.yaml --use-hf --fp16 --push-to-hub
 ```
 
 ---
@@ -179,8 +199,11 @@ You do not need to clone the dataset for normal training if `HF_TOKEN` is set. T
 ```
 configs/
   datasets.yaml        # HF repo IDs for linked dataset loading
+  model_registry.yaml  # ASR/translation checkpoints used in evaluation
   asr_xlsr.yaml        # XLS-R ASR settings
   mt5.yaml             # mT5 translation settings
+  mt5_short.yaml       # practical first mT5 run
+  whisper_st_short.yaml  # practical first Whisper speech-translation run
 
 data/
   loader.py            # entry point: load_dataset(...)
@@ -201,10 +224,13 @@ setup/
 train/
   xlsr.py              # fine-tune XLS-R CTC ASR
   mt5.py               # fine-tune mT5 text translation
+  whisper_st.py        # fine-tune Whisper for speech-to-English
 evaluate/
   xlsr.py              # compute ASR CER/WER
+  asr_all.py           # compare XLS-R, MMS, and Whisper ASR checkpoints
   mt5.py               # compute MT chrF++/BLEU
-  pipeline.py          # compare gold transcript MT vs XLS-R -> mT5 cascade
+  pipeline.py          # XLS-R -> mT5 cascade evaluator
+  cascade_all.py       # compare ASR -> mT5 cascades
 
 ```
 
@@ -215,8 +241,7 @@ evaluate/
 The normal training path is linked mode. Hugging Face supplies the 80/20 training/test split, while Supabase is used as an additional Hunza evaluation source.
 
 ```bash
-python train/xlsr.py --config configs/asr_xlsr.yaml --use-hf --fp16
-python train/mt5.py --config configs/mt5.yaml --use-hf
+python train/mt5.py --config configs/mt5_short.yaml --use-hf
 ```
 
 The live app stores recordings in Supabase. The training loader reads from `active_recordings` and only keeps rows that have the fields needed for the current task:
@@ -240,7 +265,7 @@ python data/manifest.py --task mt --split train --use-hf --use-supabase --dialec
 
 ## Evaluation
 
-The evaluation scripts run after a checkpoint exists. They do not contain fixed results or placeholder scores.
+The evaluation scripts run after a checkpoint exists and write fresh metrics from the selected test data.
 
 ASR is evaluated with both raw and normalized:
 
@@ -268,16 +293,16 @@ Text translation and speech-to-English outputs are evaluated with:
 
 The mT5 evaluator writes summaries by translation direction, dialect, and source.
 
-The cascade evaluator reports two systems on the same test set:
+The cascade evaluator compares the available ASR-to-mT5 systems on the same test set:
 
 ```text
-gold Burushaski transcript -> mT5 -> English
 XLS-R predicted transcript -> mT5 -> English
+MMS predicted transcript -> mT5 -> English
+Whisper predicted transcript -> mT5 -> English
+Whisper direct speech translation -> English
 ```
 
-This shows how much performance is lost because of ASR errors.
-
-The cascade evaluator also writes an ASR summary with normalized WER/CER for the XLS-R transcript used inside the pipeline.
+This shows how much translation quality changes depending on which ASR transcript is fed into the text translator.
 
 ---
 
@@ -285,5 +310,5 @@ The cascade evaluator also writes an ASR summary with normalized WER/CER for the
 
 - **HuggingFace private access** - set `HF_TOKEN` before using `--use-hf`.
 - **Supabase `--use-supabase` flag** - use a service role key in `.env`. Do not paste it into notebooks or logs.
-- **Splits still need tightening** - the next step is speaker/prompt-aware splitting. Do not treat random clip-level splits as final research results.
-- **Current implementation is training/evaluation-ready, not result-ready** - report only the metrics produced from trained checkpoints.
+- **HF/Supabase split policy** - training uses the HF Hunza train split. Evaluation uses the HF Hunza test split plus complete Hunza rows from Supabase.
+- **Speaker and prompt overlap** - before publication-style reporting, confirm whether the HF split is speaker/prompt independent.

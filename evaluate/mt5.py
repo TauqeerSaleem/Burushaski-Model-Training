@@ -70,6 +70,8 @@ def main(args):
     )
     dataset = keep_dialects(dataset, args.dialect or config.get("target_dialects"))
     pairs = make_translation_pairs(dataset, config)
+    if args.max_samples:
+        pairs = pairs[:args.max_samples]
     if not pairs:
         raise ValueError("No MT evaluation pairs found.")
 
@@ -138,13 +140,14 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model-path", default="outputs/mt5-bsk-eng_final")
+    parser.add_argument("--model-path", default="outputs/mt5-bsk-eng-short_final")
     parser.add_argument("--config", default="configs/mt5.yaml")
     parser.add_argument("--output-dir", default="outputs/mt5-bsk-eng/results")
     parser.add_argument("--split", default="test")
     parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--use-supabase", action="store_true", default=False)
+    parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--num-beams", type=int, default=4)
     parser.add_argument("--cpu", action="store_true", default=False)
     main(parser.parse_args())
