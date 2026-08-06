@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from transformers import (
+    AutoFeatureExtractor,
     AutoModelForCTC,
     AutoModelForSeq2SeqLM,
     AutoModelForSpeechSeq2Seq,
@@ -24,7 +25,10 @@ BASE_MODELS = {
 
 def cache_model(name, kind, model_id, processor_id=None, base_model=None):
     print(f"Downloading {name}: {model_id}")
-    if kind in {"ctc", "mms_ctc"}:
+    if kind == "ctc_base":
+        AutoFeatureExtractor.from_pretrained(model_id)
+        AutoModelForCTC.from_pretrained(model_id)
+    elif kind in {"ctc", "mms_ctc"}:
         AutoProcessor.from_pretrained(processor_id or model_id)
         AutoModelForCTC.from_pretrained(model_id)
     elif kind == "whisper":
@@ -43,7 +47,7 @@ def main():
     parser.add_argument("--include-trained", action="store_true", default=False)
     args = parser.parse_args()
 
-    cache_model("xlsr_base", "ctc", BASE_MODELS["xlsr_base"])
+    cache_model("xlsr_base", "ctc_base", BASE_MODELS["xlsr_base"])
     cache_model("mt5_base", "seq2seq", BASE_MODELS["mt5_base"])
     cache_model("whisper_st_start", "whisper", BASE_MODELS["whisper_st_start"])
 
