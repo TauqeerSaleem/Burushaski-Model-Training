@@ -63,7 +63,9 @@ def main(args):
     device = "cuda" if torch.cuda.is_available() and not args.cpu else "cpu"
     asr_specs = get_model_specs("asr", args.asr_model, args.registry)
     translator_specs = get_model_specs("text_translation", args.translator, args.registry)
-    direct_specs = get_model_specs("direct_speech_translation", args.direct_model, args.registry)
+    direct_specs = {}
+    if not args.skip_direct:
+        direct_specs = get_model_specs("direct_speech_translation", args.direct_model, args.registry)
     dataset = load_dataset("asr", args.split, args.use_hf, args.use_supabase, args.dialect)
     dataset = [row for row in dataset if str(row.get("english_translation") or "").strip()]
     if args.max_samples:
@@ -222,6 +224,7 @@ if __name__ == "__main__":
     parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--use-supabase", action="store_true", default=False)
+    parser.add_argument("--skip-direct", action="store_true", default=False)
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--max-length", type=int, default=128)
     parser.add_argument("--num-beams", type=int, default=4)
@@ -231,6 +234,6 @@ if __name__ == "__main__":
         parsed_args.dialect = ["hunza"]
     if parsed_args.translator is None:
         parsed_args.translator = ["mt5"]
-    if parsed_args.direct_model is None:
+    if parsed_args.direct_model is None and not parsed_args.skip_direct:
         parsed_args.direct_model = ["whisper_st"]
     main(parsed_args)
