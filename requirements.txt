@@ -4,6 +4,7 @@ supabase>=2.0,<3.0
 pyyaml>=6.0,<7.0
 torch
 torchaudio
+torchcodec>=0.7,<0.8
 transformers>=4.45,<5.0
 accelerate>=0.34,<2.0
 sentencepiece>=0.2,<0.3

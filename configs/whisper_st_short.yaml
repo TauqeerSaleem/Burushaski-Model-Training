@@ -1,5 +1,5 @@
 model_name: Yaraan/bsk-eng-stt-translate
-processor_name: openai/whisper-large-v3
+processor_name: openai/whisper-large-v2
 train_split: train
 eval_split: test
 output_dir: outputs/whisper-bsk-eng-short

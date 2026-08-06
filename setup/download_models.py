@@ -20,7 +20,7 @@ BASE_MODELS = {
     "xlsr_base": "facebook/wav2vec2-xls-r-300m",
     "mt5_base": "google/mt5-base",
     "whisper_st_start": "Yaraan/bsk-eng-stt-translate",
-    "whisper_st_processor": "openai/whisper-large-v3",
+    "whisper_st_processor": "openai/whisper-large-v2",
 }
 
 
