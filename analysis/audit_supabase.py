@@ -113,18 +113,21 @@ def build_frame(recordings, users_by_participant, prompts_by_key, tasks_by_recor
         recording_english = clean_text(row.get("english_translation"))
         prompt = prompts_by_key.get((row.get("module_id"), row.get("sentence_id")), {})
         prompt_english = clean_text(prompt.get("english"))
+        module_id = row.get("module_id") or row.get("prompt_type") or "unknown"
+        is_image_prompt = str(module_id).lower() in {"image-prompts", "image_prompts", "picture_description"}
+        usable_prompt_english = "" if is_image_prompt else prompt_english
         tasks = related_tasks(row, tasks_by_recording)
         task_transcript, task_transcript_status = task_value(tasks, "transcript")
         task_translation, task_translation_status = task_value(tasks, "translation")
         transcript = recording_transcript or task_transcript
-        english = recording_english or task_translation or prompt_english
+        english = recording_english or task_translation or usable_prompt_english
         audio_path = row.get("audio_path")
         rows.append({
             "id": row.get("id") or row.get("recording_id") or audio_path,
             "participant_id": row.get("participant_id") or "unknown",
             "dialect": normalized_dialect(row, users_by_participant),
             "gender": normalized_gender(row, users_by_participant),
-            "module_id": row.get("module_id") or row.get("prompt_type") or "unknown",
+            "module_id": module_id,
             "prompt_id": row.get("prompt_id") or row.get("sentence_id") or "",
             "audio_path": audio_path or "",
             "has_audio": has_text(audio_path),
@@ -137,13 +140,15 @@ def build_frame(recordings, users_by_participant, prompts_by_key, tasks_by_recor
             "task_has_translation": has_text(task_translation),
             "task_translation_status": task_translation_status,
             "prompt_has_english": has_text(prompt_english),
+            "prompt_english_usable_for_mt": has_text(usable_prompt_english),
+            "content_type": "image_prompt" if is_image_prompt else "prompt_bank",
             "english_source": (
                 "recording_english_translation"
                 if recording_english
                 else "research_task_translation"
                 if task_translation
                 else "prompt_bank_english"
-                if prompt_english
+                if usable_prompt_english
                 else ""
             ),
             "transcript": transcript or "",
@@ -172,6 +177,7 @@ def task_counts(frame):
             "recording_translation_rows": int(group["recording_has_english_translation"].sum()),
             "task_translation_rows": int(group["task_has_translation"].sum()),
             "prompt_english_rows": int(group["prompt_has_english"].sum()),
+            "prompt_english_usable_for_mt_rows": int(group["prompt_english_usable_for_mt"].sum()),
             "missing_audio": int((~group["has_audio"]).sum()),
             "missing_transcript": int((~group["has_transcript"]).sum()),
             "missing_english_translation": int((~group["has_english_translation"]).sum()),
@@ -206,6 +212,13 @@ def write_summary(frame, output_dir, dialect):
         f"- English translation already on recording: {int(scoped['recording_has_english_translation'].sum()) if not scoped.empty else 0}",
         f"- English translation available from done/review RA task: {int(scoped['task_has_translation'].sum()) if not scoped.empty else 0}",
         f"- English prompt available from prompt bank: {int(scoped['prompt_has_english'].sum()) if not scoped.empty else 0}",
+        f"- prompt-bank English usable as MT reference: {int(scoped['prompt_english_usable_for_mt'].sum()) if not scoped.empty else 0}",
+        "",
+        "Content type:",
+        *[
+            f"- {row.content_type}: {row.rows}"
+            for row in counts_by(scoped, ["content_type"]).itertuples()
+        ],
         "",
         f"Missing audio: {int((~scoped['has_audio']).sum()) if not scoped.empty else 0}",
         f"Missing transcript: {int((~scoped['has_transcript']).sum()) if not scoped.empty else 0}",

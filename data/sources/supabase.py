@@ -87,6 +87,11 @@ def _resolve_task(row, tasks_by_recording):
     return tasks_by_recording.get(row.get("id"), [])
 
 
+def _is_image_prompt(row):
+    module = str(row.get("module_id") or row.get("prompt_type") or "").lower()
+    return module in {"image-prompts", "image_prompts", "picture_description"}
+
+
 def load_supabase_dataset(task: str = "mt", dialects: list[str] | None = None):
     if supabase is None:
         raise ValueError("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY or SUPABASE_KEY must be set before loading Supabase data")
@@ -112,7 +117,7 @@ def load_supabase_dataset(task: str = "mt", dialects: list[str] | None = None):
         resolved_english = (
             _clean_text(row.get("english_translation"))
             or _task_value(tasks, "translation")
-            or _clean_text(prompt.get("english"))
+            or ("" if _is_image_prompt(row) else _clean_text(prompt.get("english")))
         )
         if wanted_dialects and dialect not in wanted_dialects:
             continue

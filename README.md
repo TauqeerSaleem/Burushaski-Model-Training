@@ -109,7 +109,7 @@ python test_translation_smoke.py --config configs/mt5_clean.yaml --forward
 
 These commands only run a few optimizer steps. Use them to check that training, saving, and reloading work before starting the full run.
 
-After the translation models are saved, these two commands check the comparison scripts on a tiny sample before running the full evaluation:
+These commands check the comparison scripts on a tiny sample before running the full evaluation:
 
 ```bash
 python evaluate/asr_all.py --use-hf --use-supabase --max-samples 2
@@ -118,7 +118,19 @@ python evaluate/translation_source_scopes.py --max-samples 2
 python evaluate/cascade_source_scopes.py --max-samples 2
 ```
 
-**7. Train text translation**
+**7. Run ASR comparison before text training**
+
+```bash
+python evaluate/asr_source_scopes.py
+```
+
+This evaluates the existing XLS-R, MMS, and Whisper ASR checkpoints. It reports HF test and Supabase Hunza separately, with extra breakdowns by source, content type, module, and gender where available. The combined HF+Supabase aggregate is optional:
+
+```bash
+python evaluate/asr_source_scopes.py --include-combined
+```
+
+**8. Train text translation**
 ```bash
 python analysis/build_clean_mt_dataset.py
 python train/mt5.py --config configs/mt5_clean.yaml
@@ -127,7 +139,7 @@ python train/mbart.py --config configs/mbart_clean.yaml
 
 The clean MT builder creates a prompt/source-aware split from the HF parquet data. The same normalized English prompt and the same normalized Burushaski source are kept out of multiple splits.
 
-**8. Evaluate**
+**9. Evaluate text translation and cascades**
 ```bash
 # Single-model checks
 python evaluate/xlsr.py --model-path outputs/asr-xlsr_final --use-hf --use-supabase
@@ -141,7 +153,7 @@ python evaluate/translation_source_scopes.py
 python evaluate/cascade_source_scopes.py
 ```
 
-Evaluation writes detailed predictions plus summary CSV, JSON, and short readable TXT files under `outputs/.../results`. If `WANDB_API_KEY` is set, the summary metrics and result files are also attached to the W&B run.
+Evaluation writes detailed predictions plus summary CSV, JSON, and short readable TXT files under `outputs/...`. Scope summaries are written once at the top of the relevant output folder, while detailed predictions stay inside the individual scope folders. The TXT summaries include the main score table and the useful breakdowns, so the result can be read without opening every CSV. If `WANDB_API_KEY` is set, the summary metrics and result files are also attached to the W&B run.
 
 Saved prediction CSVs can be rescored later without retraining:
 
@@ -156,9 +168,18 @@ hf upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/mt5-hunza-clean_final .
 hf upload Yaraan/mbart-hunza-bsk-eng-v1 outputs/mbart-hunza-bsk-eng-clean_final .
 hf upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/text-translation/mt5 clean-eval-results
 hf upload Yaraan/mbart-hunza-bsk-eng-v1 outputs/text-translation/mbart results
-hf upload Yaraan/yaraan-hunza-asr-source-scope-results outputs/asr-all .
+
+python setup/clear_hf_repo.py Yaraan/yaraan-hunza-asr-comparison-results
+hf upload Yaraan/yaraan-hunza-asr-comparison-results outputs/asr-all .
+
+python setup/clear_hf_repo.py Yaraan/yaraan-hunza-text-translation-results
+hf upload Yaraan/yaraan-hunza-text-translation-results outputs/text-translation .
+
+python setup/clear_hf_repo.py Yaraan/yaraan-hunza-clean-cascade-results
 hf upload Yaraan/yaraan-hunza-clean-cascade-results outputs/cascade-all .
 ```
+
+Use `setup/clear_hf_repo.py` before uploading result-only repos. That keeps old root-level files and old combined folders from sitting beside the current results.
 
 For a fresh run, the training scripts can also upload automatically after training:
 
@@ -235,12 +256,12 @@ train/
 evaluate/
   xlsr.py              # compute ASR CER/WER
   asr_all.py           # compare XLS-R, MMS, and Whisper ASR checkpoints
-  asr_source_scopes.py # runs ASR comparison on HF-only, Supabase-only, and combined scopes
+  asr_source_scopes.py # runs ASR comparison on HF-only and Supabase-only, with optional combined scope
   mt5.py               # compute MT chrF++/BLEU
   mbart.py             # compute mBART MT chrF++/BLEU
-  translation_source_scopes.py # compares mT5/mBART on clean-HF, Supabase, and combined scopes
+  translation_source_scopes.py # compares mT5/mBART on clean-HF and Supabase, with optional combined scope
   cascade_all.py       # compare ASR -> text translator cascades
-  cascade_source_scopes.py # runs cascade comparison on HF-only, Supabase-only, and combined scopes
+  cascade_source_scopes.py # runs cascade comparison on HF-only and Supabase-only, with optional combined scope
 
 ```
 
@@ -255,14 +276,16 @@ python analysis/build_clean_mt_dataset.py
 python train/mt5.py --config configs/mt5_clean.yaml
 ```
 
-The live app stores recordings in Supabase. The training loader reads from `active_recordings` and only keeps rows that have the fields needed for the current task:
+The live app stores recordings in Supabase. The loader resolves usable text from the recording row, reviewed RA tasks, and prompt bank where appropriate. It only keeps rows that have the fields needed for the current task:
 
 - ASR: `audio_path` + `transcript`
-- MT: `transcript` + `english_translation`
+- MT/cascade: `transcript` + a real English reference
+
+For normal prompted recordings, the prompt-bank English sentence can be used as the English reference. For image-prompt recordings, prompt-bank English is not assumed to be a translation of the spoken Burushaski; those rows need an actual recording translation or reviewed RA translation before they are used for MT/cascade evaluation.
 
 Audio files are stored in Supabase Storage under `dialect/participant_id/module_id/` paths and cached locally under `cache/audio/` (or `CACHE_DIR` if set). Older app recordings may be `.m4a`; newer browser-friendly recordings may be `.webm`.
 
-The Hugging Face consolidated dataset is configured in `configs/datasets.yaml`. Supabase data is not used for training in the current run. It is added during evaluation so the final reports cover HF-only, Supabase-only, and combined Hunza scopes.
+The Hugging Face consolidated dataset is configured in `configs/datasets.yaml`. Supabase data is not used for training in the current run. It is added during evaluation so the final reports compare HF-only and Supabase-only Hunza performance clearly.
 
 The old translation workbook is text-only. If those rows are needed for RunPod training, fold them into an online dataset first rather than reading an `.xlsx` from a local machine.
 
@@ -289,7 +312,7 @@ ASR is evaluated with both raw and normalized:
 - empty prediction rate
 - average reference/prediction length
 
-CER is especially important here because Burushaski spelling is not fully standardized, and character-level mistakes are more informative than only counting whole-word errors. The evaluator also writes group summaries by dialect, participant, and gender.
+CER is especially important here because Burushaski spelling is not fully standardized, and character-level mistakes are more informative than only counting whole-word errors. The evaluator also writes group summaries by source, content type, module, and gender. This matters because Supabase image-prompt recordings are usually harder and more open-ended than short prompted sentences.
 
 Text translation and speech-to-English outputs are evaluated with:
 
@@ -314,11 +337,11 @@ Whisper predicted transcript -> mT5/mBART -> English
 
 This shows how much translation quality changes depending on which ASR transcript is fed into the text translator.
 
-For this phase, the expected comparison tables are:
+For this phase, the main comparison tables are:
 
-- ASR: 3 ASR models x 3 source scopes = 9 result rows
-- Text translation: 2 translators x 3 source scopes = 6 result rows
-- Cascade: 3 ASR models x 2 text translators x 3 source scopes = 18 result rows
+- ASR: 3 ASR models x 2 main source scopes = 6 overall rows, plus source/content-type/module/gender breakdowns
+- Text translation: 2 translators x 2 main source scopes = 4 rows, plus direction/dialect/source breakdowns
+- Cascade: 3 ASR models x 2 text translators x 2 main source scopes = 12 rows, plus translation-side and ASR-side breakdowns
 
 ---
 
@@ -326,6 +349,6 @@ For this phase, the expected comparison tables are:
 
 - **HuggingFace private access** - set `HF_TOKEN` before using `--use-hf`.
 - **Supabase `--use-supabase` flag** - use a service role key in `.env`. Do not paste it into notebooks or logs.
-- **ASR split policy** - ASR checkpoints are evaluated on HF-only, Supabase-only, and combined Hunza scopes.
+- **ASR split policy** - ASR checkpoints are evaluated on HF-only and Supabase-only Hunza scopes. Combined reporting is optional.
 - **MT split policy** - text translation uses the clean prompt/source-aware split generated from the HF parquets.
 - **HF upload policy** - mT5 updates `Yaraan/mt5-hunza-bsk-eng-v1`; mBART uses `Yaraan/mbart-hunza-bsk-eng-v1`.

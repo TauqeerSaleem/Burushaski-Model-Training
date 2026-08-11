@@ -35,11 +35,59 @@ def normalize_bsk_metric(text):
     return " ".join(text.split())
 
 
+def infer_module(row):
+    domain = str(row.get("domain") or "").strip()
+    if domain and domain.lower() != "unknown":
+        return domain
+    filename = str(row.get("filename") or row.get("id") or "")
+    parts = [part for part in filename.replace("\\", "/").split("/") if part]
+    if len(parts) >= 3 and parts[0].lower() in {"hunza", "nagar", "yasin"}:
+        return parts[2]
+    return "hf_prompted_sentences" if str(row.get("source")) == "hf" else "unknown"
+
+
+def infer_content_type(row):
+    module = infer_module(row).lower()
+    if module in {"image-prompts", "image_prompts", "picture_description"}:
+        return "image_prompt"
+    if str(row.get("source")) == "hf":
+        return "hf_prompted_sentence"
+    return "prompt_bank"
+
+
 def score_translation(hypotheses, references):
     return mt_scores(
         [normalize_english(text) for text in hypotheses],
         [normalize_english(text) for text in references],
     )
+
+
+def grouped_mt_scores(frame, group_keys):
+    rows = []
+    for keys, group in frame.groupby(group_keys, dropna=False):
+        if not isinstance(keys, tuple):
+            keys = (keys,)
+        row = dict(zip(group_keys, keys))
+        row["samples"] = len(group)
+        row.update(score_translation(group["hypothesis_english"].tolist(), group["reference_english"].tolist()))
+        rows.append(row)
+    return rows
+
+
+def grouped_asr_scores(frame, group_keys):
+    rows = []
+    for keys, group in frame.groupby(group_keys, dropna=False):
+        if not isinstance(keys, tuple):
+            keys = (keys,)
+        row = dict(zip(group_keys, keys))
+        row["samples"] = len(group)
+        row.update(asr_scores(
+            group["asr_bsk"].map(normalize_bsk_metric).tolist(),
+            group["reference_bsk"].map(normalize_bsk_metric).tolist(),
+            prefix="normalized_",
+        ))
+        rows.append(row)
+    return rows
 
 
 def main(args):
@@ -84,6 +132,8 @@ def main(args):
                         "participant_id": row.get("participant_id"),
                         "gender": row.get("gender"),
                         "source": row.get("source"),
+                        "module": infer_module(row),
+                        "content_type": infer_content_type(row),
                         "reference_bsk": reference_bsk,
                         "asr_bsk": asr_text,
                         "reference_english": reference_english,
@@ -129,6 +179,20 @@ def main(args):
     pd.DataFrame(rows).to_csv(output_dir / "cascade_all_predictions.csv", index=False)
     pd.DataFrame(summary).to_csv(output_dir / "cascade_all_metrics_summary.csv", index=False)
     pd.DataFrame(asr_summary).to_csv(output_dir / "cascade_all_asr_metrics_summary.csv", index=False)
+    mt_by_source = grouped_mt_scores(frame, ["system", "source"])
+    mt_by_content = grouped_mt_scores(frame, ["system", "content_type"])
+    mt_by_module = grouped_mt_scores(frame, ["system", "module"])
+    mt_by_gender = grouped_mt_scores(frame, ["system", "gender"])
+    asr_by_source = grouped_asr_scores(frame, ["system", "source"])
+    asr_by_content = grouped_asr_scores(frame, ["system", "content_type"])
+    asr_by_module = grouped_asr_scores(frame, ["system", "module"])
+    pd.DataFrame(mt_by_source).to_csv(output_dir / "cascade_all_metrics_by_source.csv", index=False)
+    pd.DataFrame(mt_by_content).to_csv(output_dir / "cascade_all_metrics_by_content_type.csv", index=False)
+    pd.DataFrame(mt_by_module).to_csv(output_dir / "cascade_all_metrics_by_module.csv", index=False)
+    pd.DataFrame(mt_by_gender).to_csv(output_dir / "cascade_all_metrics_by_gender.csv", index=False)
+    pd.DataFrame(asr_by_source).to_csv(output_dir / "cascade_all_asr_metrics_by_source.csv", index=False)
+    pd.DataFrame(asr_by_content).to_csv(output_dir / "cascade_all_asr_metrics_by_content_type.csv", index=False)
+    pd.DataFrame(asr_by_module).to_csv(output_dir / "cascade_all_asr_metrics_by_module.csv", index=False)
     if failed_rows:
         pd.DataFrame(failed_rows).to_csv(output_dir / "cascade_all_failed_rows.csv", index=False)
     (output_dir / "cascade_all_metrics_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
@@ -136,9 +200,29 @@ def main(args):
     (output_dir / "cascade_all_metrics_summary.txt").write_text(
         "\n".join([
             "ASR -> Text Translation Cascade Summary",
+            "",
+            "Translation quality:",
             *[
                 f"{row['system']}: {row['samples']} samples, BLEU {row['bleu']}, chrF++ {row['chrf++']}, TER {row['ter']}"
                 for row in summary
+            ],
+            "",
+            "ASR quality inside the cascade:",
+            *[
+                f"{row['system']}: {row['samples']} samples, normalized WER {row['normalized_wer_%']}%, normalized CER {row['normalized_cer_%']}%"
+                for row in asr_summary
+            ],
+            "",
+            "Translation quality by content type:",
+            *[
+                f"{row['content_type']} | {row['system']}: {row['samples']} samples, BLEU {row['bleu']}, chrF++ {row['chrf++']}, TER {row['ter']}"
+                for row in sorted(mt_by_content, key=lambda item: (item["content_type"], -item["chrf++"]))
+            ],
+            "",
+            "Translation quality by module:",
+            *[
+                f"{row['module']} | {row['system']}: {row['samples']} samples, BLEU {row['bleu']}, chrF++ {row['chrf++']}, TER {row['ter']}"
+                for row in sorted(mt_by_module, key=lambda item: (item["module"], -item["chrf++"]))
             ],
         ]),
         encoding="utf-8",

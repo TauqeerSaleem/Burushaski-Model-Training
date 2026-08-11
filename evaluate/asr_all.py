@@ -32,6 +32,26 @@ def plain_metric(text):
     return " ".join(str(text or "").lower().split())
 
 
+def infer_module(row):
+    domain = str(row.get("domain") or "").strip()
+    if domain and domain.lower() != "unknown":
+        return domain
+    filename = str(row.get("filename") or row.get("id") or "")
+    parts = [part for part in filename.replace("\\", "/").split("/") if part]
+    if len(parts) >= 3 and parts[0].lower() in {"hunza", "nagar", "yasin"}:
+        return parts[2]
+    return "hf_prompted_sentences" if str(row.get("source")) == "hf" else "unknown"
+
+
+def infer_content_type(row):
+    module = infer_module(row).lower()
+    if module in {"image-prompts", "image_prompts", "picture_description"}:
+        return "image_prompt"
+    if str(row.get("source")) == "hf":
+        return "hf_prompted_sentence"
+    return "prompt_bank"
+
+
 def grouped_scores(rows, group_key):
     if not rows:
         return []
@@ -92,6 +112,8 @@ def main(args):
                     "participant_id": row.get("participant_id"),
                     "gender": row.get("gender"),
                     "source": row.get("source"),
+                    "module": infer_module(row),
+                    "content_type": infer_content_type(row),
                     "reference": reference,
                     "hypothesis": hypothesis,
                     "reference_raw_metric": plain_metric(reference),
@@ -125,6 +147,8 @@ def main(args):
     pd.DataFrame(prediction_rows).to_csv(output_dir / "asr_all_predictions.csv", index=False)
     pd.DataFrame(summary_rows).to_csv(output_dir / "asr_all_metrics_summary.csv", index=False)
     pd.DataFrame(grouped_scores(prediction_rows, "source")).to_csv(output_dir / "asr_all_metrics_by_source.csv", index=False)
+    pd.DataFrame(grouped_scores(prediction_rows, "content_type")).to_csv(output_dir / "asr_all_metrics_by_content_type.csv", index=False)
+    pd.DataFrame(grouped_scores(prediction_rows, "module")).to_csv(output_dir / "asr_all_metrics_by_module.csv", index=False)
     pd.DataFrame(grouped_scores(prediction_rows, "gender")).to_csv(output_dir / "asr_all_metrics_by_gender.csv", index=False)
     if failed_rows:
         pd.DataFrame(failed_rows).to_csv(output_dir / "asr_all_failed_rows.csv", index=False)
@@ -139,6 +163,23 @@ def main(args):
         ]),
         encoding="utf-8",
     )
+    content_rows = grouped_scores(prediction_rows, "content_type")
+    module_rows = grouped_scores(prediction_rows, "module")
+    insight_lines = ["ASR Analysis By Data Type", ""]
+    insight_lines.append("By content type:")
+    for row in sorted(content_rows, key=lambda item: (item["content_type"], item["normalized_wer_%"])):
+        insight_lines.append(
+            f"- {row['content_type']} | {row['model']}: {row['samples']} samples, "
+            f"normalized WER {row['normalized_wer_%']}%, normalized CER {row['normalized_cer_%']}%"
+        )
+    insight_lines.append("")
+    insight_lines.append("By module:")
+    for row in sorted(module_rows, key=lambda item: (item["module"], item["normalized_wer_%"])):
+        insight_lines.append(
+            f"- {row['module']} | {row['model']}: {row['samples']} samples, "
+            f"normalized WER {row['normalized_wer_%']}%, normalized CER {row['normalized_cer_%']}%"
+        )
+    (output_dir / "asr_all_analysis_by_type.txt").write_text("\n".join(insight_lines), encoding="utf-8")
     log_to_wandb(summary_rows, output_dir)
     print(summary_rows)
     print(f"Results saved to {output_dir}")

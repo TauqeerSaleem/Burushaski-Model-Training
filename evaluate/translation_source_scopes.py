@@ -38,6 +38,18 @@ def score_frame(frame):
     return mt_scores(hypotheses, references)
 
 
+def grouped_summary(frame, group_keys):
+    rows = []
+    for keys, group in frame.groupby(group_keys, dropna=False):
+        if not isinstance(keys, tuple):
+            keys = (keys,)
+        row = dict(zip(group_keys, keys))
+        row["samples"] = len(group)
+        row.update(score_frame(group))
+        rows.append(row)
+    return rows
+
+
 def run_eval(name, spec, scope, output_dir, args):
     command = [
         sys.executable,
@@ -102,6 +114,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-root", default="outputs/text-translation")
     parser.add_argument("--translator", action="append", choices=sorted(TRANSLATORS), default=None)
+    parser.add_argument("--include-combined", action="store_true", default=False)
     parser.add_argument("--max-samples", type=int, default=None)
     parser.add_argument("--cpu", action="store_true", default=False)
     args = parser.parse_args()
@@ -109,6 +122,9 @@ def main():
     selected = args.translator or list(TRANSLATORS)
     output_root = Path(args.output_root)
     summary_rows = []
+    direction_rows = []
+    source_rows = []
+    dialect_rows = []
 
     for name in selected:
         spec = TRANSLATORS[name]
@@ -118,24 +134,64 @@ def main():
 
         hf_frame = run_eval(name, spec, "hf_clean_test", hf_dir, args)
         supabase_frame = run_eval(name, spec, "supabase_hunza", supabase_dir, args)
-        combined_frame = pd.concat([hf_frame, supabase_frame], ignore_index=True)
 
         summary_rows.append(write_scope_outputs(hf_frame, hf_dir, name, "hf_clean_test"))
         summary_rows.append(write_scope_outputs(supabase_frame, supabase_dir, name, "supabase_hunza"))
-        summary_rows.append(write_scope_outputs(combined_frame, combined_dir, name, "hf_clean_test_plus_supabase"))
+        direction_rows.extend(grouped_summary(hf_frame, ["translator", "scope", "direction"]))
+        direction_rows.extend(grouped_summary(supabase_frame, ["translator", "scope", "direction"]))
+        source_rows.extend(grouped_summary(hf_frame, ["translator", "scope", "source_name"]))
+        source_rows.extend(grouped_summary(supabase_frame, ["translator", "scope", "source_name"]))
+        dialect_rows.extend(grouped_summary(hf_frame, ["translator", "scope", "dialect"]))
+        dialect_rows.extend(grouped_summary(supabase_frame, ["translator", "scope", "dialect"]))
+        if args.include_combined:
+            combined_frame = pd.concat([hf_frame, supabase_frame], ignore_index=True)
+            summary_rows.append(write_scope_outputs(combined_frame, combined_dir, name, "hf_clean_test_plus_supabase"))
+            direction_rows.extend(grouped_summary(combined_frame, ["translator", "scope", "direction"]))
+            source_rows.extend(grouped_summary(combined_frame, ["translator", "scope", "source_name"]))
+            dialect_rows.extend(grouped_summary(combined_frame, ["translator", "scope", "dialect"]))
 
-    comparison_dir = output_root / "source_scope_comparison"
+    comparison_dir = output_root
     comparison_dir.mkdir(parents=True, exist_ok=True)
     summary = pd.DataFrame(summary_rows)
-    summary.to_csv(comparison_dir / "translation_source_scope_comparison.csv", index=False)
+    summary.to_csv(comparison_dir / "translation_scope_summary.csv", index=False)
+    pd.DataFrame(direction_rows).to_csv(comparison_dir / "translation_metrics_by_direction.csv", index=False)
+    pd.DataFrame(source_rows).to_csv(comparison_dir / "translation_metrics_by_source.csv", index=False)
+    pd.DataFrame(dialect_rows).to_csv(comparison_dir / "translation_metrics_by_dialect.csv", index=False)
 
-    lines = ["Text translation source-scope comparison"]
+    lines = [
+        "Text translation source-scope comparison",
+        "",
+        "Default run reports clean HF test and Supabase Hunza separately. Combined results are optional because the split is more useful for analysis.",
+        "",
+        "Overall:",
+    ]
     for _, row in summary.sort_values(["scope", "chrf++"], ascending=[True, False]).iterrows():
         lines.append(
             f"{row['scope']} | {row['translator']}: {row['samples']} samples, "
             f"BLEU {row['bleu']}, chrF++ {row['chrf++']}, TER {row['ter']}"
         )
-    (comparison_dir / "translation_source_scope_comparison.txt").write_text("\n".join(lines), encoding="utf-8")
+    if direction_rows:
+        lines.extend(["", "By direction:"])
+        for row in sorted(direction_rows, key=lambda item: (item["scope"], item["direction"], -item["chrf++"])):
+            lines.append(
+                f"{row['scope']} | {row['direction']} | {row['translator']}: "
+                f"{row['samples']} samples, BLEU {row['bleu']}, chrF++ {row['chrf++']}, TER {row['ter']}"
+            )
+    if source_rows:
+        lines.extend(["", "By data source:"])
+        for row in sorted(source_rows, key=lambda item: (item["scope"], str(item["source_name"]), -item["chrf++"])):
+            lines.append(
+                f"{row['scope']} | {row['source_name']} | {row['translator']}: "
+                f"{row['samples']} samples, BLEU {row['bleu']}, chrF++ {row['chrf++']}, TER {row['ter']}"
+            )
+    if dialect_rows:
+        lines.extend(["", "By dialect:"])
+        for row in sorted(dialect_rows, key=lambda item: (item["scope"], str(item["dialect"]), -item["chrf++"])):
+            lines.append(
+                f"{row['scope']} | {row['dialect']} | {row['translator']}: "
+                f"{row['samples']} samples, BLEU {row['bleu']}, chrF++ {row['chrf++']}, TER {row['ter']}"
+            )
+    (comparison_dir / "translation_scope_summary.txt").write_text("\n".join(lines), encoding="utf-8")
     print(f"\nTranslation source-scope summary saved to {comparison_dir}")
 
 

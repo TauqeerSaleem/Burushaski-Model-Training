@@ -43,6 +43,17 @@ def grouped_scores(rows, group_key):
     return summary
 
 
+def add_group_lines(lines, title, groups, label_key):
+    if not groups:
+        return
+    lines.extend(["", title])
+    for row in sorted(groups, key=lambda item: (str(item.get(label_key)), -item["chrf++"])):
+        lines.append(
+            f"- {row[label_key]}: {row['samples']} samples, BLEU {row['bleu']}, "
+            f"chrF++ {row['chrf++']}, TER {row['ter']}"
+        )
+
+
 def log_to_wandb(metrics, output_dir):
     if not os.getenv("WANDB_API_KEY"):
         return
@@ -119,24 +130,29 @@ def main(args):
         **score_text([row["hypothesis"] for row in rows], [row["reference"] for row in rows]),
     }
 
+    by_direction = grouped_scores(rows, "direction")
+    by_dialect = grouped_scores(rows, "dialect")
+    by_source = grouped_scores(rows, "source_name")
+
     pd.DataFrame([all_scores]).to_csv(output_dir / "mt5_metrics_summary.csv", index=False)
     (output_dir / "mt5_metrics_summary.json").write_text(json.dumps(all_scores, indent=2), encoding="utf-8")
-    (output_dir / "mt5_metrics_summary.txt").write_text(
-        "\n".join([
-            "mT5 Translation Evaluation Summary",
-            f"Samples evaluated: {all_scores['samples']}",
-            f"BLEU: {all_scores['bleu']}",
-            f"chrF++: {all_scores['chrf++']}",
-            f"TER: {all_scores['ter']}",
-            f"Exact match: {all_scores['exact_match_%']}%",
-            f"Empty predictions: {all_scores['empty_prediction_%']}%",
-            f"Mean length ratio: {all_scores['mean_length_ratio']}",
-        ]),
-        encoding="utf-8",
-    )
-    pd.DataFrame(grouped_scores(rows, "direction")).to_csv(output_dir / "mt5_metrics_by_direction.csv", index=False)
-    pd.DataFrame(grouped_scores(rows, "dialect")).to_csv(output_dir / "mt5_metrics_by_dialect.csv", index=False)
-    pd.DataFrame(grouped_scores(rows, "source_name")).to_csv(output_dir / "mt5_metrics_by_source.csv", index=False)
+    lines = [
+        "mT5 Translation Evaluation Summary",
+        f"Samples evaluated: {all_scores['samples']}",
+        f"BLEU: {all_scores['bleu']}",
+        f"chrF++: {all_scores['chrf++']}",
+        f"TER: {all_scores['ter']}",
+        f"Exact match: {all_scores['exact_match_%']}%",
+        f"Empty predictions: {all_scores['empty_prediction_%']}%",
+        f"Mean length ratio: {all_scores['mean_length_ratio']}",
+    ]
+    add_group_lines(lines, "By direction:", by_direction, "direction")
+    add_group_lines(lines, "By dialect:", by_dialect, "dialect")
+    add_group_lines(lines, "By data source:", by_source, "source_name")
+    (output_dir / "mt5_metrics_summary.txt").write_text("\n".join(lines), encoding="utf-8")
+    pd.DataFrame(by_direction).to_csv(output_dir / "mt5_metrics_by_direction.csv", index=False)
+    pd.DataFrame(by_dialect).to_csv(output_dir / "mt5_metrics_by_dialect.csv", index=False)
+    pd.DataFrame(by_source).to_csv(output_dir / "mt5_metrics_by_source.csv", index=False)
     log_to_wandb(all_scores, output_dir)
     print(all_scores)
     print(f"Results saved to {output_dir}")
