@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 import re
 import sys
 from collections import Counter
@@ -9,6 +10,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pandas as pd
 import pyarrow.parquet as pq
+from datasets import load_dataset
+import yaml
 
 from data.normalization import normalize_burushaski_text
 
@@ -49,6 +52,28 @@ def load_local_parquets(parquet_dir):
         split = "test" if path.name.startswith("test") else "train"
         frames.append(read_parquet_rows(path, split))
     return pd.concat(frames, ignore_index=True, sort=False)
+
+
+def load_hf_rows(repo_id):
+    frames = []
+    token = os.getenv("HF_TOKEN") or None
+    for split in ["train", "test"]:
+        dataset = load_dataset(repo_id, split=split, token=token)
+        if "audio" in dataset.column_names:
+            dataset = dataset.remove_columns(["audio"])
+        frame = dataset.to_pandas()
+        frame["split"] = split
+        frames.append(frame)
+    return pd.concat(frames, ignore_index=True, sort=False)
+
+
+def default_hf_repo():
+    with open("configs/datasets.yaml", encoding="utf-8") as handle:
+        config = yaml.safe_load(handle)
+    repos = config.get("mt", {}).get("hf", [])
+    if not repos:
+        raise ValueError("No Hugging Face MT dataset is configured in configs/datasets.yaml")
+    return repos[0]
 
 
 def write_schema_summary(parquet_dir, output_dir):
@@ -256,6 +281,8 @@ def write_summary(frame, output_dir):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--source", choices=["hf", "local"], default="hf")
+    parser.add_argument("--hf-repo", default=None)
     parser.add_argument("--parquet-dir", default="../Yaraanburushaski_english_translation_v1/data")
     parser.add_argument("--output-dir", default="analysis_outputs/hf_dataset_audit")
     args = parser.parse_args()
@@ -263,8 +290,11 @@ def main():
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    write_schema_summary(args.parquet_dir, output_dir)
-    raw = load_local_parquets(args.parquet_dir)
+    if args.source == "local":
+        write_schema_summary(args.parquet_dir, output_dir)
+        raw = load_local_parquets(args.parquet_dir)
+    else:
+        raw = load_hf_rows(args.hf_repo or default_hf_repo())
     frame = standardize(raw)
 
     write_csv(split_counts(frame), output_dir / "hf_split_counts.csv")

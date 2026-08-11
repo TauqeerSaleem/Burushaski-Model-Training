@@ -1,4 +1,5 @@
 import argparse
+import os
 import random
 import re
 import sys
@@ -9,6 +10,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pandas as pd
 import pyarrow.parquet as pq
+from datasets import load_dataset
+import yaml
 
 from data.normalization import normalize_burushaski_text
 
@@ -36,6 +39,28 @@ def read_parquets(parquet_dir):
     if not frames:
         raise FileNotFoundError(f"No parquet files found in {parquet_dir}")
     return pd.concat(frames, ignore_index=True, sort=False)
+
+
+def read_hf_dataset(repo_id):
+    frames = []
+    token = os.getenv("HF_TOKEN") or None
+    for split in ["train", "test"]:
+        dataset = load_dataset(repo_id, split=split, token=token)
+        if "audio" in dataset.column_names:
+            dataset = dataset.remove_columns(["audio"])
+        frame = dataset.to_pandas()
+        frame["original_split"] = split
+        frames.append(frame)
+    return pd.concat(frames, ignore_index=True, sort=False)
+
+
+def default_hf_repo():
+    with open("configs/datasets.yaml", encoding="utf-8") as handle:
+        config = yaml.safe_load(handle)
+    repos = config.get("mt", {}).get("hf", [])
+    if not repos:
+        raise ValueError("No Hugging Face MT dataset is configured in configs/datasets.yaml")
+    return repos[0]
 
 
 def standardize(frame):
@@ -219,6 +244,8 @@ def write_summary(rows, conflicts, leakage, output_dir):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--source", choices=["hf", "local"], default="hf")
+    parser.add_argument("--hf-repo", default=None)
     parser.add_argument("--parquet-dir", default="../Yaraanburushaski_english_translation_v1/data")
     parser.add_argument("--output-dir", default="data/processed/mt_clean_hunza_v1")
     parser.add_argument("--dialect", default="hunza")
@@ -230,7 +257,11 @@ def main():
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    frame = standardize(read_parquets(args.parquet_dir))
+    if args.source == "local":
+        raw = read_parquets(args.parquet_dir)
+    else:
+        raw = read_hf_dataset(args.hf_repo or default_hf_repo())
+    frame = standardize(raw)
     frame = frame[
         (frame["dialect"] == args.dialect.lower())
         & (frame["bsk_norm"].str.len() > 0)
