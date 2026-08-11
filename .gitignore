@@ -3,5 +3,7 @@ __pycache__/
 *.pyc
 cache/
 outputs/
+analysis_outputs/
+data/processed/
 wandb/
 .venv/

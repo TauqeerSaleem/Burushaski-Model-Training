@@ -17,12 +17,9 @@ asr:
 text_translation:
   mt5:
     kind: seq2seq
-    model_id: outputs/mt5-bsk-eng-short_final
-
-direct_speech_translation:
-  whisper_st:
-    kind: whisper
-    model_id: outputs/whisper-bsk-eng-short_final
-    processor_id: outputs/whisper-bsk-eng-short_final
-    generate_kwargs:
-      max_new_tokens: 160
+    model_id: outputs/mt5-hunza-clean_final
+  mbart:
+    kind: seq2seq
+    model_id: outputs/mbart-hunza-bsk-eng-clean_final
+    source_lang: en_XX
+    target_lang: en_XX

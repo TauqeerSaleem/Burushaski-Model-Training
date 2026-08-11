@@ -7,6 +7,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import yaml
+import pandas as pd
 from dotenv import load_dotenv
 from transformers import (
     AutoModelForSeq2SeqLM,
@@ -77,6 +78,35 @@ def limit_rows(rows, limit):
     return rows[:limit]
 
 
+def load_processed_mt_rows(config, split_name):
+    processed_dir = config.get("processed_data_dir")
+    if not processed_dir:
+        return None
+
+    split_files = config.get("processed_split_files", {})
+    filename = split_files.get(split_name, f"{split_name}.csv")
+    path = Path(processed_dir) / filename
+    if not path.exists():
+        raise FileNotFoundError(f"Processed MT split not found: {path}")
+
+    frame = pd.read_csv(path).fillna("")
+    rows = []
+    for _, row in frame.iterrows():
+        source_text = str(row.get("source_text") or "").strip()
+        target_text = str(row.get("target_text") or "").strip()
+        if not source_text or not target_text:
+            continue
+        rows.append({
+            "source_text": source_text,
+            "target_text": target_text,
+            "direction": row.get("direction") or "bsk_to_eng",
+            "dialect": row.get("dialect") or "hunza",
+            "participant_id": row.get("participant_id") or "",
+            "source": row.get("source") or "processed_mt",
+        })
+    return rows
+
+
 def evaluation_strategy_arg(arguments_cls, value):
     parameters = inspect.signature(arguments_cls.__init__).parameters
     key = "eval_strategy" if "eval_strategy" in parameters else "evaluation_strategy"
@@ -117,25 +147,33 @@ def main(args):
     os.environ.setdefault("WANDB_PROJECT", config.get("wandb_project", "mt5_bsk_eng"))
     target_dialects = config.get("target_dialects")
 
-    train_data = load_dataset(
-        task="mt",
-        split=config.get("train_split", "train"),
-        use_hf=args.use_hf,
-        use_supabase=False,
-        dialects=target_dialects,
-    )
-    eval_data = load_dataset(
-        task="mt",
-        split=config.get("eval_split", "test"),
-        use_hf=args.use_hf,
-        use_supabase=False,
-        dialects=target_dialects,
-    )
+    train_rows = load_processed_mt_rows(config, "train")
+    eval_rows = load_processed_mt_rows(config, config.get("eval_split", "validation"))
 
-    train_rows = make_translation_pairs(train_data, config)
-    eval_rows = make_translation_pairs(eval_data, config)
+    if train_rows is None:
+        train_data = load_dataset(
+            task="mt",
+            split=config.get("train_split", "train"),
+            use_hf=args.use_hf,
+            use_supabase=False,
+            dialects=target_dialects,
+        )
+        eval_data = load_dataset(
+            task="mt",
+            split=config.get("eval_split", "test"),
+            use_hf=args.use_hf,
+            use_supabase=False,
+            dialects=target_dialects,
+        )
+        train_rows = make_translation_pairs(train_data, config)
+        eval_rows = make_translation_pairs(eval_data, config)
+    elif eval_rows is None:
+        eval_rows = []
+
     train_rows = limit_rows(train_rows, config.get("max_train_samples"))
     eval_rows = limit_rows(eval_rows, config.get("max_eval_samples"))
+    train_rows = limit_rows(train_rows, args.max_train_samples)
+    eval_rows = limit_rows(eval_rows, args.max_eval_samples)
     if not train_rows:
         raise ValueError("No MT training pairs found. Check transcript/translation fields and dialect filters.")
 
@@ -163,14 +201,14 @@ def main(args):
     ) if eval_rows else None
 
     training_args = Seq2SeqTrainingArguments(
-        output_dir=config.get("output_dir", "outputs/mt5-bsk-eng"),
+        output_dir=config.get("output_dir", "outputs/mt5-hunza-clean"),
         per_device_train_batch_size=config.get("batch_size", 4),
         per_device_eval_batch_size=config.get("batch_size", 4),
         gradient_accumulation_steps=config.get("gradient_accumulation_steps", 4),
         learning_rate=config.get("learning_rate", 1e-4),
         warmup_steps=config.get("warmup_steps", 200),
-        num_train_epochs=config.get("num_train_epochs", 10),
-        max_steps=config.get("max_steps", -1),
+        num_train_epochs=args.num_train_epochs or config.get("num_train_epochs", 10),
+        max_steps=args.max_steps if args.max_steps is not None else config.get("max_steps", -1),
         **evaluation_strategy_arg(Seq2SeqTrainingArguments, "steps" if eval_dataset else "no"),
         eval_steps=config.get("eval_steps", 200),
         save_strategy="steps",
@@ -192,7 +230,7 @@ def main(args):
     )
 
     trainer.train(resume_from_checkpoint=args.resume_from_checkpoint)
-    final_dir = str(config.get("output_dir", "outputs/mt5-bsk-eng")) + "_final"
+    final_dir = str(config.get("output_dir", "outputs/mt5-hunza-clean")) + "_final"
     trainer.save_model(final_dir)
     tokenizer.save_pretrained(final_dir)
     print(f"Saved final mT5 model to {final_dir}")
@@ -207,11 +245,15 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="configs/mt5.yaml")
+    parser.add_argument("--config", default="configs/mt5_clean.yaml")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--fp16", action="store_true", default=False)
     parser.add_argument("--bf16", action="store_true", default=False)
     parser.add_argument("--resume-from-checkpoint", default=None)
     parser.add_argument("--push-to-hub", action="store_true", default=False)
     parser.add_argument("--hub-model-id", default=None)
+    parser.add_argument("--max-steps", type=int, default=None)
+    parser.add_argument("--num-train-epochs", type=float, default=None)
+    parser.add_argument("--max-train-samples", type=int, default=None)
+    parser.add_argument("--max-eval-samples", type=int, default=None)
     main(parser.parse_args())

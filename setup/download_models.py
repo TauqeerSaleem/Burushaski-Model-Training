@@ -19,8 +19,7 @@ from models.registry import read_registry
 BASE_MODELS = {
     "xlsr_base": "facebook/wav2vec2-xls-r-300m",
     "mt5_base": "google/mt5-base",
-    "whisper_st_start": "Yaraan/bsk-eng-stt-translate",
-    "whisper_st_processor": "openai/whisper-large-v2",
+    "mbart_base": "facebook/mbart-large-50-many-to-many-mmt",
 }
 
 
@@ -42,6 +41,10 @@ def cache_model(name, kind, model_id, processor_id=None, base_model=None):
         print(f"Skipping {name}: {kind}")
 
 
+def is_local_output_path(model_id):
+    return str(model_id).startswith("outputs/") or str(model_id).startswith("outputs\\")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--registry", default="configs/model_registry.yaml")
@@ -50,17 +53,16 @@ def main():
 
     cache_model("xlsr_base", "ctc_base", BASE_MODELS["xlsr_base"])
     cache_model("mt5_base", "seq2seq", BASE_MODELS["mt5_base"])
-    cache_model(
-        "whisper_st_start",
-        "whisper",
-        BASE_MODELS["whisper_st_start"],
-        processor_id=BASE_MODELS["whisper_st_processor"],
-    )
+    cache_model("mbart_base", "seq2seq", BASE_MODELS["mbart_base"])
 
     if args.include_trained:
         registry = read_registry(args.registry)
         for name, spec in registry.get("asr", {}).items():
             cache_model(name, spec["kind"], spec["model_id"], spec.get("processor_id"), spec.get("base_model"))
+        for name, spec in registry.get("text_translation", {}).items():
+            model_id = spec.get("model_id")
+            if model_id and not is_local_output_path(model_id):
+                cache_model(name, spec["kind"], model_id)
 
     print("Done. Requested models are cached and ready.")
 

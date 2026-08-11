@@ -8,12 +8,12 @@ import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 from data.loader import load_dataset
-from train.mt5 import limit_rows, make_translation_pairs, read_config
+from train.mt5 import limit_rows, load_processed_mt_rows, make_translation_pairs, read_config
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="configs/mt5_short.yaml")
+    parser.add_argument("--config", default="configs/mt5_clean.yaml")
     parser.add_argument("--use-hf", action="store_true", default=False)
     parser.add_argument("--use-supabase", action="store_true", default=False)
     parser.add_argument("--dialect", action="append")
@@ -23,11 +23,17 @@ def main():
 
     config = read_config(args.config)
     dialects = args.dialect or config.get("target_dialects")
-    train_data = load_dataset("mt", config.get("train_split", "train"), args.use_hf, False, dialects)
-    eval_data = load_dataset("mt", config.get("eval_split", "test"), args.use_hf, args.use_supabase, dialects)
+    train_pairs = load_processed_mt_rows(config, "train")
+    eval_pairs = load_processed_mt_rows(config, config.get("eval_split", "validation"))
+    if train_pairs is None:
+        train_data = load_dataset("mt", config.get("train_split", "train"), args.use_hf, False, dialects)
+        train_pairs = make_translation_pairs(train_data, config)
+    if eval_pairs is None:
+        eval_data = load_dataset("mt", config.get("eval_split", "test"), args.use_hf, args.use_supabase, dialects)
+        eval_pairs = make_translation_pairs(eval_data, config)
 
-    train_pairs = limit_rows(make_translation_pairs(train_data, config), args.max_samples)
-    eval_pairs = limit_rows(make_translation_pairs(eval_data, config), args.max_samples)
+    train_pairs = limit_rows(train_pairs, args.max_samples)
+    eval_pairs = limit_rows(eval_pairs, args.max_samples)
     if not train_pairs:
         raise ValueError("No train translation pairs found")
     if not eval_pairs:
@@ -66,4 +72,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

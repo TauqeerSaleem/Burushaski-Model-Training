@@ -1,0 +1,27 @@
+model_name: facebook/mbart-large-50-many-to-many-mmt
+processed_data_dir: data/processed/mt_clean_hunza_v1
+processed_split_files:
+  train: train.csv
+  validation: validation.csv
+  test: test.csv
+eval_split: validation
+output_dir: outputs/mbart-hunza-bsk-eng-clean
+hub_model_id: Yaraan/mbart-hunza-bsk-eng-v1
+wandb_project: yaraan-hunza-mbart
+directions:
+  - bsk_to_eng
+target_dialects:
+  - hunza
+source_lang: en_XX
+target_lang: en_XX
+max_source_length: 128
+max_target_length: 128
+learning_rate: 0.00003
+num_train_epochs: 5
+batch_size: 1
+gradient_accumulation_steps: 8
+eval_steps: 100
+save_steps: 100
+warmup_steps: 50
+max_steps: -1
+gradient_checkpointing: true

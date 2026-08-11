@@ -15,32 +15,23 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 from data.loader import load_dataset
 from eval_metrics import mt_scores
-from train.mt5 import keep_dialects, load_processed_mt_rows, make_translation_pairs, read_config
+from train.mbart import forced_bos_token_id, prepare_tokenizer, read_config
+from train.mt5 import keep_dialects, load_processed_mt_rows, make_translation_pairs
 
 load_dotenv()
 
 
-def normalize_text(text: str) -> str:
+def normalize_text(text):
     text = str(text or "").lower()
     text = text.translate(str.maketrans("", "", string.punctuation))
     return " ".join(text.split())
 
 
 def score_text(hypotheses, references):
-    hyp_norm = [normalize_text(text) for text in hypotheses]
-    ref_norm = [normalize_text(text) for text in references]
-    return mt_scores(hyp_norm, ref_norm)
-
-
-def grouped_scores(rows, group_key):
-    summary = []
-    for group, group_rows in pd.DataFrame(rows).groupby(group_key, dropna=False):
-        summary.append({
-            group_key: group,
-            "samples": len(group_rows),
-            **score_text(group_rows["hypothesis"].tolist(), group_rows["reference"].tolist()),
-        })
-    return summary
+    return mt_scores(
+        [normalize_text(text) for text in hypotheses],
+        [normalize_text(text) for text in references],
+    )
 
 
 def log_to_wandb(metrics, output_dir):
@@ -48,7 +39,7 @@ def log_to_wandb(metrics, output_dir):
         return
     import wandb
 
-    wandb.init(project=os.getenv("WANDB_PROJECT", "mt5_bidir_hunza_v1"), job_type="eval", reinit=True)
+    wandb.init(project=os.getenv("WANDB_PROJECT", "yaraan-hunza-mbart"), job_type="eval", reinit=True)
     wandb.log(metrics)
     wandb.save(str(output_dir / "*.csv"))
     wandb.save(str(output_dir / "*.json"))
@@ -77,32 +68,34 @@ def main(args):
     if args.max_samples:
         pairs = pairs[:args.max_samples]
     if not pairs:
-        raise ValueError("No MT evaluation pairs found.")
+        raise ValueError("No mBART evaluation pairs found. Run analysis/build_clean_mt_dataset.py first.")
 
     device = "cuda" if torch.cuda.is_available() and not args.cpu else "cpu"
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+    tokenizer = prepare_tokenizer(AutoTokenizer.from_pretrained(args.model_path), config)
     model = AutoModelForSeq2SeqLM.from_pretrained(args.model_path).to(device)
+    bos_id = forced_bos_token_id(tokenizer, config)
     model.eval()
 
     rows = []
-    for pair in tqdm(pairs, desc="Evaluating mT5"):
+    for pair in tqdm(pairs, desc="Evaluating mBART"):
         inputs = tokenizer(
             pair["source_text"],
             return_tensors="pt",
-            max_length=config.get("max_source_length", 256),
+            max_length=config.get("max_source_length", 128),
             truncation=True,
         ).to(device)
+        generate_kwargs = {
+            "max_length": config.get("max_target_length", 128),
+            "num_beams": args.num_beams,
+        }
+        if bos_id is not None:
+            generate_kwargs["forced_bos_token_id"] = bos_id
         with torch.no_grad():
-            output_ids = model.generate(
-                **inputs,
-                max_length=config.get("max_target_length", 256),
-                num_beams=args.num_beams,
-            )
+            output_ids = model.generate(**inputs, **generate_kwargs)
         hypothesis = tokenizer.decode(output_ids[0], skip_special_tokens=True).strip()
         rows.append({
-            "direction": pair.get("direction") or pair["source_text"].split(":", 1)[0],
+            "direction": pair.get("direction") or "bsk_to_eng",
             "dialect": pair.get("dialect"),
-            "participant_id": pair.get("participant_id"),
             "source_name": pair.get("source"),
             "source": pair["source_text"],
             "reference": pair["target_text"],
@@ -111,19 +104,18 @@ def main(args):
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(rows).to_csv(output_dir / "mt5_predictions.csv", index=False)
+    pd.DataFrame(rows).to_csv(output_dir / "mbart_predictions.csv", index=False)
 
     all_scores = {
-        "scope": "all",
+        "scope": args.split,
         "samples": len(rows),
         **score_text([row["hypothesis"] for row in rows], [row["reference"] for row in rows]),
     }
-
-    pd.DataFrame([all_scores]).to_csv(output_dir / "mt5_metrics_summary.csv", index=False)
-    (output_dir / "mt5_metrics_summary.json").write_text(json.dumps(all_scores, indent=2), encoding="utf-8")
-    (output_dir / "mt5_metrics_summary.txt").write_text(
+    pd.DataFrame([all_scores]).to_csv(output_dir / "mbart_metrics_summary.csv", index=False)
+    (output_dir / "mbart_metrics_summary.json").write_text(json.dumps(all_scores, indent=2), encoding="utf-8")
+    (output_dir / "mbart_metrics_summary.txt").write_text(
         "\n".join([
-            "mT5 Translation Evaluation Summary",
+            "mBART Translation Evaluation Summary",
             f"Samples evaluated: {all_scores['samples']}",
             f"BLEU: {all_scores['bleu']}",
             f"chrF++: {all_scores['chrf++']}",
@@ -134,9 +126,6 @@ def main(args):
         ]),
         encoding="utf-8",
     )
-    pd.DataFrame(grouped_scores(rows, "direction")).to_csv(output_dir / "mt5_metrics_by_direction.csv", index=False)
-    pd.DataFrame(grouped_scores(rows, "dialect")).to_csv(output_dir / "mt5_metrics_by_dialect.csv", index=False)
-    pd.DataFrame(grouped_scores(rows, "source_name")).to_csv(output_dir / "mt5_metrics_by_source.csv", index=False)
     log_to_wandb(all_scores, output_dir)
     print(all_scores)
     print(f"Results saved to {output_dir}")
@@ -144,9 +133,9 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model-path", default="outputs/mt5-hunza-clean_final")
-    parser.add_argument("--config", default="configs/mt5_clean.yaml")
-    parser.add_argument("--output-dir", default="outputs/mt5-hunza-clean/results")
+    parser.add_argument("--model-path", default="outputs/mbart-hunza-bsk-eng-clean_final")
+    parser.add_argument("--config", default="configs/mbart_clean.yaml")
+    parser.add_argument("--output-dir", default="outputs/mbart-hunza-bsk-eng-clean/results")
     parser.add_argument("--split", default="test")
     parser.add_argument("--dialect", action="append")
     parser.add_argument("--use-hf", action="store_true", default=False)
