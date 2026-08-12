@@ -6,7 +6,7 @@ processed_split_files:
   test: test.csv
 eval_split: validation
 output_dir: outputs/mbart-hunza-bsk-eng-clean
-hub_model_id: Yaraan/mbart-hunza-bsk-eng-v1
+hub_model_id: Yaraan/mbart-hunza-bsk-eng-clean-v1
 wandb_project: yaraan-hunza-mbart
 directions:
   - bsk_to_eng

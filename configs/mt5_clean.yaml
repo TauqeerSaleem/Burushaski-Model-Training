@@ -6,7 +6,7 @@ processed_split_files:
   test: test.csv
 eval_split: validation
 output_dir: outputs/mt5-hunza-clean
-hub_model_id: Yaraan/mt5-hunza-bsk-eng-v1
+hub_model_id: Yaraan/mt5-hunza-bsk-eng-clean-v2
 wandb_project: yaraan-hunza-mt-clean
 directions:
   - bsk_to_eng

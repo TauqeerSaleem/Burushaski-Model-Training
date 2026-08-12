@@ -164,22 +164,20 @@ python evaluate/saved_predictions.py --task mt --predictions outputs/text-transl
 
 **9. Upload final checkpoints to Hugging Face**
 ```bash
-hf upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/mt5-hunza-clean_final .
-hf upload Yaraan/mbart-hunza-bsk-eng-v1 outputs/mbart-hunza-bsk-eng-clean_final .
-hf upload Yaraan/mt5-hunza-bsk-eng-v1 outputs/text-translation/mt5 clean-eval-results
-hf upload Yaraan/mbart-hunza-bsk-eng-v1 outputs/text-translation/mbart results
+hf upload Yaraan/mt5-hunza-bsk-eng-clean-v2 outputs/mt5-hunza-clean_final .
+hf upload Yaraan/mbart-hunza-bsk-eng-clean-v1 outputs/mbart-hunza-bsk-eng-clean_final .
+hf upload Yaraan/mt5-hunza-bsk-eng-clean-v2 outputs/text-translation/mt5 clean-eval-results
+hf upload Yaraan/mbart-hunza-bsk-eng-clean-v1 outputs/text-translation/mbart results
 
 python setup/clear_hf_repo.py Yaraan/yaraan-hunza-asr-comparison-results
 hf upload Yaraan/yaraan-hunza-asr-comparison-results outputs/asr-all .
 
-python setup/clear_hf_repo.py Yaraan/yaraan-hunza-text-translation-results
-hf upload Yaraan/yaraan-hunza-text-translation-results outputs/text-translation .
+hf upload Yaraan/yaraan-hunza-text-translation-results-v2 outputs/text-translation .
 
-python setup/clear_hf_repo.py Yaraan/yaraan-hunza-clean-cascade-results
-hf upload Yaraan/yaraan-hunza-clean-cascade-results outputs/cascade-all .
+hf upload Yaraan/yaraan-hunza-clean-cascade-results-v2 outputs/cascade-all .
 ```
 
-Use `setup/clear_hf_repo.py` before uploading result-only repos. That keeps old root-level files and old combined folders from sitting beside the current results.
+For new clean-split model/result runs, use fresh HF repo names instead of overwriting older baseline repos. Only use `setup/clear_hf_repo.py` when intentionally updating an existing result-only repo.
 
 For a fresh run, the training scripts can also upload automatically after training:
 
@@ -351,4 +349,4 @@ For this phase, the main comparison tables are:
 - **Supabase `--use-supabase` flag** - use a service role key in `.env`. Do not paste it into notebooks or logs.
 - **ASR split policy** - ASR checkpoints are evaluated on HF-only and Supabase-only Hunza scopes. Combined reporting is optional.
 - **MT split policy** - text translation uses the clean prompt/source-aware split generated from the HF parquets.
-- **HF upload policy** - mT5 updates `Yaraan/mt5-hunza-bsk-eng-v1`; mBART uses `Yaraan/mbart-hunza-bsk-eng-v1`.
+- **HF upload policy** - clean-split mT5 uses `Yaraan/mt5-hunza-bsk-eng-clean-v2`; clean mBART uses `Yaraan/mbart-hunza-bsk-eng-clean-v1`.
